@@ -4,6 +4,7 @@
   "description": "A project for subject CT271",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --inspect index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +25,10 @@
   },
   "homepage": "https://github.com/truongvanduy/my-furnish#readme",
   "dependencies": {
-    "epxress": "^0.0.1-security"
+    "epxress": "^0.0.1-security",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
   }
 }
