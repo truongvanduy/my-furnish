@@ -1,0 +1,29 @@
+{
+  "name": "my-furnish",
+  "version": "1.0.0",
+  "description": "A project for subject CT271",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truongvanduy/my-furnish.git"
+  },
+  "keywords": [
+    "truongvanduy",
+    "my-furnish",
+    "furniture",
+    "ct271",
+    "nlcs"
+  ],
+  "author": "truongvanduy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/truongvanduy/my-furnish/issues"
+  },
+  "homepage": "https://github.com/truongvanduy/my-furnish#readme",
+  "dependencies": {
+    "epxress": "^0.0.1-security"
+  }
+}
