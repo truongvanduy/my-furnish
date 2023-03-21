@@ -1,0 +1,69 @@
+.banner-side {
+  display: flex;
+  gap: 0 30px;
+  position: relative;
+  &__img {
+    flex: 5;
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__content {
+    flex: 3;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: min(max(100vw - map-get($breakpoints, "lg"), 0vw), 2vw);
+  }
+  &__title {
+    text-transform: capitalize;
+    font-size: clamp(2.5rem, 1.5vw + 1.6rem, 3.5rem);
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.4;
+    font-family: $primary-font;
+    margin-bottom: 1.4em;
+    margin-top: auto;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.6em;
+      width: 60%;
+      height: 2px;
+      background-color: #222;
+    }
+  }
+  &__desc {
+    font-size: clamp(1.6rem, 0.8vw + 0.7rem, 2rem);
+    max-width: 45ch;
+    letter-spacing: 0.02em;
+  }
+  &__cta {
+    text-transform: uppercase;
+    margin-top: auto;
+    align-self: flex-start;
+    font-size: clamp(1.6rem, 0.8vw + 0.7rem, 2rem);
+  }
+  @include lg {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    &__content {
+      align-items: center;
+      padding-block: 3.2rem;
+    }
+    &__title::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &__cta {
+      align-self: unset;
+      margin-top: 3.2rem;
+    }
+  }
+}

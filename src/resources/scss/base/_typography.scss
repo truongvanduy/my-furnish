@@ -1,0 +1,73 @@
+@mixin font($fontSize, $fontWeight, $lineHeight) {
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+}
+// Use .heading.heading-[size] to adjust heading font-size, font-weight and line-height
+.heading {
+  color: $heading-color;
+  font-family: $primary-font;
+  &-2xl {
+    @include font(clamp(2.5rem, 4vw, 6.5rem), 700, 1.2);
+  }
+  &-xl {
+    @include font(clamp(2.5rem, 1.4vw + 1.2rem, 3rem), 600, 1.25);
+  }
+  &-lg {
+    @include font(3.5rem, 700, 4.6rem);
+  }
+  &-md {
+    @include font(2.6rem, 600, 3rem);
+  }
+  &-sm {
+    @include font(2.2rem, 500, 2.6rem);
+  }
+  &-xs {
+    @include font(2rem, 400, 2.3rem);
+  }
+  &-center {
+    text-align: center;
+  }
+}
+.text {
+  color: $text-color;
+  &-lg {
+    @include font(clamp(1.6rem, 0.7vw + 0.8rem, 1.8rem), 400, 2.2rem);
+  }
+  &-md {
+    @include font(1.6rem, 400, 3rem);
+  }
+  &-sm {
+    @include font(1.4rem, 400, 1.641rem);
+  }
+  &-xs {
+    @include font(1.2rem, 400, 1.4rem);
+  }
+  &-center {
+    text-align: center;
+  }
+}
+// Use .font-[...] to adjust font-family
+.font {
+  &-primary {
+    font-family: $primary-font;
+  }
+  &-secondary {
+    font-family: $secondary-font;
+  }
+}
+// Use .color-[...] to adjust text color
+.color {
+  &-primary {
+    color: $primary-color;
+  }
+  &-heading {
+    color: $heading-color;
+  }
+  &-text {
+    color: $text-color;
+  }
+  &-white {
+    color: white;
+  }
+}

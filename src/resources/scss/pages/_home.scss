@@ -1,0 +1,112 @@
+.home {
+  &-main {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--section-spacing) 0;
+  }
+  &-blog {
+    &__heading {
+      margin-bottom: 4.8rem;
+    }
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: calc(2 * var(--gutter));
+    }
+    --blog-item-width: 40%;
+    @include lg {
+      &__list {
+        justify-content: flex-start;
+        grid-auto-columns: var(--blog-item-width);
+        grid-auto-flow: column;
+        grid-gap: 1.5rem;
+        overflow: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-snap-stop: always;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        -webkit-overflow-scrolling: touch;
+        scroll-padding: 1rem;
+        grid-template-columns: unset;
+      }
+      &__list::-webkit-scrollbar {
+        display: none;
+        width: 0;
+      }
+      &__list > * {
+        scroll-snap-align: start;
+      }
+    }
+    @include md {
+      --blog-item-width: 60%;
+    }
+    @include sm {
+      --blog-item-width: 90%;
+    }
+  }
+}
+.product {
+  &__heading {
+    text-transform: uppercase;
+    margin-bottom: clamp(2.4rem, 5vw, 4.8rem);
+  }
+  &-featured {
+    &-item {
+      &:hover {
+        box-shadow: 0rem 0rem 2.5rem rgba(0, 0, 0, 0.1);
+      }
+      &__top {
+        background-color: $product-bgc-1;
+        min-height: 27rem;
+      }
+      &__img {
+        height: 18rem;
+      }
+      &__bottom {
+        padding: 1.6rem;
+        border: 0.2rem solid $product-bgc-1;
+        transition: all 0.2s linear;
+      }
+      &:hover &__bottom {
+        border-color: transparent;
+      }
+      &__heading {
+        font-weight: bold;
+        margin-bottom: 2rem;
+      }
+      &__code {
+        margin-bottom: 1.2rem;
+      }
+    }
+  }
+  &-latest {
+    &-item {
+      &__top {
+        background-color: $product-bgc-2;
+        transition: all 0.2s linear;
+      }
+      &:hover &__top {
+        background-color: white;
+      }
+      &__img {
+        width: 26rem;
+        height: 26rem;
+      }
+      &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1.6rem;
+        padding-bottom: 1rem;
+      }
+      &-price {
+        &__old {
+          color: #FB2448;
+        }
+      }
+    }
+  }
+}

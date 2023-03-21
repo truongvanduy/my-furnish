@@ -1,0 +1,178 @@
+.header {
+  --logo-left: 8rem;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 0.4rem 1rem 0 rgba($color: #000000, $alpha: 0.1);
+  transition: all 0.2s linear;
+  &__logo {
+    height: 5rem;
+    border-radius: 100rem;
+
+    position: absolute;
+    left: calc(1 * var(--gutter));
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    line-height: 1;
+    transition: all 0.2s linear;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .menu.opened ~ & {
+      left: calc(
+        100% - calc(map-get($map: $breakpoints, $key: 'sm') - var(--logo-left))
+      );
+      @include sm {
+        left: var(--gutter);
+      }
+    }
+  }
+}
+
+.nav {
+  &-top {
+    @include flexCenterY();
+    background-color: $violet-color;
+    color: white;
+    height: var(--nav-top-height);
+    @include lg {
+      font-size: 1.4rem;
+    }
+    & .nav__container {
+      justify-content: space-between;
+    }
+  }
+  &__container {
+    @include flexCenterY();
+    height: 100%;
+    position: relative;
+  }
+  &-contact {
+    @include flexCenterY();
+    gap: 0 4.8rem;
+    @include lg {
+      gap: 0 2rem;
+    }
+    &__group {
+      cursor: pointer;
+      @include flexCenterY();
+      gap: 0 1rem;
+    }
+  }
+  &-action {
+    @include flexCenterY();
+    gap: 0 1.6rem;
+    &__group {
+      position: relative;
+      cursor: pointer;
+      @include flexCenterY();
+      gap: 0 0.4rem;
+    }
+    &__icon {
+      margin-bottom: 0.4rem;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  &-cart {
+    padding-left: 1rem;
+    &__img {
+      width: 2.6rem;
+      height: 2.6rem;
+    }
+    &__qty {
+      position: absolute;
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 100rem;
+      background-color: white;
+      top: -0.4rem;
+      right: -0.6rem;
+      color: $violet-color;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      &.in-menu {
+        width: unset;
+        position: unset;
+        color: $text-color;
+        font-size: 0.8em;
+        font-weight: normal;
+        flex-wrap: nowrap;
+        &::before {
+          content: '(';
+        }
+        &::after {
+          content: ')';
+        }
+      }
+      &.has-product {
+        display: flex;
+      }
+    }
+  }
+  &-bottom {
+    height: var(--nav-bottom-height);
+  }
+}
+@include lg {
+  .overlay {
+    background-color: transparent;
+    transition: background-color 0.2s linear;
+  }
+  .menu.opened ~ .overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #1e3b6f99;
+    z-index: 1;
+  }
+  .nav {
+    &-top {
+      display: none;
+    }
+    &-contact__icon,
+    &-action__icon {
+      filter: invert(21%) sepia(100%) saturate(2801%) hue-rotate(259deg)
+        brightness(89%) contrast(96%);
+    }
+    &-contact__icon {
+      width: 2rem;
+    }
+    &-action {
+      &__icon.in-menu {
+        display: none;
+      }
+    }
+  }
+}
+@include sm {
+  .overlay {
+    transition-delay: 0.2s;
+  }
+}
+
+@include aboveBreakpoint(map-get($breakpoints, 'lg')) {
+}
+.hide {
+  transform: translateY(-100%);
+}

@@ -1,0 +1,75 @@
+.banner-sale {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../images/home/banner-sale.jpg');
+  filter: saturate(1.5);
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-top: min(100vh, max(66.67%, 40vh));
+  overflow: hidden;
+  &__container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0.4) 100%);
+    overflow-x: hidden;
+    @include sm {
+      top: 50%;
+      left: 50%;
+      bottom: unset;
+      transform: translate(-50%, -80%);
+      width: fit-content;
+      height: fit-content;
+    }
+  }
+  &__content {
+    text-align: center;
+    width: min(80rem, 100%);
+    background-color: rgba($color: #fff, $alpha: 0.85);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    @include aboveBreakpoint(map-get($breakpoints, "sm")) {
+      text-align: left;
+      align-items: flex-start;
+      margin-left: clamp(2rem, 3.8vw, 7.2rem);
+    }
+    @include sm {
+      padding: clamp(2rem, 4vw, 8rem) 2rem;
+    }
+  }
+  &__heading {
+    margin-bottom: 1.2rem;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  &__desc {
+    margin-bottom: clamp(2rem, 2.3rem + 2.3vw, 6rem);
+    font-style: italic;
+    color: white;
+    font-size: clamp(1.6rem, 0.8vw + 0.8rem, 2.2rem);
+  }
+  &__cta {
+    color: white;
+    text-transform: uppercase;
+    font-size: clamp(1.6rem, 0.8vw + 0.8rem, 2.2rem);
+    transition: all 0.2s linear;
+    &:hover {
+      border-color: white;
+      background-color: white;
+      color: $primary-color;
+      color: #222;
+    }
+  }
+}

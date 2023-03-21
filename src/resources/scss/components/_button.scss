@@ -1,0 +1,49 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0.2rem;
+  color: white;
+  font-size: 1.7rem;
+  &--primary {
+    color: $primary-color;
+    --current-color: var(--primary-color);
+  }
+  &--secondary {
+    color: $secondary-color;
+    --current-color: var(--secondary-color);
+  }
+  &--outline {
+    background-color: transparent;
+    border: 0.2rem solid currentColor;
+    transition: all 0.2s linear;
+    &:hover {
+      color: white;
+      background-color: var(--current-color);
+    }
+  }
+  &--solid {
+    color: white;
+    background-color: var(--current-color);
+  }
+  &--xl {
+    @include button(3em, 2.5em);
+  }
+  &--lg {
+    @include button(2.8em, 1.8em);
+    font-size: clamp(1.6rem, 0.7vw + 0.8rem, 1.8rem);
+  }
+  &--md {
+    @include button(4.5rem, 2.4rem);
+  }
+  &--sm {
+    height: 4rem;
+  }
+  &--xs {
+    @include button(3rem, 1.8rem);
+    font-size: 1.2rem;
+  }
+}

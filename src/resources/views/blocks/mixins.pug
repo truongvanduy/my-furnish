@@ -1,0 +1,139 @@
+mixin navContactGroup(href, src, alt, text, className="")
+  a.nav-contact__group(href= href class= className) 
+    img.nav-contact__icon(src= src, alt= alt)
+    span.nav-contact__text= text
+
+mixin navActionGroup(text, src, alt, href="", imgClassName="")
+  a(href= href).nav-action__group
+    span.nav-action__text= text
+    img.nav-action__icon(src= src, alt= alt, class= imgClassName)
+    block 
+
+mixin productActionSet(setClass)
+  .product-action(class= setClass)
+    block 
+
+mixin productActionItem(itemClass="", iconClass="")
+  button.product-action__item(class= itemClass)
+    i(class= iconClass)
+
+mixin featuredProductItem(heading, code, price, imgSrc, alt="")
+  .col.col-3.xl-3.lg-6.md-6.sm-12 
+    figure.product-featured-item.product-item.action-horizontal  
+      .product-featured-item__top.product-item__top 
+        .product-featured-item__img.product-item__img 
+          img(srcSet= imgSrc , alt= alt)
+        +productActionSet("product-action--horizontal")
+          +productActionItem("","fa-solid fa-cart-plus")
+          +productActionItem("","fa-regular fa-heart")
+          +productActionItem("","fa-solid fa-magnifying-glass")
+      .product-featured-item__bottom.product-item__bottom 
+        figcaption.product-featured-item__heading.text.text-lg.text-center.color-primary.font-secondary= heading
+        .product-featured-item__desc.text.text-sm.text-center.color-heading 
+          p.product-featured-item__code= code
+          p.product-featured-item__price= price
+
+mixin latestProductItem(heading, newPrice, oldPrice, imgSrc)
+  .col.col-4.xl-4.lg-6.md-6.sm-12 
+    figure.product-latest-item.product-item.action-vertical
+      .product-latest-item__top.product-item__top 
+        .product-latest-item__img.product-item__img 
+          img(srcSet= imgSrc , alt= heading)
+        +productActionSet("product-action--vertical")
+          +productActionItem("","fa-solid fa-cart-plus")
+          +productActionItem("","fa-regular fa-heart")
+          +productActionItem("","fa-solid fa-magnifying-glass")
+      .product-latest-item__bottom.product-item__bottom 
+        figcaption.product-latest-item__heading.text.text-lg.color-heading.font-primary= heading
+        .product-latest-item-price
+          span.product-latest-item-price__new.text.text-md.color-heading= newPrice
+          del.product-latest-item-price__old.text.text-sm= oldPrice
+
+mixin offerItem(heading, desc, imgSrc)
+  .col.col-3.xl-3.lg-6.md-6.sm-12 
+    figure.offer-item
+      .offer-item__top 
+        .offer-item__img 
+          img(srcSet= imgSrc , loading="lazy", alt= heading)
+      .offer-item__bottom
+        figcaption.offer-item__heading.heading.heading-sm.heading-center.color-heading.font-primary= heading
+        p.offer-item__desc.text.text-md.text-center.font-secondary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.
+
+mixin accessoriesItem(heading, newPrice, oldPrice, imgSrc)
+  .col.col-3.xl-3.lg-6.md-6.sm-12 
+    figure.accessories-item.product-item.action-horizontal  
+      .accessories-item__top.product-item__top 
+        .accessories-item__img.product-item__img 
+          img(srcSet= imgSrc , loading="lazy", alt= heading)
+        +productActionSet("product-action--horizontal")
+          +productActionItem("","fa-solid fa-cart-plus")
+          +productActionItem("","fa-regular fa-heart")
+          +productActionItem("","fa-solid fa-magnifying-glass")
+      .accessories-item__bottom.product-item__bottom 
+        figcaption.accessories-item__heading.text.text-lg.text-center.color-heading.font-secondary= heading
+        .accessories-item-price.text.text-sm.text-center.color-heading 
+          span.accessories-item-price__new= newPrice
+          del.accessories-item-price__old= oldPrice
+
+mixin topProductItem(heading, price, imgSrc)
+  .col.col-3.xl-6.lg-6.md-6.sm-12 
+    //- figure.product-top-item.product-item.action-rounded.obs-transition.fade.side-half-up 
+    //-   .product-top-item__top.product-item__top 
+    //-     .product-top-item__img.product-item__img 
+    //-       img(srcSet= imgSrc , alt= heading)
+    //-     +productActionSet("product-action--rounded")
+    //-       +productActionItem("","fa-solid fa-cart-plus")
+    //-       +productActionItem("","fa-regular fa-heart")
+    //-       +productActionItem("","fa-solid fa-magnifying-glass")
+    //-   .product-top-item__bottom.product-item__bottom 
+    //-     figcaption.product-top-item__heading.heading.heading-xs.heading-center.font-primary= heading
+    //-     span.product-top-item__price.text.text-md.text-center.color-heading= price
+
+mixin homeBlogItem(heading, author, date, desc, imgSrc)
+  figure.home-blog-item.obs-transition.fade
+    .home-blog-item__img 
+      img(srcSet= imgSrc, loading="lazy", alt= heading)
+    .home-blog-item__info.text.text-sm.color-heading.font-primary.color-heading   
+      .home-blog-item__info-group 
+        img(src="../images/home/sign.svg", loading="lazy", alt="sign")
+        span.home-blog-item__author= author 
+      .home-blog-item__info-group  
+        img.home-blog-item__date-img(src="../images/home/date.svg", loading="lazy", alt="calendar")
+        time.home-blog-item__time= date
+    .home-blog-item__content 
+      figcaption.home-blog-item__heading.text.text-lg.color-heading.font-primary= heading
+      p.home-blog-item__desc.text.text-md.font-secondary= desc
+      a(href="./404-not-found.html").home-blog-item__cta.text.text-md.font-secondary.color-heading Read more
+
+mixin mainHeader(title)
+  section.main-header 
+    .container.main-header__container
+      h1.main-header__title.font-primary= title
+      nav.breadcrumb
+        ol.breadcrumb__list 
+          li.breadcrumb__item 
+            a(href= homePageLink).breadcrumb__link Home 
+          li.breadcrumb__item.breadcrumb__item--active
+            a(href="#").breadcrumb__link= title
+
+mixin onTrendingItem(type, name, price, imgSrc, dataIndex)
+  figure(class="product-item on-trending-item on-trending-item--" + type, data-index= dataIndex)
+      //- figcaption.on-trending-item__name.font-secondary= name
+      //- .on-trending-item__img.product-item__img 
+      //-   img(src= imgSrc, alt="a chair")
+      //- span.on-trending-item__price= price
+      //- +productActionSet("product-action--bottom-left")
+      //-     +productActionItem("","fa-solid fa-cart-plus")
+      //-     +productActionItem("","fa-regular fa-heart")
+      //-     +productActionItem("","fa-solid fa-magnifying-glass")
+
+mixin bannerStick(title, caption, desc, imgSrc, btnText= "view all products", alt= "Furniture")
+  section.banner-stick.container
+    .banner-stick__content.font-primary.obs-transition.fade
+      h3.banner-stick__title= title 
+      p.banner-stick__caption= caption 
+      p.banner-stick__desc.font-secondary= desc
+      a(href= POPLink).banner-stick__cta.btn.btn--md.btn--solid.btn--primary= btnText
+    .banner-stick__img
+      img(src= imgSrc, loading="lazy", alt= alt)
+

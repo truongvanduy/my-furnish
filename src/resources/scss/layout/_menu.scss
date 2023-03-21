@@ -1,0 +1,140 @@
+.menu {
+  @include flexCenterY();
+  justify-content: flex-start;
+  gap: 0 3.5rem;
+  margin-left: calc(7% + 12rem);
+  @include lg {
+    gap: 0 2.5rem;
+    margin-left: 18%;
+  }
+  margin-right: 3.5rem;
+  width: fit-content;
+  &__link {
+    cursor: pointer;
+    transition: all 0.2s linear;
+    &:hover {
+      color: $primary-color;
+    }
+    @include lg {
+      font-size: 1.6rem;
+    }
+  }
+}
+.toggle-menu {
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  transform: translateY(-50%);
+  right: var(--gutter);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__bars {
+    width: 80%;
+    height: 80%;
+    position: relative;
+  }
+  &__line {
+    --line-height: 0.3rem;
+    --transition-time: 0.2s;
+    position: absolute;
+    width: 100%;
+    height: var(--line-height);
+    border-radius: 100rem;
+    background-color: $heading-color;
+    transition: top var(--transition-time) linear var(--transition-time),
+      transform var(--transition-time) linear 0s,
+      opacity var(--transition-time) linear var(--transition-time);
+    &:nth-child(1) {
+      transform: rotate(0);
+      top: 0;
+    }
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
+    }
+    &:nth-child(3) {
+      transform: rotate(0);
+      top: calc(100% - var(--line-height));
+    }
+  }
+  &.opened &__line {
+    transition: top var(--transition-time) linear 0s,
+      transform var(--transition-time) linear var(--transition-time),
+      opacity var(--transition-time) linear 0s;
+    &:nth-child(1) {
+      top: calc(50% - calc(var(--line-height) / 2));
+      transform: rotate(45deg);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      top: calc(50% - calc(var(--line-height) / 2));
+      transform: rotate(-45deg);
+    }
+  }
+  @include aboveBreakpoint(map-get($breakpoints, 'lg')) {
+    display: none;
+  }
+}
+@include lg {
+  .menu {
+    $menu-width: map-get($breakpoints, 'sm');
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(100%, $menu-width);
+    height: fit-content;
+    min-height: 100vh;
+    z-index: 2;
+    transform: translateX(100%);
+    padding: var(--logo-left);
+    word-break: break-all;
+    transition: all 0.25s linear;
+    overflow-y: auto;
+    overflow-x: visible;
+    @include sm {
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+    &__item {
+      width: 100%;
+      height: 4rem;
+    }
+    &__link {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
+    }
+    &,
+    &__nav-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 1rem 0;
+      margin: 0;
+      background-color: white;
+      font-size: 2rem;
+    }
+    &__nav-top {
+      width: 100%;
+      flex: 1;
+      border-top: 0.2rem solid #eee;
+      padding-top: 2rem;
+      &-item {
+        display: flex;
+        height: 4rem;
+      }
+    }
+    &.opened {
+      transform: translateX(0);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@mixin button($height, $paddingInline) {
+  height: $height;
+  padding-left: $paddingInline;
+  padding-right: $paddingInline;
+}
+@mixin flexCenterY {
+  display: flex;
+  align-items: center;
+}

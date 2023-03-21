@@ -1,0 +1,21 @@
+ul.menu.js-menu 
+  li.menu__item.tablet
+    .search 
+      input(type="text").search__input
+      button.btn.btn--primary.btn--solid.btn--sm.search__btn
+        img(src="../images/base/search.svg", alt="search")
+  li.menu__item 
+    a.menu__link.text-lg.color-heading(href= homePageLink) Home
+  li.menu__item 
+    a.menu__link.text-lg.color-heading(href= POPLink) Products
+  li.menu__item 
+    a.menu__link.text-lg.color-heading(href= notFoundLink) Blog
+  li.menu__item 
+    a.menu__link.text-lg.color-heading(href= notFoundLink) Contact
+  li.menu__item.mobile.menu__nav-top 
+    +navActionGroup("Login", "../images/base/user.svg", "user", "","menu__nav-top-item in-menu")
+    +navActionGroup("Wishlist", "../images/base/heart.svg", "heart", "","menu__nav-top-item in-menu")
+    +navActionGroup("Cart", "../images/base/cart.svg", "cart", "./cart.html","menu__nav-top-item in-menu")
+      span.nav-cart__qty.in-menu
+    +navContactGroup("mailto: mhhasanul@gmail.com", "../images/base/mail.svg", "email", "mhhasanul@gmail.com", "menu__nav-top-item")
+    +navContactGroup("tel: (12345)67890", "../images/base/phone.svg", "telephone", "(12345)67890", "menu__nav-top-item")

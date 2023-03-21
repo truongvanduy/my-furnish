@@ -1,0 +1,40 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: var(--section-spacing) 0;
+}
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  padding-left: calc(1 * var(--gutter));
+  padding-right: calc(1 * var(--gutter));
+  margin-left: auto;
+  margin-right: auto;
+}
+.section {
+  &__heading {
+    text-transform: uppercase;
+    margin-bottom: clamp(2.4rem, 5vw, 4.8rem);
+  }
+}
+main {
+  margin-top: var(--header-height);
+}
+@include aboveBreakpoint(map-get($breakpoints, "md")) {
+  .mobile {
+    display: none;
+  }
+}
+@include aboveBreakpoint(map-get($breakpoints, "lg")) {
+  .tablet {
+    display: none;
+  }
+}
+@include underBreakpoint(map-get($breakpoints, "lg")) {
+  .above-tablet {
+    display: none;
+  }
+}

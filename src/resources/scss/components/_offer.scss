@@ -1,0 +1,43 @@
+.offer {
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border: 2px solid #eee;
+    transition: all 0.2s linear;
+    padding: 30px 26px;
+    border-radius: 8px;
+    gap: 20px 0;
+    cursor: default;
+    &:hover {
+      border-color: transparent;
+      box-shadow: 0px 8px 40px rgba(49, 32, 138, 0.05);
+    }
+    &__img {
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    &__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      flex: 1;
+    }
+    &__heading {
+      height: 80px;
+    }
+    @include sm {
+      &__heading {
+        height: unset;
+      }
+      &__desc {
+        display: none;
+      }
+    }
+  }
+}

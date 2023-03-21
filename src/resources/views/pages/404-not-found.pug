@@ -1,0 +1,13 @@
+extends ../layout/layout
+
+block vars  
+  -title = "Hekto: 404 Not Found"
+  -mainClass = "not-found-main"
+
+block container 
+  //- +mainHeader("404 Not Found")
+  section.not-found 
+    .not-found__img 
+      img(srcSet="../images/base/404-not-found.png 2x", alt="404 not found")
+    h2.not-found__heading Oops! The page you requested was not found! 
+    a(href="./index.html").btn.btn--primary.btn--md.btn--solid Back To Home

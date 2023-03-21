@@ -1,0 +1,30 @@
+.search {
+  margin-left: auto;
+  @include flexCenterY();
+  height: 4rem;
+  width: 100%;
+  max-width: 32rem;
+  &__input {
+    height: 100%;
+    border: 0.2rem solid #E7E6EF;
+    border-right-width: 0;
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+    flex: 1;
+    padding: 1.2rem;
+  }
+  &__btn {
+    width: 5rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  @include lg {
+    margin-left: 0;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 50rem;
+    &__input {
+      width: 100%;
+    }
+  }
+}

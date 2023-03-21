@@ -2,9 +2,10 @@
   "name": "my-furnish",
   "version": "1.0.0",
   "description": "A project for subject CT271",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon --inspect index.js",
+    "start": "nodemon --inspect src/index.js",
+    "sass": "sass --watch src/resources/scss/style.scss src/public/css/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,6 +30,9 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.21"
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.21",
+    "pug": "^3.0.2",
+    "sass": "^1.59.3"
   }
 }

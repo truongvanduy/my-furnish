@@ -1,0 +1,72 @@
+@include aboveBreakpoint(map-get($breakpoints, "lg")) {
+  $transition-time: 0.8s;
+  $default-transition-time: 0.25s;
+
+  .obs {
+    &-transition {
+      transition: opacity $transition-time ease-out, transform $transition-time ease-out;
+      &.btn,
+      &.product-item:not(.on-trending-item) {
+        transition: all $default-transition-time linear, opacity $transition-time ease-out, transform $transition-time ease-out
+      }
+
+    }
+    &-delay-quarter {
+      transition-delay: calc($transition-time / 4);
+    }
+    &-delay-half {
+      transition-delay: calc($transition-time / 2);
+    }
+    &-delay-full {
+      transition-delay: $transition-time;
+    }
+  }
+  .fade {
+    opacity: 0;
+  }
+  .slide {
+    &-right {
+      transform: translateX(-100%);
+    }
+    &-left {
+      transform: translateX(100%);
+    }
+    &-up {
+      transform: translateY(100%);
+    }
+    &-down {
+      transform: translateY(-100%);
+    }
+    &-half {
+      &-right {
+        transform: translateX(-50%);
+      }
+      &-left {
+        transform: translateX(50%);
+      }
+      &-up {
+        transform: translateY(50%);
+      }
+      &-down {
+        transform: translateY(-50%);
+      }
+    }
+  }
+  .appear {
+    opacity: 1;
+    &.slide {
+      &-up,
+      &-down,
+      &-half-up,
+      &-half-down {
+        transform: translateY(0);
+      }
+      &-left,
+      &-right,
+      &-half-left,
+      &-half-right {
+        transform: translateX(0);
+      }
+    }
+  }
+}
