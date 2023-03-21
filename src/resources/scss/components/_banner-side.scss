@@ -2,6 +2,7 @@
   display: flex;
   gap: 0 30px;
   position: relative;
+  overflow: hidden;
   &__img {
     flex: 5;
     & img {
@@ -16,7 +17,7 @@
     align-items: baseline;
     justify-content: center;
     flex-direction: column;
-    padding-left: min(max(100vw - map-get($breakpoints, "lg"), 0vw), 2vw);
+    padding-left: min(max(100vw - map-get($breakpoints, 'lg'), 0vw), 2vw);
   }
   &__title {
     text-transform: capitalize;
@@ -29,7 +30,7 @@
     margin-top: auto;
     position: relative;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       bottom: -0.6em;

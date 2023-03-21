@@ -895,6 +895,7 @@ body::-webkit-scrollbar-thumb:active {
   display: flex;
   gap: 0 30px;
   position: relative;
+  overflow: hidden;
 }
 .banner-side__img {
   flex: 5;
@@ -1730,7 +1731,6 @@ Nguồn tài nguyên tham khảo:
 .wrapper {
   width: 100%;
   display: flex;
-  align-items: stretch;
   justify-content: flex-start;
   flex-direction: column;
   gap: var(--section-spacing) 0;
@@ -1779,6 +1779,7 @@ main {
   top: 0;
   left: 0;
   width: 100%;
+  max-width: 100vw;
   z-index: 2;
   display: flex;
   align-items: stretch;

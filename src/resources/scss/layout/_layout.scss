@@ -1,7 +1,6 @@
 .wrapper {
   width: 100%;
   display: flex;
-  align-items: stretch;
   justify-content: flex-start;
   flex-direction: column;
   gap: var(--section-spacing) 0;
@@ -23,17 +22,17 @@
 main {
   margin-top: var(--header-height);
 }
-@include aboveBreakpoint(map-get($breakpoints, "md")) {
+@include aboveBreakpoint(map-get($breakpoints, 'md')) {
   .mobile {
     display: none;
   }
 }
-@include aboveBreakpoint(map-get($breakpoints, "lg")) {
+@include aboveBreakpoint(map-get($breakpoints, 'lg')) {
   .tablet {
     display: none;
   }
 }
-@include underBreakpoint(map-get($breakpoints, "lg")) {
+@include underBreakpoint(map-get($breakpoints, 'lg')) {
   .above-tablet {
     display: none;
   }

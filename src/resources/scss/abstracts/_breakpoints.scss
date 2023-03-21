@@ -10,32 +10,32 @@ Nguồn tài nguyên tham khảo:
 ======================================================================================================================*/
 
 $breakpoints: (
-  "sm": 575.98px,
-  "md": 767.98px,
-  "lg": 991.98px,
-  "xl": 1199.98px,
+  'sm': 575.98px,
+  'md': 767.98px,
+  'lg': 991.98px,
+  'xl': 1199.98px,
 );
 // < 576px
 @mixin sm {
-  @media screen and (max-width: map-get($breakpoints, "sm")) {
+  @media screen and (max-width: map-get($breakpoints, 'sm')) {
     @content;
   }
 }
 // < 768px
 @mixin md {
-  @media screen and (max-width: map-get($breakpoints, "md")) {
+  @media screen and (max-width: map-get($breakpoints, 'md')) {
     @content;
   }
 }
 // < 992px
 @mixin lg {
-  @media screen and (max-width: map-get($breakpoints, "lg")) {
+  @media screen and (max-width: map-get($breakpoints, 'lg')) {
     @content;
   }
 }
 // < 1200px
 @mixin xl {
-  @media screen and (max-width: map-get($breakpoints, "xl")) {
+  @media screen and (max-width: map-get($breakpoints, 'xl')) {
     @content;
   }
 }
