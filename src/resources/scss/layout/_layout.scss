@@ -10,8 +10,7 @@
   max-width: var(--container-width);
   padding-left: calc(1 * var(--gutter));
   padding-right: calc(1 * var(--gutter));
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
 }
 .section {
   &__heading {

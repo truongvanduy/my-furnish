@@ -55,6 +55,23 @@
   &-secondary {
     font-family: $secondary-font;
   }
+  &-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+.font-weight {
+  &-regular {
+    font-weight: 400;
+  }
+  &-normal {
+    font-weight: 500;
+  }
+  &-sbold {
+    font-weight: 600;
+  }
+  &-bold {
+    font-weight: 700;
+  }
 }
 // Use .color-[...] to adjust text color
 .color {

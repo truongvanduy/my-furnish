@@ -1,10 +1,10 @@
 :root {
   // Color
-  --primary-color: #FB2E86;
-  --secondary-color: #19D16F;
+  --primary-color: #fb2e86;
+  --secondary-color: #19d16f;
   --heading-color: rgb(21, 24, 117);
-  --text-color: #8A8FB9;
-  --product-bgc: #F6F7FB;
+  --text-color: #8a8fb9;
+  --product-bgc: #f6f7fb;
 
   // Spacing
   --container-width: calc(118rem + calc(4 * var(--gutter)));
@@ -21,21 +21,23 @@
 // Color
 $primary-color: var(--primary-color);
 $secondary-color: var(--secondary-color);
-$violet-color: #7E33E0;
-$main-header-bgc: #F6F5FF;
-$banner-bgc: #F2F0FF;
-$section-hover-color: #2F1AC4;
+$violet-color: #7e33e0;
+$main-header-bgc: #f6f5ff;
+$banner-bgc: #f2f0ff;
+$section-hover-color: #2f1ac4;
 $product-bgc-1: var(--product-bgc);
-$product-bgc-2: #F5F6F8;
-$shade-bgc: #EEEFFB;
-$footer-bgc: #E7E4F8;
+$product-bgc-2: #f5f6f8;
+$shade-bgc: #eeeffb;
+$footer-bgc: #e7e4f8;
 $banner-stick-bgc: #f2edf4;
 
 $banner-stick-color: #4f245e;
 $banner-stick-color: #5f306f;
 $heading-color: var(--heading-color);
 $text-color: var(--text-color);
-$footer-bottom-text: #9DA0AE;
+$footer-bottom-text: #9da0ae;
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 // Fonts
 $primary-font: 'Josefin Sans', sans-serif;

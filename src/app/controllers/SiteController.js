@@ -11,6 +11,10 @@ class SiteController {
   cart(req, res, next) {
     res.render('pages/cart');
   }
+
+  cartBeta(req, res, next) {
+    res.render('pages/cart-beta');
+  }
 }
 
 module.exports = new SiteController();
