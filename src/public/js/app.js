@@ -185,7 +185,7 @@ const app = {
   renderTrendingProducts,
   renderTopChairs,
   renderAccessories,
-  renderProductList,
+  // renderProductList,
   renderInCartProducts,
   addHomeAnimation,
   renderHomeProducts: function () {
