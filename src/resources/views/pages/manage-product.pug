@@ -1,0 +1,46 @@
+extends ../layout/layout
+
+block vars 
+  -title = 'MyFurnish | Manage products'
+block css 
+  link(rel="stylesheet", href="../css/style.css")
+  link(rel="stylesheet", href="../css/cart.css")
+
+block container 
+  section.container.mp-container
+    h2.heading.heading-lg.mp-heading Manage Products
+    .mp-action
+      a.btn.btn-secondary.btn-lg.btn-solid(href= addProductLink) Add new product 
+      button.btn.btn-secondary.btn-lg.btn-outline Trash
+    table.table.mp-table
+      thead 
+        tr 
+          th(scope='col')
+            span.heading ID 
+          th(scope='col')
+            span.heading Name 
+          th(scope='col')
+            span.heading Category 
+          th(scope='col')
+            span.heading Quantity 
+          th(scope='col')
+            span.heading Price 
+          th(scope='col')
+            span.heading  
+      tbody
+        each product in products
+          tr 
+            th(scope='row')
+              span.text-sm= product.product_id
+            td
+              span.text-sm= product.product_name
+            td
+              span.text-sm= product.category_name
+            td
+              span.text-sm= product.quantity
+            td
+              span.text-sm= product.price
+            td 
+              .mp-row-action
+                a.btn.btn-secondary.btn-outline.btn-sm(href= manageProductLink + '/' + product.product_id + '/edit' ) Edit
+                button.btn.btn-primary.btn-outline.btn-sm Delete

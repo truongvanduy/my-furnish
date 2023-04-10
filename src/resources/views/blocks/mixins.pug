@@ -1,12 +1,12 @@
 mixin navContactGroup(href, src, alt, text, className="")
   a.nav-contact__group(href= href class= className) 
-    img.nav-contact__icon(src= src, alt= alt)
+    img.nav-contact__icon(src='/images/base/' + src, alt= alt)
     span.nav-contact__text= text
 
 mixin navActionGroup(text, src, alt, href="", imgClassName="")
   a(href= href).nav-action__group
     span.nav-action__text= text
-    img.nav-action__icon(src= src, alt= alt, class= imgClassName)
+    img.nav-action__icon(src= '/images/base/' + src, alt= alt, class= imgClassName)
     block 
 
 mixin productActionSet(setClass)
@@ -17,50 +17,8 @@ mixin productActionItem(itemClass="", iconClass="")
   button.product-action__item(class= itemClass)
     i(class= iconClass)
 
-mixin featuredProductItem(heading, code, price, imgSrc, alt="")
-  .col.col-3.xl-3.lg-6.md-6.sm-12 
-    figure.product-featured-item.product-item.action-horizontal  
-      .product-featured-item__top.product-item__top 
-        .product-featured-item__img.product-item__img 
-          img(srcSet= imgSrc , alt= alt)
-        +productActionSet("product-action--horizontal")
-          +productActionItem("","fa-solid fa-cart-plus")
-          +productActionItem("","fa-regular fa-heart")
-          +productActionItem("","fa-solid fa-magnifying-glass")
-      .product-featured-item__bottom.product-item__bottom 
-        figcaption.product-featured-item__heading.text.text-lg.text-center.color-primary.font-secondary= heading
-        .product-featured-item__desc.text.text-sm.text-center.color-heading 
-          p.product-featured-item__code= code
-          p.product-featured-item__price= price
-
-mixin latestProductItem(heading, newPrice, oldPrice, imgSrc)
+mixin accessoriesItem(heading, newPrice, imgSrc)
   .col.col-4.xl-4.lg-6.md-6.sm-12 
-    figure.product-latest-item.product-item.action-vertical
-      .product-latest-item__top.product-item__top 
-        .product-latest-item__img.product-item__img 
-          img(srcSet= imgSrc , alt= heading)
-        +productActionSet("product-action--vertical")
-          +productActionItem("","fa-solid fa-cart-plus")
-          +productActionItem("","fa-regular fa-heart")
-          +productActionItem("","fa-solid fa-magnifying-glass")
-      .product-latest-item__bottom.product-item__bottom 
-        figcaption.product-latest-item__heading.text.text-lg.color-heading.font-primary= heading
-        .product-latest-item-price
-          span.product-latest-item-price__new.text.text-md.color-heading= newPrice
-          del.product-latest-item-price__old.text.text-sm= oldPrice
-
-mixin offerItem(heading, desc, imgSrc)
-  .col.col-3.xl-3.lg-6.md-6.sm-12 
-    figure.offer-item
-      .offer-item__top 
-        .offer-item__img 
-          img(srcSet= imgSrc , loading="lazy", alt= heading)
-      .offer-item__bottom
-        figcaption.offer-item__heading.heading.heading-sm.heading-center.color-heading.font-primary= heading
-        p.offer-item__desc.text.text-md.text-center.font-secondary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.
-
-mixin accessoriesItem(heading, newPrice, oldPrice, imgSrc)
-  .col.col-3.xl-3.lg-6.md-6.sm-12 
     figure.accessories-item.product-item.action-horizontal  
       .accessories-item__top.product-item__top 
         .accessories-item__img.product-item__img 
@@ -74,6 +32,20 @@ mixin accessoriesItem(heading, newPrice, oldPrice, imgSrc)
         .accessories-item-price.text.text-sm.text-center.color-heading 
           span.accessories-item-price__new= newPrice
           del.accessories-item-price__old= oldPrice
+
+mixin productItem(product_name, slug, price)
+  figure.accessories-item.product-item.action-horizontal  
+    .accessories-item__top.product-item__top
+      a.accessories-item__img.product-item__img(href="/products/" + slug)
+        img(srcSet="/images/products/" + slug + '.png' , loading="lazy", alt= product_name)
+      +productActionSet("product-action--horizontal")
+        +productActionItem("","fa-solid fa-cart-plus")
+        +productActionItem("","fa-regular fa-heart")
+        +productActionItem("","fa-solid fa-magnifying-glass")
+    .accessories-item__bottom.product-item__bottom 
+      figcaption.accessories-item__heading.text.text-lg.text-center.color-heading.font-secondary= product_name
+      .accessories-item-price.text.text-sm.text-center.color-heading 
+        span.accessories-item-price__new= price
 
 mixin topProductItem(heading, price, imgSrc)
   .col.col-3.xl-6.lg-6.md-6.sm-12 
@@ -133,7 +105,31 @@ mixin bannerStick(title, caption, desc, imgSrc, btnText= "view all products", al
       h3.banner-stick__title= title 
       p.banner-stick__caption= caption 
       p.banner-stick__desc.font-secondary= desc
-      a(href= POPLink).banner-stick__cta.btn.btn--md.btn--solid.btn--primary= btnText
+      a(href= POPLink).banner-stick__cta.btn.btn-md.btn-solid.btn-primary= btnText
     .banner-stick__img
       img(src= imgSrc, loading="lazy", alt= alt)
 
+mixin productForm(action= '', name='', description='', category_id='', qty='', price='')
+  section.container
+    form#add-product.form(action= action, method='POST')
+      h2.heading.heading-xl.color-accent.text-center= heading
+      .form-group
+        label.form-label(for='product-name') Product name
+        input#product-name.form-control(name="product-name", type='text', value=name required)
+      .form-group
+        label.form-label(for='description') Product description
+        textarea#description.form-control(name="description", cols="30", rows="5", type='text-area')= description
+      .form-group.inline
+        label.form-label(for='category-id') Product category
+        select.select#category-id(name="category-id" form="add-product" required) Category
+          option(value='' disabled selected= category ? null : '') Category
+          each category in categories
+            -const selected = category_id === category.category_id
+            option(value=category.category_id selected= selected)= category.category_name 
+      .form-group.inline
+        label.form-label(for='quantity') Product quantity
+        input#quantity.form-control(name="quantity", type='number', value= qty required)
+      .form-group.inline
+        label.form-label(for='price') Product price
+        input#price.form-control(name="price", type='number', value= price required)
+      button.btn.btn-primary.btn-solid.btn-md(name="", type='submit') SAVE

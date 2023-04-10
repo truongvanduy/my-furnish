@@ -1,0 +1,14 @@
+.select {
+  width: fit-content;
+  padding: 0.8rem 2rem;
+
+  border: 2px solid var(--border-color);
+  border-radius: 0.8rem;
+
+  color: #333;
+  text-align: center;
+
+  &:focus {
+    outline: 2px solid var(--primary-color);
+  }
+}

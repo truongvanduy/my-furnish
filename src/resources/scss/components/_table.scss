@@ -1,0 +1,22 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: var(--table-cell-padding);
+    border-top: var(--table-border-width) solid var(--table-border-color);
+  }
+  th {
+    text-align: left;
+    margin-bottom: 0;
+  }
+  thead th {
+    border-bottom: calc(2 * var(--table-border-width)) solid
+      var(--table-border-color);
+  }
+  tbody th,
+  td {
+    font-family: var(--poppins);
+  }
+}

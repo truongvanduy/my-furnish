@@ -5,12 +5,12 @@ header.header
     .nav-top 
       .container.nav__container 
         .nav-contact 
-          +navContactGroup("mailto: mhhasanul@gmail.com", "../images/base/mail.svg", "email", "mhhasanul@gmail.com")
-          +navContactGroup("tel: (12345)67890", "../images/base/phone.svg", "telephone", "(12345)67890")
+          +navContactGroup("mailto: mhhasanul@gmail.com", "mail.svg", "email", "mhhasanul@gmail.com")
+          +navContactGroup("tel: (12345)67890", "phone.svg", "telephone", "(12345)67890")
         .nav-action 
-          +navActionGroup("Login", "../images/base/user.svg", "user")
-          +navActionGroup("Wishlist", "../images/base/heart.svg", "heart")
-          +navActionGroup("", "../images/base/cart.svg", "cart", cartPageLink,"nav-cart__img")
+          +navActionGroup("Login", "user.svg", "user")
+          +navActionGroup("Wishlist", "heart.svg", "heart")
+          +navActionGroup("", "cart.svg", "cart", cartPageLink,"nav-cart__img")
             span.nav-cart__qty
     .nav-bottom
       .container.nav__container
@@ -18,12 +18,12 @@ header.header
         .overlay.tablet
         a.heading.heading-lg.logo.header__logo(href= homePageLink)
           img(src="/images/logo3.svg", alt="logo")
-        button.toggle-menu.btn.btn--sm.mobile.js-toggle-menu
+        button.toggle-menu.btn.btn-sm.mobile.js-toggle-menu
           .toggle-menu__bars 
             .toggle-menu__line
             .toggle-menu__line
             .toggle-menu__line
         .search.above-tablet 
           input(type="text").search__input
-          button.btn.btn--primary.btn--solid.btn--sm.search__btn
-            img(src="../images/base/search.svg", alt="search")
+          button.btn.btn-primary.btn-solid.btn-sm.search__btn
+            img(src="/images/base/search.svg", alt="search")

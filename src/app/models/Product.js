@@ -1,35 +1,74 @@
 const { connection } = require('../../config/database');
+const { queryCallback } = require('../../utils/mysql');
 
-const FurnitureModel = {};
+const FurnitureModel = {
+  createProduct: function (newProduct, callback) {
+    connection.execute(
+      'INSERT INTO product VALUES (null, ?, ?, ?, ?, ?, null)',
+      newProduct,
+      (err, results) => {
+        if (err) throw err;
+        callback(results);
+      }
+    );
+  },
 
-FurnitureModel.createProduct = function (productData, callback) {};
+  updateProductById: function (id, data, callback) {
+    connection.execute(
+      `UPDATE product SET product_name= ? ,
+                          description= ? ,
+                          category_id= ? ,
+                          quantity= ?,
+                          price= ?
+      WHERE product_id = ? `,
+      [...data, id],
+      queryCallback(callback)
+    );
+  },
 
-FurnitureModel.getProductById = function (productId, callback) {
-  connection.query(
-    `SELECT * FROM product WHERE id = ${productId}`,
-    (error, results) => {
+  getProductById: function (productId, callback) {
+    connection.execute(
+      `SELECT * FROM product WHERE product_id = ?`,
+      [productId],
+      (error, results) => {
+        if (error) throw error;
+        callback(results[0]);
+      }
+    );
+  },
+  getProductBySlug: function (slug, callback) {
+    connection.query(
+      `SELECT * FROM product WHERE slug = '${slug}'`,
+      (error, results) => {
+        if (error) throw error;
+        callback(results[0]);
+      }
+    );
+  },
+
+  getProductsByAtrribute: function (attr, callback) {
+    const key = Object.keys(attr);
+    const value = attr[key];
+    connection.query(
+      `SELECT * FROM product WHERE ${key} = '${value}'`,
+      queryCallback(callback)
+    );
+  },
+
+  getAllProduct: function (callback) {
+    connection.query('SELECT * FROM product', (error, results) => {
       if (error) throw error;
-      callback(results[0]);
-    }
-  );
-};
-FurnitureModel.getProductBySlug = function (slug, callback) {
-  connection.query(
-    `SELECT * FROM product WHERE slug = '${slug}'`,
-    (error, results) => {
-      if (error) throw error;
-      callback(results[0]);
-    }
-  );
-};
+      callback(results);
+    });
+  },
 
-FurnitureModel.getAllProduct = function (callback) {
-  connection.query('SELECT * FROM product', (error, results) => {
-    if (error) throw error;
-    callback(results);
-  });
+  query: function (query, params, callback) {
+    connection.query(query, params, (err, results) => {
+      if (err) throw err;
+      callback(results);
+    });
+  },
 };
-
 module.exports = FurnitureModel;
 
 /**=====================

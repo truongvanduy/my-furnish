@@ -21,19 +21,10 @@ block container
         option Popular
   .grid-container__product.container.grid
     each product in products
-      figure.accessories-item.product-item.action-horizontal  
-        .accessories-item__top.product-item__top
-          a.accessories-item__img.product-item__img(href="/products/" + product.slug)
-            img(srcSet="/images/products/" + product.slug + ".png" , loading="lazy", alt= product.product_name)
-          +productActionSet("product-action--horizontal")
-            +productActionItem("","fa-solid fa-cart-plus")
-            +productActionItem("","fa-regular fa-heart")
-            +productActionItem("","fa-solid fa-magnifying-glass")
-        .accessories-item__bottom.product-item__bottom 
-          figcaption.accessories-item__heading.text.text-lg.text-center.color-heading.font-secondary= product.product_name
-          .accessories-item-price.text.text-sm.text-center.color-heading 
-            span.accessories-item-price__new= product.price
-            del.accessories-item-price__old
+      -productSlug = product.slug
+      -productImgLink = '/images/products/' + productSlug + '.png'
+      +productItem(product.product_name, product.slug, product.price)
+      
   .page_change.container
     form(action='#')
       button.bton

@@ -1,6 +1,6 @@
 block vars
   include ../blocks/variables
-  -title = 'Hekto'
+  -title = 'MyFurnish'
   -bodyClass = ''
   -mainClass = ''
 
@@ -20,7 +20,7 @@ html(lang='en')
     block css
       link(rel='stylesheet' href='/css/style.css')
     title=title 
-    link(rel='icon' href='../images/favicon.ico' type='image/x-icon')
+    link(rel='icon' href='../images/logo-icon.png' type='image/x-icon')
   body(class= bodyClass)
     .wrapper
       block header  
@@ -32,3 +32,4 @@ html(lang='en')
       block back-to-top 
         include ../blocks/back-to-top
     block scripts
+      script(src="/js/pages/others.js" type="module") 

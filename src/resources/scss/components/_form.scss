@@ -1,0 +1,49 @@
+.form {
+  width: 100%;
+  max-width: 72rem;
+
+  padding: 8rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2.4rem;
+  &-group {
+    display: flex;
+    flex-direction: column;
+    &.inline {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+      & > label {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &-label {
+    margin-bottom: 0.8rem;
+  }
+  &-control {
+    color: #333;
+    font-family: var(--poppins);
+
+    &[type='number'] {
+      max-width: 8ch;
+    }
+  }
+  input.form-control {
+    border-bottom: 2px solid var(--border-color);
+    &:focus {
+      border-bottom: 2px solid var(--primary-color);
+    }
+  }
+  textarea.form-control {
+    border: 2px solid var(--border-color);
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    &:focus {
+      outline: 2px solid var(--primary-color);
+    }
+  }
+}

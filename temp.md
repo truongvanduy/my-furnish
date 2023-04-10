@@ -18,3 +18,9 @@ insert into product values (16,'Captiva Table Lamp','Default description',3,149,
 ];
 
 export default products;
+
+## Swivel Accent Chair
+
+Generous on seating space, our Majestica sofa features deep cosy seats, offering the perfect balance of simplistic design and contemporary style. Crafted from soft warm chenille fabric, the Majestica is the perfect place to stretch out and relax.
+
+Available in a variety of different fabric shades, you’ll find just the right style to perfectly coordinate with your living room. Complementary feather filled patterned scatter cushions are included with the sofa, crafted from luxurious deep pile textured chenille, adding an extra layer of comfort and personality. Solid wood feet complete the look, adding strength to the sofa and style to the range.

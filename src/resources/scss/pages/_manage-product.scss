@@ -1,0 +1,20 @@
+.mp {
+  // &-table {
+  //   margin-top: 4rem;
+  // }
+  &-container {
+    margin-top: 8rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+  }
+  &-action,
+  &-row-action {
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+    & > :first-child {
+      margin-left: auto;
+    }
+  }
+}

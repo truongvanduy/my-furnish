@@ -23,12 +23,15 @@
 .toggle-menu {
   width: 3rem;
   height: 3rem;
+  padding-inline: 0;
+  background-color: white;
+
   position: absolute;
   z-index: 4;
   top: 50%;
   transform: translateY(-50%);
   right: var(--gutter);
-  background-color: white;
+
   display: flex;
   justify-content: center;
   align-items: center;

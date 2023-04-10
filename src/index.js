@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
+const methodOverride = require('method-override');
 const port = 3000;
 
 const route = require('./routes');
@@ -13,6 +14,14 @@ connection.connect();
 // Config static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Apply middleware to req.body
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use(express.json());
+
 // HTTP logger
 app.use(morgan('dev'));
 
@@ -20,8 +29,10 @@ app.use(morgan('dev'));
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
-// Routing
+// Override method
+app.use(methodOverride('_method'));
 
+// Routing
 route(app);
 
 app.listen(port, () => {

@@ -16,13 +16,13 @@ block container
       h2.heading.heading-md.detail__name= product.product_name 
       p.detail__desc= product.description
       .detail-action 
-        select.detail-qty(name="product-qty")
+        select.detail-qty.select(name="product-qty")
           option.detail-qty__option(value="1") 1
           option.detail-qty__option(value="2") 2
           option.detail-qty__option(value="3") 3
           option.detail-qty__option(value="4") 4
           option.detail-qty__option(value="5") 5
-        button.btn.btn--xl.btn--primary.btn--outline Add to Cart
+        button.detail__btn.btn.btn-xl.btn-primary.btn-outline Add to Cart
   
 block scripts 
   script(src="../js/pages/products.js" type="module")

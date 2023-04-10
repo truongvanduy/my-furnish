@@ -12,20 +12,20 @@
 @import './components/scrollbar';
 @import './components/input';
 @import './components/button';
+@import './components/select';
+@import './components/form';
 @import './components/search';
+@import './components/table';
 @import './components/product-item';
 @import './components/product-action';
 @import './components/product-top';
-@import './components/banner';
-@import './components/offer';
-@import './components/discount-item';
 @import './components/banner-sale';
-@import './components/home-blog';
-@import './components/main-header';
+@import './components/on-trending';
 @import './components/banner-side';
 @import './components/banner-stick';
-@import './components/on-trending';
 @import './components/accessories';
+@import './components/main-header';
+@import './components/home-blog';
 
 @import './layout/grid';
 @import './layout/layout';
@@ -37,5 +37,6 @@
 @import './pages/cart';
 @import './pages/404-not-found';
 @import './pages/product-detail';
+@import './pages/manage-product';
 
 @import './base/observer';

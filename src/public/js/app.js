@@ -191,7 +191,7 @@ const app = {
   renderHomeProducts: function () {
     this.renderTrendingProducts();
     this.renderTopChairs();
-    this.renderAccessories();
+    // this.renderAccessories();
   },
   renderCartPage: function () {
     this.renderInCartProducts();

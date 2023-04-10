@@ -1,10 +1,11 @@
 :root {
   // Color
   --primary-color: #fb2e86;
-  --secondary-color: #19d16f;
+  --secondary-color: #10c160;
   --heading-color: rgb(21, 24, 117);
   --text-color: #8a8fb9;
   --product-bgc: #f6f7fb;
+  --border-color: #eee;
 
   // Spacing
   --container-width: calc(118rem + calc(4 * var(--gutter)));
@@ -16,6 +17,16 @@
     --nav-bottom-height: 5rem;
   }
   --header-height: calc(var(--nav-bottom-height) + var(--nav-top-height));
+
+  // Font-face
+  --primary-font: 'Josefin Sans', sans-serif;
+  --secondary-font: 'Lato', sans-serif;
+  --poppins: 'Poppins', sans-serif;
+
+  // Table
+  --table-cell-padding: 0.8rem;
+  --table-border-width: 0.1rem;
+  --table-border-color: var(--border-color);
 }
 
 // Color

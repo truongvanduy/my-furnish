@@ -1,8 +1,10 @@
+include ../variables
+
 section.accessories
   h2.accessories__heading.section__heading.heading.heading-xl.heading-center Featured Accessories 
   .grid.wide.accessories__list 
     .row 
-      //- +accessoriesItem("Cantilever chair", "$26.00", "$42.00", "../images/home/trending-product-1.png 2x")
-      //- +accessoriesItem("Cantilever chair", "$26.00", "$42.00", "../images/home/trending-product-4.png 2x")
-      //- +accessoriesItem("Cantilever chair", "$26.00", "$42.00", "../images/home/trending-product-2.png 2x")
-      //- +accessoriesItem("Cantilever chair", "$26.00", "$42.00", "../images/home/trending-product-3.png 2x")
+      each item in accessories
+        -productSlug = item.slug
+        -productImgLink = '/images/products/' + productSlug + '.png'
+        +accessoriesItem(item.product_name, item.price, productImgLink)
