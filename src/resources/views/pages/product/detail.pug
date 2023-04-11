@@ -1,7 +1,7 @@
-extends ../layout/layout
+extends ../../layout/layout
 
 block vars
-  -title = 'MyFurnish | ' + product.product_name
+  -title = 'MyFurnish | ' + product.name
 
 block css 
   link(rel="stylesheet", href="../css/style.css")
@@ -11,9 +11,9 @@ block container
   +mainHeader("Product Detail")
   section.container.detail-container
     .detail-img 
-      img(src="/images/products/" + product.slug + ".png", alt=product.product_name)
+      img(src="/images/products/" + product.slug + ".png", alt=product.name)
     .detail-info 
-      h2.heading.heading-md.detail__name= product.product_name 
+      h2.heading.heading-md.detail__name= product.name 
       p.detail__desc= product.description
       .detail-action 
         select.detail-qty.select(name="product-qty")

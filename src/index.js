@@ -6,10 +6,10 @@ const methodOverride = require('method-override');
 const port = 3000;
 
 const route = require('./routes');
-const { connection } = require('./config/database');
 
 // Connect to database
-connection.connect();
+const db = require('./app/models/index');
+db.sequelize.sync();
 
 // Config static files
 app.use(express.static(path.join(__dirname, 'public')));

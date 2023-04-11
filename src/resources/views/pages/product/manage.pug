@@ -1,4 +1,4 @@
-extends ../layout/layout
+extends ../../layout/layout
 
 block vars 
   -title = 'MyFurnish | Manage products'
@@ -31,16 +31,35 @@ block container
         each product in products
           tr 
             th(scope='row')
-              span.text-sm= product.product_id
+              span.text-sm= product.id
             td
-              span.text-sm= product.product_name
+              span.text-sm= product.name
             td
-              span.text-sm= product.category_name
+              span.text-sm= product.category.name
             td
               span.text-sm= product.quantity
             td
               span.text-sm= product.price
             td 
               .mp-row-action
-                a.btn.btn-secondary.btn-outline.btn-sm(href= manageProductLink + '/' + product.product_id + '/edit' ) Edit
-                button.btn.btn-primary.btn-outline.btn-sm Delete
+                a.btn.btn-secondary.btn-outline.btn-sm(href= manageProductLink + '/' + product.id + '/edit' ) Edit
+                button.btn.btn-primary.btn-outline.btn-sm(data-id= product.id data-name='delete-button') Delete
+  form(data-name='delete-form' action='', method="POST")
+
+block scripts
+  script.
+    document.addEventListener('DOMContentLoaded', () => {
+      const deleteBtns = document.querySelectorAll('[data-name="delete-button"]');
+      const deleteForm = document.querySelector('[data-name="delete-form"]');
+
+      deleteBtns.forEach((btn) => {
+        btn.onclick = function () {
+          const productId = this.dataset.id;
+          deleteForm.action = `/admin/manage-products/${productId}?_method=PATCH`;
+          deleteForm.submit();
+        };
+      });
+    });
+
+
+

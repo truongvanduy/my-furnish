@@ -28,7 +28,7 @@ class AdminController {
 
   loadAddProductPage(req, res, next) {
     CategoryModel.getAllCategory((categories) => {
-      res.render('pages/add-product', {
+      res.render('pages/product-create', {
         categories,
       });
     });

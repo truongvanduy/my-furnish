@@ -3,11 +3,7 @@ const FurnitureModel = require('../models/Product');
 class SiteController {
   // [GET] /
   index(req, res, next) {
-    FurnitureModel.getProductsByAtrribute({ category_id: 3 }, (accessories) => {
-      res.render('index', {
-        accessories,
-      });
-    });
+    res.render('index');
   }
 
   notFound(req, res, next) {

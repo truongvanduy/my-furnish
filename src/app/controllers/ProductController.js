@@ -1,23 +1,214 @@
-const { mongooseToObjects } = require('../../utils/mongoose');
-const Product = require('../models/Product');
+const Category = require('../models/category.model');
+const Product = require('../models/product.model');
 
 class ProductController {
-  // [GET] /
+  // [GET] /products
   index(req, res, next) {
-    Product.getAllProduct((products) => {
-      res.render('pages/product', {
+    Product.findAll().then((products) => {
+      res.render('pages/product/show', {
         products,
       });
     });
   }
 
+  // [GET] /products/:slug
   slug(req, res, next) {
-    Product.getProductBySlug(req.params.slug, (product) => {
-      res.render('pages/product-detail', {
-        product,
-      });
-    });
+    Product.findOne({
+      where: {
+        slug: req.params.slug,
+      },
+    })
+      .then((product) => {
+        res.render('pages/product/detail', {
+          product,
+        });
+      })
+      .catch(next);
+  }
+
+  /**============
+   * Admin routes
+  ============= */
+
+  // [GET] /admin/manage-products
+  showManage(req, res, next) {
+    // Product.bulkCreate([
+    //   {
+    //     name: 'Brantwood Everest Oak Steel',
+    //     category_id: 1,
+    //     quantity: 100,
+    //     price: 1799,
+    //   },
+    //   {
+    //     name: 'Eboni Lamp Table',
+    //     category_id: 1,
+    //     quantity: 100,
+    //     price: 599,
+    //   },
+    //   {
+    //     name: 'Tobi End Table',
+    //     category_id: 1,
+    //     quantity: 100,
+    //     price: 229,
+    //   },
+    //   {
+    //     name: 'Emse Chair',
+    //     category_id: 1,
+    //     quantity: 100,
+    //     price: 949,
+    //   },
+    //   {
+    //     name: 'Buckland Ladder',
+    //     category_id: 1,
+    //     quantity: 100,
+    //     price: 499,
+    //   },
+    //   {
+    //     name: 'The Sofology Fifth Avenue',
+    //     category_id: 1,
+    //     quantity: 100,
+    //     price: 3549,
+    //   },
+    //   {
+    //     name: 'Mini LCW Chair',
+    //     category_id: 2,
+    //     quantity: 100,
+    //     price: 299,
+    //   },
+    //   {
+    //     name: 'Sunningdale Chair',
+    //     category_id: 2,
+    //     quantity: 100,
+    //     price: 499,
+    //   },
+    //   {
+    //     name: 'Paddington Chair',
+    //     category_id: 2,
+    //     quantity: 100,
+    //     price: 749,
+    //   },
+    //   {
+    //     name: 'Swivel Accent Chair',
+    //     category_id: 2,
+    //     quantity: 100,
+    //     price: 799,
+    //   },
+    //   {
+    //     name: 'Hemi Floor Lamp',
+    //     category_id: 3,
+    //     quantity: 100,
+    //     price: 399,
+    //   },
+    //   {
+    //     name: 'Bowie Scatter Cushion',
+    //     category_id: 3,
+    //     quantity: 100,
+    //     price: 35,
+    //   },
+    //   {
+    //     name: 'Bangles Mirror',
+    //     category_id: 3,
+    //     quantity: 100,
+    //     price: 249,
+    //   },
+    //   {
+    //     name: 'Dover Rugs Rug',
+    //     category_id: 3,
+    //     quantity: 100,
+    //     price: 299,
+    //   },
+    //   {
+    //     name: 'Marcia Coffee Table',
+    //     category_id: 3,
+    //     quantity: 100,
+    //     price: 849,
+    //   },
+    //   {
+    //     name: 'Captiva Table Lamp',
+    //     category_id: 3,
+    //     quantity: 100,
+    //     price: 149,
+    //   },
+    // ])
+    //   .then(() => {
+    //     console.log('created');
+    //   })
+    //   .catch((err) => {
+    //     throw err;
+    //   });
+    Product.findAll({
+      include: Category,
+      order: [['id', 'DESC']],
+    })
+      .then((products) => {
+        res.render('pages/product/manage', {
+          products,
+        });
+      })
+      .catch(next);
+  }
+
+  // [GET] /admin/manage-products/create
+  showCreate(req, res, next) {
+    Category.findAll()
+      .then((categories) => {
+        res.render('pages/product/create', {
+          categories,
+        });
+      })
+      .catch(next);
+  }
+
+  // [POST] /admin/manage-products/create
+  create(req, res, next) {
+    const { name, description, categoryId, quantity, price } = req.body;
+    Product.create({ name, description, categoryId, quantity, price })
+      .then(() => {
+        res.redirect('../manage-products');
+      })
+      .catch(next);
+  }
+
+  // [GET] /admin/manage-products/:id/edit
+  showUpdate(req, res, next) {
+    Promise.all([Category.findAll(), Product.findByPk(req.params.id)])
+      .then(([categories, product]) => {
+        res.render('pages/product/edit', {
+          categories,
+          product,
+        });
+      })
+      .catch(next);
+  }
+
+  // [PUT] /admin/manage-products/:id
+  update(req, res, next) {
+    const { name, description, categoryId, quantity, price } = req.body;
+    Product.update(
+      { name, description, categoryId, quantity, price },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
+      .then(() => {
+        res.redirect('../manage-products');
+      })
+      .catch(next);
+  }
+
+  // [DELETE] /admin/manage-products/:id
+  softDelete(req, res, next) {
+    Product.destroy({
+      where: {
+        id: req.params.id,
+      },
+    })
+      .then(() => {
+        res.redirect('back');
+      })
+      .catch(next);
   }
 }
-
 module.exports = new ProductController();

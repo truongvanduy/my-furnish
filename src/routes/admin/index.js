@@ -4,7 +4,7 @@ const adminProductRouter = require('./product');
 
 const adminController = require('../../app/controllers/AdminController');
 
-router.use('/products', adminProductRouter);
+router.use('/manage-products', adminProductRouter);
 router.get('/add-product', adminController.loadAddProductPage);
 router.post('/add-product', adminController.createProduct);
 router.use('/manage-product', adminController.manageProduct);

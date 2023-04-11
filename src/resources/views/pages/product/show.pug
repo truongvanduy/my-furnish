@@ -1,4 +1,4 @@
-extends ../layout/layout
+extends ../../layout/layout
 
 block vars
   -title = 'MyFurnish | Products'
@@ -23,7 +23,7 @@ block container
     each product in products
       -productSlug = product.slug
       -productImgLink = '/images/products/' + productSlug + '.png'
-      +productItem(product.product_name, product.slug, product.price)
+      +productItem(product.name, product.slug, product.price)
       
   .page_change.container
     form(action='#')

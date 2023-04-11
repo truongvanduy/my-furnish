@@ -1,8 +1,0 @@
-extends ../layout/product-form
-
-block vars 
-  -title = 'MyFurnish | Edit product'
-  -heading = 'Edit product'
-
-block form
-  +productForm("/admin/products/" + product.product_id + "?_method=PUT", product.product_name, product.description, product.category_id, product.quantity, product.price)
