@@ -1,0 +1,67 @@
+extends ./layout
+
+block vars 
+  -title = 'MyFurnish | Manage products'
+
+//- manageType = ['manage', 'deleted']
+mixin manage(manageType='manage')
+  - const isManage = manageType === 'manage' ? true : false
+  - const heading = isManage ? 'Manage Products' : 'Deleted Product'
+  - const primaryMainBtn = isManage ? 'Add new product' : 'Delete '
+  block container 
+    section.container.mp-container
+      h2.heading.heading-lg.mp-heading Manage Products
+      .mp-action
+        a.btn.btn-secondary.btn-lg.btn-solid(href= addProductLink) Add new product 
+        a.btn.btn-secondary.btn-lg.btn-outline(href= deletedProductLink) Deleted Product
+      table.table.mp-table
+        thead 
+          tr 
+            th(scope='col')
+              span.heading ID 
+            th(scope='col')
+              span.heading Name 
+            th(scope='col')
+              span.heading Category 
+            th(scope='col')
+              span.heading Quantity 
+            th(scope='col')
+              span.heading Price 
+            th(scope='col')
+              span.heading  
+        tbody
+          each product in products
+            tr 
+              th(scope='row')
+                span.text-sm= product.id
+              td
+                span.text-sm= product.name
+              td
+                span.text-sm= product.category.name
+              td
+                span.text-sm= product.quantity
+              td
+                span.text-sm= product.price
+              td 
+                .mp-row-action
+                  a.btn.btn-secondary.btn-outline.btn-sm(href= manageProductLink + '/' + product.id + '/edit' ) Edit
+                  button.btn.btn-primary.btn-outline.btn-sm(data-id= product.id data-name='delete-button') Delete
+    form(data-name='delete-form' action='', method="POST")
+
+  block scripts
+    script.
+      document.addEventListener('DOMContentLoaded', () => {
+        const deleteBtns = document.querySelectorAll('[data-name="delete-button"]');
+        const deleteForm = document.querySelector('[data-name="delete-form"]');
+
+        deleteBtns.forEach((btn) => {
+          btn.onclick = function () {
+            const productId = this.dataset.id;
+            deleteForm.action = `/admin/manage-products/${productId}?_method=PATCH`;
+            deleteForm.submit();
+          };
+        });
+      });
+
+
+

@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const adminProductRouter = require('./product');
+const deletedProductRouter = require('./product-deleted');
 
 const adminController = require('../../app/controllers/AdminController');
+const ProductController = require('../../app/controllers/ProductController');
 
 router.use('/manage-products', adminProductRouter);
-router.get('/add-product', adminController.loadAddProductPage);
-router.post('/add-product', adminController.createProduct);
-router.use('/manage-product', adminController.manageProduct);
+router.use('/deleted-products', deletedProductRouter);
 router.get('/', adminController.index);
 router.get('/:slug', adminController.slug);
 

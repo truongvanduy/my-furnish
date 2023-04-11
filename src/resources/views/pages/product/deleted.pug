@@ -8,10 +8,11 @@ block css
 
 block container 
   section.container.mp-container
-    h2.heading.heading-lg.mp-heading Manage Products
+    h2.heading.heading-lg.mp-heading Deleted Products
     .mp-action
-      a.btn.btn-secondary.btn-lg.btn-solid(href= addProductLink) Add new product 
-      a.btn.btn-secondary.btn-lg.btn-outline(href= deletedProductLink) Deleted Product
+      a.btn.btn-primary.btn-lg.btn-solid Delete All 
+      a.btn.btn-secondary.btn-lg.btn-solid(href= addProductLink) Restore All
+      a.btn.btn-secondary.btn-lg.btn-outline(href= manageProductLink) Current Product
     table.table.mp-table
       thead 
         tr 
@@ -42,20 +43,30 @@ block container
               span.text-sm= product.price
             td 
               .mp-row-action
-                a.btn.btn-secondary.btn-outline.btn-sm(href= manageProductLink + '/' + product.id + '/edit' ) Edit
+                button.btn.btn-secondary.btn-outline.btn-sm(data-id= product.id data-name='restore-button') Restore
                 button.btn.btn-primary.btn-outline.btn-sm(data-id= product.id data-name='delete-button') Delete
   form(data-name='delete-form' action='', method="POST")
+  form(data-name='restore-form' action='', method="POST")
 
 block scripts
   script.
     document.addEventListener('DOMContentLoaded', () => {
+      const restoreBtns = document.querySelectorAll('[data-name="restore-button"]');
       const deleteBtns = document.querySelectorAll('[data-name="delete-button"]');
+      const restoreForm = document.querySelector('[data-name="restore-form"]');
       const deleteForm = document.querySelector('[data-name="delete-form"]');
 
+      restoreBtns.forEach((btn) => {
+        btn.onclick = function () {
+          const productId = this.dataset.id;
+          restoreForm.action = `/admin/deleted-products/${productId}?_method=PATCH`;
+          restoreForm.submit();
+        };
+      });
       deleteBtns.forEach((btn) => {
         btn.onclick = function () {
           const productId = this.dataset.id;
-          deleteForm.action = `/admin/manage-products/${productId}?_method=PATCH`;
+          deleteForm.action = `/admin/deleted-products/${productId}?_method=DELETE`;
           deleteForm.submit();
         };
       });

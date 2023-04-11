@@ -1,5 +1,6 @@
 const Category = require('../models/category.model');
 const Product = require('../models/product.model');
+const { Op } = require('sequelize');
 
 class ProductController {
   // [GET] /products
@@ -198,12 +199,57 @@ class ProductController {
       .catch(next);
   }
 
-  // [DELETE] /admin/manage-products/:id
+  // [PATCH] /admin/manage-products/:id
   softDelete(req, res, next) {
     Product.destroy({
       where: {
         id: req.params.id,
       },
+    })
+      .then(() => {
+        res.redirect('back');
+      })
+      .catch(next);
+  }
+
+  // [GET] /admin/deleted-products
+  showDeleted(req, res, next) {
+    Product.findAll({
+      include: Category,
+      order: [['id', 'DESC']],
+      paranoid: false,
+      where: {
+        deletedAt: { [Op.not]: null },
+      },
+    })
+      .then((products) => {
+        res.render('pages/product/deleted', {
+          products,
+        });
+      })
+      .catch(next);
+  }
+
+  // [PATCH] /admin/deleted-products/:id
+  restore(req, res, next) {
+    Product.restore({
+      where: {
+        id: req.params.id,
+      },
+    })
+      .then(() => {
+        res.redirect('back');
+      })
+      .catch(next);
+  }
+
+  // [DELETE] /admin/deleted-products/:id
+  destroy(req, res, next) {
+    Product.destroy({
+      where: {
+        id: req.params.id,
+      },
+      force: true,
     })
       .then(() => {
         res.redirect('back');
