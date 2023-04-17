@@ -15,10 +15,7 @@ import { $, $$ } from './variables/utils.js';
 import products from './variables/products.js';
 import addHomeAnimation from './home-animation.js';
 import renderTrendingProducts from './views/trending-products.js';
-import renderTopChairs from './views/top-chairs.js';
-import renderAccessories from './views/accessories.js';
 import renderInCartProducts from './views/in-cart-products.js';
-import renderProductList from './views/product-list.js';
 
 const toggleMenuBtn = $('.js-toggle-menu');
 const menu = $('.js-menu');
@@ -183,15 +180,10 @@ const app = {
     );
   },
   renderTrendingProducts,
-  renderTopChairs,
-  renderAccessories,
-  // renderProductList,
   renderInCartProducts,
   addHomeAnimation,
   renderHomeProducts: function () {
     this.renderTrendingProducts();
-    this.renderTopChairs();
-    // this.renderAccessories();
   },
   renderCartPage: function () {
     this.renderInCartProducts();

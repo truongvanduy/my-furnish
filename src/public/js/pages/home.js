@@ -1,5 +1,5 @@
 import app from '../app.js';
 
-app.renderHomeProducts();
+// app.renderHomeProducts();
 app.addHomeAnimation();
 app.start();

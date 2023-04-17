@@ -7,4 +7,4 @@ section.accessories
       each item in accessories
         -productSlug = item.slug
         -productImgLink = '/images/products/' + productSlug + '.png'
-        +accessoriesItem(item.product_name, item.price, productImgLink)
+        +accessoriesItem(item.name, item.price, productImgLink)

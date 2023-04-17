@@ -1,5 +1,6 @@
-const Category = require('../models/category.model');
-const Product = require('../models/product.model');
+const { default: slugify } = require('slugify');
+const Category = require('../models/Category');
+const Product = require('../models/Product');
 const { Op } = require('sequelize');
 
 class ProductController {
@@ -163,7 +164,12 @@ class ProductController {
   // [POST] /admin/manage-products/create
   create(req, res, next) {
     const { name, description, categoryId, quantity, price } = req.body;
-    Product.create({ name, description, categoryId, quantity, price })
+    const slug = slugify(name, {
+      remove: /[*+~.()'"!:@]/g,
+      lower: true,
+      strict: true,
+    });
+    Product.create({ name, description, categoryId, quantity, price, slug })
       .then(() => {
         res.redirect('../manage-products');
       })

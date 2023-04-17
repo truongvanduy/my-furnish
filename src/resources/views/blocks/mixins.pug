@@ -49,17 +49,17 @@ mixin productItem(product_name, slug, price)
 
 mixin topProductItem(heading, price, imgSrc)
   .col.col-3.xl-6.lg-6.md-6.sm-12 
-    //- figure.product-top-item.product-item.action-rounded.obs-transition.fade.side-half-up 
-    //-   .product-top-item__top.product-item__top 
-    //-     .product-top-item__img.product-item__img 
-    //-       img(srcSet= imgSrc , alt= heading)
-    //-     +productActionSet("product-action--rounded")
-    //-       +productActionItem("","fa-solid fa-cart-plus")
-    //-       +productActionItem("","fa-regular fa-heart")
-    //-       +productActionItem("","fa-solid fa-magnifying-glass")
-    //-   .product-top-item__bottom.product-item__bottom 
-    //-     figcaption.product-top-item__heading.heading.heading-xs.heading-center.font-primary= heading
-    //-     span.product-top-item__price.text.text-md.text-center.color-heading= price
+    figure.product-top-item.product-item.action-rounded.obs-transition.fade.side-half-up 
+      .product-top-item__top.product-item__top 
+        .product-top-item__img.product-item__img 
+          img(srcSet= imgSrc , alt= heading)
+        +productActionSet("product-action--rounded")
+          +productActionItem("","fa-solid fa-cart-plus")
+          +productActionItem("","fa-regular fa-heart")
+          +productActionItem("","fa-solid fa-magnifying-glass")
+      .product-top-item__bottom.product-item__bottom 
+        figcaption.product-top-item__heading.heading.heading-xs.heading-center.font-primary= heading
+        span.product-top-item__price.text.text-md.text-center.color-heading= price
 
 mixin homeBlogItem(heading, author, date, desc, imgSrc)
   figure.home-blog-item.obs-transition.fade
@@ -90,14 +90,14 @@ mixin mainHeader(title)
 
 mixin onTrendingItem(type, name, price, imgSrc, dataIndex)
   figure(class="product-item on-trending-item on-trending-item--" + type, data-index= dataIndex)
-      //- figcaption.on-trending-item__name.font-secondary= name
-      //- .on-trending-item__img.product-item__img 
-      //-   img(src= imgSrc, alt="a chair")
-      //- span.on-trending-item__price= price
-      //- +productActionSet("product-action--bottom-left")
-      //-     +productActionItem("","fa-solid fa-cart-plus")
-      //-     +productActionItem("","fa-regular fa-heart")
-      //-     +productActionItem("","fa-solid fa-magnifying-glass")
+      figcaption.on-trending-item__name.font-secondary= name
+      .on-trending-item__img.product-item__img 
+        img(src= imgSrc, alt="a chair")
+      span.on-trending-item__price= price
+      +productActionSet("product-action--bottom-left")
+          +productActionItem("","fa-solid fa-cart-plus")
+          +productActionItem("","fa-regular fa-heart")
+          +productActionItem("","fa-solid fa-magnifying-glass")
 
 mixin bannerStick(title, caption, desc, imgSrc, btnText= "view all products", alt= "Furniture")
   section.banner-stick.container

@@ -47,6 +47,7 @@ block container
   form(data-name='delete-form' action='', method="POST")
 
 block scripts
+  script(src="/js/pages/others.js" type="module") 
   script.
     document.addEventListener('DOMContentLoaded', () => {
       const deleteBtns = document.querySelectorAll('[data-name="delete-button"]');

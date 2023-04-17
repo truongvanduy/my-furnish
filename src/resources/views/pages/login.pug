@@ -1,0 +1,22 @@
+extends ../layout/layout
+
+block vars 
+  -title = 'MyFurnish | Login'
+
+block container
+  section.container
+    form#add-product.form(action='', method='POST')
+      h2.heading.heading-xl.color-accent.text-center Sign in
+      .form-group
+        label.form-label(for='product-name') Email
+        input#product-name.form-control(name="email", type='email', required)
+      .form-group
+        label.form-label(for='product-name') Password
+        input#product-name.form-control(name="name", type='password', required)
+      button.btn.btn-primary.btn-solid.btn-md.mt-4(name="", type='submit') CONTINUE
+      p.text-center
+        | Don't have an account? 
+        a.color-primary(href='/sign-up') Register
+
+block scripts 
+  script(src="../js/pages/others.js" type="module")

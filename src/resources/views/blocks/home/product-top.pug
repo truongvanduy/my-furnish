@@ -2,7 +2,6 @@ section.product-top
   h2.product-top__heading.section__heading.heading.heading-xl.heading-center Top Chairs 
   .grid.wide 
     .row 
-      +topProductItem("Mini LCW Chair", "$56.00", "../images/home/mini-lcw-chair-1.png 2x") 
-      +topProductItem("Mini LCW Chair", "$56.00", "../images/home/mini-lcw-chair-2.png 2x") 
-      +topProductItem("Mini LCW Chair", "$56.00", "../images/home/featured-product-1.png 2x") 
-      +topProductItem("Mini LCW Chair", "$56.00", "../images/home/trending-product-2.png 2x") 
+      each chair in chairs
+        +topProductItem(chair.name, "$" + chair.price, "/images/products/" + chair.slug + ".png 2x")
+
