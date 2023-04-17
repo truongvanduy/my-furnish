@@ -1,3 +1,6 @@
+@use '../abstracts/breakpoints' as *;
+@use '../abstracts/variables' as *;
+
 .banner-side {
   display: flex;
   gap: 0 30px;

@@ -1,3 +1,5 @@
+@use '../abstracts/breakpoints' as *;
+
 .on-trending {
   &-item {
     background-color: #f8f8f8;
@@ -15,7 +17,7 @@
     &--md &__img {
       width: min(90%, 18rem);
     }
-    @include aboveBreakpoint(map-get($breakpoints, "md")) {
+    @include aboveBreakpoint(map-get($breakpoints, 'md')) {
       &--lg &__img {
         min-height: 28rem;
       }
@@ -35,7 +37,7 @@
       align-self: flex-start;
       text-transform: uppercase;
       font-weight: 500;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
       color: #336;
       font-size: clamp(1.4rem, 1.5vw + 1rem, 1.8rem);
     }

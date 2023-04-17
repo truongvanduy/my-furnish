@@ -1,5 +1,13 @@
+@use '../abstracts/breakpoints' as *;
+@use '../abstracts/variables' as *;
+
 .banner-sale {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../images/home/banner-sale.jpg');
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0)
+    ),
+    url('../images/home/banner-sale.jpg');
   filter: saturate(1.5);
   position: relative;
   background-repeat: no-repeat;
@@ -16,7 +24,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0.4) 100%);
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.5) 70%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
     overflow-x: hidden;
     @include sm {
       top: 50%;
@@ -39,7 +51,7 @@
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    @include aboveBreakpoint(map-get($breakpoints, "sm")) {
+    @include aboveBreakpoint(map-get($breakpoints, 'sm')) {
       text-align: left;
       align-items: flex-start;
       margin-left: clamp(2rem, 3.8vw, 7.2rem);

@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+
 .main-header {
   background-color: $main-header-bgc;
   height: 286px;
@@ -22,12 +24,12 @@
   }
   &__item {
     &--active {
-      color: #FB2E86;
+      color: #fb2e86;
     }
     &:not(:first-child) {
       position: relative;
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 50%;
         transform: translateY(-50%);

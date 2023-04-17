@@ -1,3 +1,5 @@
+@use '../abstracts/breakpoints' as *;
+
 .not-found {
   margin-top: var(--section-spacing);
   &-main {
@@ -7,10 +9,10 @@
     flex-direction: column;
     gap: calc(var(--section-spacing) / 1) 0;
   }
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   &__img {
     margin-bottom: 32px;
   }

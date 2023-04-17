@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+
 @mixin font($fontSize, $fontWeight, $lineHeight) {
   font-size: $fontSize;
   font-weight: $fontWeight;

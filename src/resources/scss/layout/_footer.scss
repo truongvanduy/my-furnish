@@ -1,3 +1,6 @@
+@use '../abstracts/breakpoints' as *;
+@use '../abstracts/variables' as *;
+
 .footer {
   &-top {
     background-color: $shade-bgc;
@@ -63,7 +66,7 @@
     }
   }
   &__rights {
-    color: #9DA0AE;
+    color: #9da0ae;
   }
   &-social {
     display: flex;

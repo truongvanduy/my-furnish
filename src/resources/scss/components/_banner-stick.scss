@@ -1,3 +1,6 @@
+@use '../abstracts/breakpoints' as *;
+@use '../abstracts/variables' as *;
+
 .banner-stick {
   display: flex;
   justify-content: flex-end;
@@ -24,7 +27,7 @@
     font-weight: 400;
     position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
@@ -73,7 +76,6 @@
     }
   }
   @include md {
-
     &__desc {
       display: none;
     }

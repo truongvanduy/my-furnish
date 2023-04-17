@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+
 .product {
   &-top {
     &-item {
@@ -20,7 +22,7 @@
       &:hover &__top {
         border-color: #f8f8f8;
         box-shadow: 0px 8px 40px rgba(49, 32, 138, 0.05),
-          -4px 4px 0 0 rgba($color: #9877E7, $alpha: 1.0)
+          -4px 4px 0 0 rgba($color: #9877e7, $alpha: 1);
       }
       &__img {
         height: 160px;

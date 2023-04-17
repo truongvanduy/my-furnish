@@ -1,3 +1,6 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/breakpoints' as *;
+
 .search {
   margin-left: auto;
   @include flexCenterY();
@@ -6,7 +9,7 @@
   max-width: 32rem;
   &__input {
     height: 100%;
-    border: 0.2rem solid #E7E6EF;
+    border: 0.2rem solid #e7e6ef;
     border-right-width: 0;
     border-top-left-radius: 0.2rem;
     border-bottom-left-radius: 0.2rem;

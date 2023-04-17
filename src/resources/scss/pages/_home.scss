@@ -1,3 +1,6 @@
+@use '../abstracts/breakpoints' as *;
+@use '../abstracts/variables' as *;
+
 .home {
   &-main {
     display: flex;
@@ -104,7 +107,7 @@
       }
       &-price {
         &__old {
-          color: #FB2448;
+          color: #fb2448;
         }
       }
     }
