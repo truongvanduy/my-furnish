@@ -27,8 +27,10 @@
   "homepage": "https://github.com/truongvanduy/my-furnish#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
     "epxress": "^0.0.1-security",
     "express": "^4.18.2",
+    "express-flash": "^0.0.2",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.0",
     "method-override": "^3.0.0",
@@ -36,6 +38,8 @@
     "mongoose-delete": "^0.5.4",
     "mongoose-slug-generator": "^1.0.4",
     "mysql2": "^3.2.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^6.31.0",
     "slugify": "^1.6.6"
   },

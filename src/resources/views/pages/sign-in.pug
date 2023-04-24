@@ -4,6 +4,8 @@ block vars
   -title = 'MyFurnish | Login'
 
 block container
+  if (messages)
+    h1= messages.error
   section.container
     form#add-product.form(action='', method='POST')
       h2.heading.heading-xl.color-accent.text-center Sign in
@@ -12,7 +14,7 @@ block container
         input#product-name.form-control(name="email", type='email', required)
       .form-group
         label.form-label(for='product-name') Password
-        input#product-name.form-control(name="name", type='password', required)
+        input#product-name.form-control(name="password", type='password', required)
       button.btn.btn-primary.btn-solid.btn-md.mt-4(name="", type='submit') CONTINUE
       p.text-center
         | Don't have an account? 

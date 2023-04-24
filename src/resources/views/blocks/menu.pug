@@ -13,9 +13,12 @@ ul.menu.js-menu
   li.menu__item 
     a.menu__link.text-lg.color-heading(href= manageProductLink) Manage
   li.menu__item.mobile.menu__nav-top 
-    +navActionGroup("Login", "user.svg", "user", loginLink,"menu__nav-top-item in-menu")
+    if (!authenticated)
+      +navActionGroup("Login", "user.svg", "user", loginLink,"menu__nav-top-item in-menu")
+    else
+      +navActionGroup("Duy", "user.svg", "user", loginLink,"menu__nav-top-item in-menu")
     +navActionGroup("Wishlist", "heart.svg", "heart", "","menu__nav-top-item in-menu")
     +navActionGroup("Cart", "cart.svg", "cart", cartPageLink,"menu__nav-top-item in-menu")
       span.nav-cart__qty.in-menu
-    +navContactGroup("mailto: mhhasanul@gmail.com", "mail.svg", "email", "mhhasanul@gmail.com", "menu__nav-top-item")
+    +navContactGroup("mailto: duyb2005667@student.ctu.vn", "mail.svg", "email", "duyb2005667@student.ctu.vn", "menu__nav-top-item")
     +navContactGroup("tel: (12345)67890", "phone.svg", "telephone", "(12345)67890", "menu__nav-top-item")

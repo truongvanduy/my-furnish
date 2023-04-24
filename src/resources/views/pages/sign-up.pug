@@ -6,17 +6,17 @@ block vars
 block container
   section.container
     form#add-product.form(action='/sign-up', method='POST')
-      h2.heading.heading-xl.color-accent.text-center Sign up
+      h1.heading.heading-2xl.color-accent.text-center Sign up
       .form-group
-        label.form-label(for='product-name') Email
-        input#product-name.form-control(name="email", type='email', required)
+        label.form-label(for='full-name') Full name
+        input#full-name.form-control(name="full-name", type='text', required)
       .form-group
-        label.form-label(for='product-name') Password
-        input#product-name.form-control(name="name", type='password', required)
+        label.form-label(for='email') Email
+        input#email.form-control(name="email", type='email', required)
       .form-group
-        label.form-label(for='product-name') Password confirmation
-        input#product-name.form-control(name="name", type='password', required)
-      button.btn.btn-primary.btn-solid.btn-md.mt-4(name="", type='submit') CONTINUE
+        label.form-label(for='password') Password
+        input#password.form-control(name="password", type='password', required)
+      button.btn.btn-primary.btn-solid.btn-md.mt-4(name="", type='submit') Create my account
       p.text-center
         | Already have an account? 
         a.color-primary(href='/login') Sign in

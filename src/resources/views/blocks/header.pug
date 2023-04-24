@@ -5,10 +5,13 @@ header.header
     .nav-top 
       .container.nav__container 
         .nav-contact 
-          +navContactGroup("mailto: mhhasanul@gmail.com", "mail.svg", "email", "mhhasanul@gmail.com")
+          +navContactGroup("mailto: duyb2005667@student.ctu.edu.vn", "mail.svg", "email", "duyb2005667@student.ctu.edu.vn")
           +navContactGroup("tel: (12345)67890", "phone.svg", "telephone", "(12345)67890")
         .nav-action 
-          +navActionGroup("Login", "user.svg", "user")
+          if (!fullName)
+            +navActionGroup("Login", "user.svg", "user", "/user/profile")
+          else
+            +navActionGroup(fullName, "user.svg", "user")
           +navActionGroup("Wishlist", "heart.svg", "heart")
           +navActionGroup("", "cart.svg", "cart", cartPageLink,"nav-cart__img")
             span.nav-cart__qty

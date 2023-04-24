@@ -30,8 +30,7 @@ mixin accessoriesItem(heading, newPrice, imgSrc)
       .accessories-item__bottom.product-item__bottom 
         figcaption.accessories-item__heading.text.text-lg.text-center.color-heading.font-secondary= heading
         .accessories-item-price.text.text-sm.text-center.color-heading 
-          span.accessories-item-price__new= newPrice
-          del.accessories-item-price__old= oldPrice
+          span.accessories-item-price__new= '$' + newPrice
 
 mixin productItem(product_name, slug, price)
   figure.accessories-item.product-item.action-horizontal  

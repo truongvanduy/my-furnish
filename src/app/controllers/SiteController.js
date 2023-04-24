@@ -25,6 +25,7 @@ class SiteController {
           trendings,
           chairs,
           accessories,
+          fullName: req?.user?.fullName,
         });
       })
       .catch(next);
@@ -32,14 +33,6 @@ class SiteController {
 
   notFound(req, res, next) {
     res.render('pages/404-not-found');
-  }
-
-  showLogin(req, res, next) {
-    res.render('pages/login');
-  }
-
-  showSignUp(req, res, next) {
-    res.render('pages/sign-up');
   }
 
   cart(req, res, next) {

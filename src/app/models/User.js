@@ -6,26 +6,28 @@ const User = sequelize.define(
   'user',
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
-      autoIncrement: true,
     },
-    username: {
-      type: DataTypes.STRING(100),
+    email: {
+      type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
     },
     password: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     fullName: {
       type: DataTypes.STRING,
     },
-    email: {
-      type: DataTypes.STRING,
-    },
     tel: {
       type: DataTypes.STRING(15),
+      unique: true,
     },
     address: {
       type: DataTypes.STRING,
@@ -40,4 +42,4 @@ const User = sequelize.define(
 // Category.hasMany(Product, { foreignKey: 'category_id' });
 // Product.belongsTo(Category, { foreignKey: 'category_id' });
 
-module.exports = Product;
+module.exports = User;
