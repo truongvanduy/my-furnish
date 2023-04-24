@@ -3,6 +3,7 @@ const app = express();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const passport = require('passport');
+const addUserInfoToLocals = require('../../utils/middleware/addUserInfoToLocals');
 
 class UserController {
   // [GET] /user
@@ -13,6 +14,32 @@ class UserController {
   // [GET] /user/profile
   showProfile(req, res, next) {
     res.render('pages/user/profile');
+  }
+
+  // [POST] /user/profile
+  updateProfile(req, res, next) {
+    User.findOne({
+      where: {
+        id: req.user.id,
+      },
+    })
+      .then((user) => {
+        user.set({
+          fullName: req.body['full-name'],
+          tel: req.body.tel,
+          address: req.body.address,
+        });
+        return user.save();
+      })
+      .then((user) => {
+        console.log(user);
+        res.render('pages/user/profile', {
+          user,
+        });
+      })
+      .catch((err) => {
+        throw err;
+      });
   }
 
   // [POST] /sign-in

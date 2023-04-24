@@ -90,6 +90,9 @@ Nguồn tài nguyên tham khảo:
   }
 }
 
+/*=========
+*  Spacing
+==========*/
 .p-0 {
   padding: 0rem;
 }
@@ -1266,6 +1269,77 @@ Nguồn tài nguyên tham khảo:
   margin-block: 8rem;
 }
 
+.m-auto {
+  margin: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mb-auto {
+  margin-bottom: auto;
+}
+
+.mx-auto {
+  margin-inline: auto;
+}
+
+.my-auto {
+  margin-block: auto;
+}
+
+/*=========
+*  width
+==========*/
+.w-0 {
+  width: 0%;
+}
+
+.w-10 {
+  width: 10%;
+}
+
+.w-20 {
+  width: 20%;
+}
+
+.w-30 {
+  width: 30%;
+}
+
+.w-40 {
+  width: 40%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.w-90 {
+  width: 90%;
+}
+
 .heading {
   color: var(--heading-color);
   font-family: "Josefin Sans", sans-serif;
@@ -1417,15 +1491,6 @@ ol {
   transform: translate(-50%, -50%);
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.ml-auto {
-  margin-left: auto;
-}
-
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1533,6 +1598,7 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 .form {
+  --current-color: var(--primary-color);
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 2.4rem;
@@ -1571,7 +1637,7 @@ input.form-control {
   border-bottom: 2px solid var(--border-color);
 }
 input.form-control:focus {
-  border-bottom: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--current-color);
 }
 
 textarea.form-control {
@@ -1580,7 +1646,7 @@ textarea.form-control {
   padding: 0.8rem;
 }
 textarea.form-control:focus {
-  outline: 2px solid var(--primary-color);
+  outline: 2px solid var(--current-color);
 }
 
 .search {
@@ -3552,6 +3618,10 @@ main {
   border-radius: 0.8rem;
   justify-content: start;
   color: var(--heading-color);
+}
+.user-profile-form {
+  --current-color: var(--heading-color);
+  margin-right: clamp(0px, 20vw - 16rem, 16rem);
 }
 
 @media screen and (min-width: 991.98px) {

@@ -1,3 +1,7 @@
+/*=========
+*  Spacing
+==========*/
+
 $spaceTypes: (
   'p': 'padding',
   'm': 'margin',
@@ -20,5 +24,28 @@ $orientations: (
         #{$type}#{$orientation}: $i * 0.4rem;
       }
     }
+  }
+}
+
+@each $oChar, $orientation in $orientations {
+  .m#{$oChar}-auto {
+    margin#{$orientation}: auto;
+  }
+}
+// .mx-auto {
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+// .ml-auto {
+//   margin-left: auto;
+// }
+
+/*=========
+*  width
+==========*/
+
+@for $i from 0 to 10 {
+  .w-#{$i*10} {
+    width: $i * 10%;
   }
 }

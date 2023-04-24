@@ -1,4 +1,6 @@
 .form {
+  --current-color: var(--primary-color);
+
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 2.4rem;
@@ -38,7 +40,7 @@
 input.form-control {
   border-bottom: 2px solid var(--border-color);
   &:focus {
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--current-color);
   }
 }
 textarea.form-control {
@@ -46,6 +48,6 @@ textarea.form-control {
   border-radius: 0.8rem;
   padding: 0.8rem;
   &:focus {
-    outline: 2px solid var(--primary-color);
+    outline: 2px solid var(--current-color);
   }
 }

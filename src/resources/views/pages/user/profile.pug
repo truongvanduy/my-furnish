@@ -6,10 +6,17 @@ block vars
   -selection = heading.toLowerCase();
 
 block userMain 
-  form.form(action="") 
+  form.form.user-profile-form(action="" method='POST')
     .form-group 
       label.form-label(for="full-name") Full name
-      input#full-name.form-control(type="text", name="")
+      input#full-name.form-control(type="text", name="full-name" value= user.fullName)
     .form-group 
-      label.form-label(for="full-name") Full name
-      input#full-name.form-control(type="text", name="")
+      label.form-label(for="email") Email
+      input#email.form-control(type="email", name="email" value= user.email disabled)
+    .form-group 
+      label.form-label(for="tel") Phone number
+      input#tel.form-control(type="tel", name="tel" value= user.tel || '' placeholder='Please enter your phone number')
+    .form-group 
+      label.form-label(for="address") Shipping address
+      input#address.form-control(type="text", name="address" value= user.address || '' placeholder='Please enter your shipping address')
+    button(type='submit').btn.btn-primary.btn-lg.btn-solid.ml-auto Update information
