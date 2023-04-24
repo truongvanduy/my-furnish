@@ -33,6 +33,9 @@
 }
 .text {
   color: $text-color;
+  &-xl {
+    @include font(clamp(1.8rem, 0.9vw + 0.8rem, 2rem), 400, 2.4rem);
+  }
   &-lg {
     @include font(clamp(1.6rem, 0.7vw + 0.8rem, 1.8rem), 400, 2.2rem);
   }

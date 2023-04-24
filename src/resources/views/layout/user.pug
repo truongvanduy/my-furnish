@@ -9,10 +9,17 @@ block container
     .row 
       .col-4.md-0.sm-0 
         aside.user-sidebar 
-          h2.heading.heading-lg Duy
+          h2.heading.heading-md= user.fullName
+          ul 
+            li 
+              a(href="/user/profile").text-xl Profile
+            li 
+              a(href="/user/order").text-xl Order
+            li 
+              a(href="/user/sign-out").text-xl Sign out
       .col-8.md-12.sm-12
         .user-main 
-          h2.heading.heading-lg User
+          h2.heading.heading-md User
 
 block scripts 
   script(src="/js/pages/others.js" type="module") 

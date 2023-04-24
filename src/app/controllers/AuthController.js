@@ -41,8 +41,9 @@ class AuthController {
 
   // [POST] /sign-in
   signIn(req, res, next) {
+    console.log(req.query.redirect);
     passport.authenticate('local', {
-      successRedirect: '/',
+      successRedirect: decodeURIComponent(req.query.redirect),
       failureRedirect: '/sign-in',
       failureFlash: true,
     })(req, res, next);

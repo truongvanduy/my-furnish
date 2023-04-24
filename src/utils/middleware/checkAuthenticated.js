@@ -3,5 +3,5 @@ module.exports = function checkAuthenticated(req, res, next) {
     return next();
   }
 
-  res.redirect('/sign-in');
+  res.redirect('/sign-in?redirect=' + encodeURIComponent(req.originalUrl));
 };
