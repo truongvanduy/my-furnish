@@ -39,5 +39,6 @@
 @use './pages/404-not-found' as *;
 @use './pages/product-detail' as *;
 @use './pages/manage-product' as *;
+@use './pages/user' as *;
 
 @use './base/observer' as *;

@@ -2,24 +2,26 @@ extends ./layout
 
 block vars 
   -title = 'MyFurnish | User'
-  -heading = ''
+  -heading = 'User'
+  -selection = ''
 
 block container 
   .container.grid.mt-20
     .row 
-      .col-4.md-0.sm-0 
-        aside.user-sidebar 
+      .col.col-4.md-0.sm-0 
+        aside.user-sidebar.px-4
           h2.heading.heading-md= user.fullName
-          ul 
-            li 
-              a(href="/user/profile").text-xl Profile
-            li 
-              a(href="/user/order").text-xl Order
-            li 
-              a(href="/user/sign-out").text-xl Sign out
-      .col-8.md-12.sm-12
+          ul.user-sidebar__list.mt-8
+            li.user-sidebar__item.my-4
+              a(href="/user/profile" class= (selection === 'profile' ? 'btn-solid' : 'btn-outline')).btn.btn-lg.btn-primary.text-xl.text-left Profile
+            li.user-sidebar__item.my-4
+              a(href="/user/order" class= (selection === 'order' ? 'btn-solid' : 'btn-outline')).btn.btn-lg.btn-primary.text-xl.text-left Order
+            li.user-sidebar__item.my-4
+              a(href="/user/sign-out" class= (selection === 'sign-out' ? 'btn-solid' : 'btn-outline')).btn.btn-lg.btn-primary.text-xl.text-left Sign out
+      .col.col-8.md-12.sm-12
         .user-main 
-          h2.heading.heading-md User
+          h2.heading.heading-md= heading
+          block userMain
 
 block scripts 
   script(src="/js/pages/others.js" type="module") 

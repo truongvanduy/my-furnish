@@ -1,0 +1,13 @@
+.user {
+  &-sidebar {
+    &__item > a {
+      --gutter: 2rem;
+      --current-color: var(--heading-color);
+
+      border-radius: 0.8rem;
+      justify-content: start;
+
+      color: var(--heading-color);
+    }
+  }
+}

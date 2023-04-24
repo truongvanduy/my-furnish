@@ -1,5 +1,7 @@
 @use '../abstracts/breakpoints' as *;
 
+// Modify gutter with custom property --gutter
+
 .wrapper {
   width: 100%;
   display: flex;

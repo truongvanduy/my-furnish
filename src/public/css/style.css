@@ -1277,7 +1277,10 @@ Nguồn tài nguyên tham khảo:
   line-height: 1.4rem;
 }
 .text-center {
-  text-align: center;
+  text-align: center !important;
+}
+.text-left {
+  text-align: left !important;
 }
 
 .font-primary {
@@ -1429,7 +1432,7 @@ body::-webkit-scrollbar-thumb:active {
   background-color: var(--current-color);
 }
 .btn-solid {
-  color: white;
+  color: white !important;
   background-color: var(--current-color);
 }
 .btn-xl {
@@ -3481,6 +3484,14 @@ main {
 }
 .mp-action > :first-child, .mp-row-action > :first-child {
   margin-left: auto;
+}
+
+.user-sidebar__item > a {
+  --gutter: 2rem;
+  --current-color: var(--heading-color);
+  border-radius: 0.8rem;
+  justify-content: start;
+  color: var(--heading-color);
 }
 
 @media screen and (min-width: 991.98px) {

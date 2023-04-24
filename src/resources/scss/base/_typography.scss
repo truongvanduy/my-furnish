@@ -49,7 +49,10 @@
     @include font(1.2rem, 400, 1.4rem);
   }
   &-center {
-    text-align: center;
+    text-align: center !important;
+  }
+  &-left {
+    text-align: left !important;
   }
 }
 // Use .font-[...] to adjust font-family
