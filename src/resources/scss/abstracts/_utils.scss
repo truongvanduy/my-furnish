@@ -13,7 +13,7 @@ $orientations: (
   'y': '-block',
 );
 
-@for $i from 1 through 20 {
+@for $i from 0 through 20 {
   @each $sChar, $type in $spaceTypes {
     @each $oChar, $orientation in $orientations {
       .#{$sChar}#{$oChar}-#{$i} {

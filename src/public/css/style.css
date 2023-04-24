@@ -90,6 +90,62 @@ Nguồn tài nguyên tham khảo:
   }
 }
 
+.p-0 {
+  padding: 0rem;
+}
+
+.pl-0 {
+  padding-left: 0rem;
+}
+
+.pr-0 {
+  padding-right: 0rem;
+}
+
+.pt-0 {
+  padding-top: 0rem;
+}
+
+.pb-0 {
+  padding-bottom: 0rem;
+}
+
+.px-0 {
+  padding-inline: 0rem;
+}
+
+.py-0 {
+  padding-block: 0rem;
+}
+
+.m-0 {
+  margin: 0rem;
+}
+
+.ml-0 {
+  margin-left: 0rem;
+}
+
+.mr-0 {
+  margin-right: 0rem;
+}
+
+.mt-0 {
+  margin-top: 0rem;
+}
+
+.mb-0 {
+  margin-bottom: 0rem;
+}
+
+.mx-0 {
+  margin-inline: 0rem;
+}
+
+.my-0 {
+  margin-block: 0rem;
+}
+
 .p-1 {
   padding: 0.4rem;
 }
@@ -1477,14 +1533,16 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 .form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2.4rem;
+}
+.form.form-center {
   width: 100%;
   max-width: 72rem;
   padding: 8rem;
   margin-left: auto;
   margin-right: auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 2.4rem;
 }
 .form-group {
   display: flex;
@@ -1508,18 +1566,20 @@ body::-webkit-scrollbar-thumb:active {
 .form-control[type=number] {
   max-width: 8ch;
 }
-.form input.form-control {
+
+input.form-control {
   border-bottom: 2px solid var(--border-color);
 }
-.form input.form-control:focus {
+input.form-control:focus {
   border-bottom: 2px solid var(--primary-color);
 }
-.form textarea.form-control {
+
+textarea.form-control {
   border: 2px solid var(--border-color);
   border-radius: 0.8rem;
   padding: 0.8rem;
 }
-.form textarea.form-control:focus {
+textarea.form-control:focus {
   outline: 2px solid var(--primary-color);
 }
 
