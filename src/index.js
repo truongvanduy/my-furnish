@@ -8,17 +8,17 @@ const morgan = require('morgan');
 const path = require('path');
 const methodOverride = require('method-override');
 const passport = require('passport');
+const flash = require('express-flash');
+const session = require('express-session');
 
 const port = 3000;
 const route = require('./routes');
 const db = require('./app/models/index');
 const User = require('./app/models/User');
-
-const flash = require('express-flash');
-const session = require('express-session');
+const initializePassport = require('./config/passport.config');
+const addUserInfoToLocals = require('./utils/middleware/addUserInfoToLocals');
 
 // Initialize passport
-const initializePassport = require('./config/passport.config');
 initializePassport(
   passport,
   async (email) => {
@@ -65,6 +65,7 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 app.use(methodOverride('_method'));
 
 // Routing
+app.use(addUserInfoToLocals);
 route(app);
 
 app.listen(port, () => {

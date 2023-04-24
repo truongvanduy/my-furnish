@@ -5,8 +5,14 @@ block vars
   -heading = ''
 
 block container 
-  section.container
-    block form
+  .container.grid.mt-20
+    .row 
+      .col-4.md-0.sm-0 
+        aside.user-sidebar 
+          h2.heading.heading-lg Duy
+      .col-8.md-12.sm-12
+        .user-main 
+          h2.heading.heading-lg User
 
 block scripts 
   script(src="/js/pages/others.js" type="module") 
