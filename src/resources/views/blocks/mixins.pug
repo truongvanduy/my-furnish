@@ -1,12 +1,13 @@
 mixin navContactGroup(href, src, alt, text, className="")
   a.nav-contact__group(href= href class= className) 
-    img.nav-contact__icon(src='/images/base/' + src, alt= alt)
+    //- img.nav-contact__icon(src='/images/base/' + src, alt= alt)
+    i.fa-regular.fa-envelope(style='color: #ffffff;')
     span.nav-contact__text= text
 
 mixin navActionGroup(text, src, alt, href="", imgClassName="")
   a(href= href).nav-action__group
-    span.nav-action__text= text
     img.nav-action__icon(src= '/images/base/' + src, alt= alt, class= imgClassName)
+    span.nav-action__text= text
     block 
 
 mixin productActionSet(setClass)

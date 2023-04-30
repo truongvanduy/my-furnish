@@ -5,8 +5,12 @@ header.header
     .nav-top 
       .container.nav__container 
         .nav-contact 
-          +navContactGroup("mailto: duyb2005667@student.ctu.edu.vn", "mail.svg", "email", "duyb2005667@student.ctu.edu.vn")
-          +navContactGroup("tel: (12345)67890", "phone.svg", "telephone", "(12345)67890")
+          a.nav-contact__group(href='mailto: duyb2005667@student.ctu.edu.vn') 
+            i.fa-regular.fa-envelope(style='color: #ffffff;')
+            span.nav-contact__text duyb2005667@student.ctu.edu.vn
+          a.nav-contact__group(href='tel: (12345)67890') 
+            i.fa-solid.fa-mobile-screen(style='color: #ffffff;')
+            span.nav-contact__text (12345)67890
         .nav-action 
           if (!user)
             +navActionGroup("Login", "user.svg", "user", "/sign-in")
