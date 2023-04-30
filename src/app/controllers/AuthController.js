@@ -62,7 +62,7 @@ class AuthController {
       await User.create({
         fullName: req.body['full-name'],
         email: req.body.email,
-        password: hashedPassword,
+        password: req.body.password,
       });
       res.redirect('/sign-in');
     } catch (err) {

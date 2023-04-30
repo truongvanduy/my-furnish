@@ -1,6 +1,6 @@
-const Category = require('./Category');
 const { sequelize, Sequelize } = require('./index');
 const { DataTypes } = require('sequelize');
+const hashPassword = require('../../config/bcrypt.config');
 
 const User = sequelize.define(
   'user',
@@ -32,12 +32,27 @@ const User = sequelize.define(
     address: {
       type: DataTypes.STRING,
     },
+    role: {
+      type: DataTypes.ENUM(['admin', 'basic']),
+      defaultValue: 'basic',
+    },
   },
   {
     underscored: true,
     paranoid: true,
   }
 );
+
+User.beforeCreate(async (user) => {
+  user.password = await hashPassword(user.password);
+});
+
+// User.create({
+//   email: 'root@dtv.team',
+//   password: 'root',
+//   fullName: 'Duy Truong Van',
+//   role: 'admin',
+// });
 
 // Category.hasMany(Product, { foreignKey: 'category_id' });
 // Product.belongsTo(Category, { foreignKey: 'category_id' });
