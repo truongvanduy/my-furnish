@@ -5,19 +5,19 @@ header.header
     .nav-top 
       .container.nav__container 
         .nav-contact 
-          a.nav-contact__group(href='mailto: duyb2005667@student.ctu.edu.vn') 
+          a.nav-group(href='mailto: duyb2005667@student.ctu.edu.vn') 
             i.fa-regular.fa-envelope(style='color: #ffffff;')
             span.nav-contact__text duyb2005667@student.ctu.edu.vn
-          a.nav-contact__group(href='tel: (12345)67890') 
+          a.nav-group(href='tel: (12345)67890') 
             i.fa-solid.fa-mobile-screen(style='color: #ffffff;')
             span.nav-contact__text (12345)67890
         .nav-action 
           if (!user)
-            +navActionGroup("Login", "user.svg", "user", "/sign-in")
+            +navGroup("Login", "user.svg", "/sign-in")
           else
-            +navActionGroup(user.fullName, "user.svg", "user", "/user/profile")
-          +navActionGroup("Wishlist", "heart.svg", "heart")
-          +navActionGroup("", "cart.svg", "cart", cartPageLink,"nav-cart__img")
+            +navGroup(user.fullName, "user.svg", "/user/profile")
+          +navGroup("Wishlist", "heart.svg")
+          +navGroup("", "cart.svg", cartPageLink,"nav-cart__img")
             span.nav-cart__qty
     .nav-bottom
       .container.nav__container
