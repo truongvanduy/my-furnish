@@ -14,9 +14,9 @@ block container
       img(src="/images/products/" + product.slug + ".png", alt=product.name)
     .detail-info 
       h2.heading.heading-md.detail__name.mb-5= product.name 
-      p.detail__desc.mb-6= product.description
-      .detail-action 
-        select.detail-qty.select(name="product-qty")
+      p.detail__desc.text-xl.mb-6= product.description
+      form(action="" method='POST').detail-action 
+        select.detail-qty.select.mb-5(name="product-qty")
           option.detail-qty__option(value="1") 1
           option.detail-qty__option(value="2") 2
           option.detail-qty__option(value="3") 3
