@@ -1546,6 +1546,10 @@ body::-webkit-scrollbar-thumb:active {
   color: var(--secondary-color);
   --current-color: var(--secondary-color);
 }
+.btn-danger {
+  color: var(--danger-color);
+  --current-color: var(--danger-color);
+}
 .btn-outline {
   background-color: transparent;
   border: 0.2rem solid currentColor;

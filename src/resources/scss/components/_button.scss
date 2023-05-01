@@ -27,6 +27,10 @@
     color: $secondary-color;
     --current-color: var(--secondary-color);
   }
+  &-danger {
+    color: var(--danger-color);
+    --current-color: var(--danger-color);
+  }
   &-outline {
     background-color: transparent;
     border: 0.2rem solid currentColor;
