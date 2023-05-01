@@ -15,17 +15,15 @@ block container
     .detail-info 
       h2.heading.heading-md.detail__name.mb-5= product.name 
       p.detail__desc.text-xl.mb-6= product.description
-      form(action="" method='POST').detail-action 
+      .detail-action 
         select.detail-qty.select.mb-5(name="product-qty")
           option.detail-qty__option(value="1") 1
           option.detail-qty__option(value="2") 2
           option.detail-qty__option(value="3") 3
           option.detail-qty__option(value="4") 4
           option.detail-qty__option(value="5") 5
-        button.detail__btn.btn.btn-xl.btn-primary.btn-outline Add to Cart
+        button.detail__btn.btn.btn-xl.btn-primary.btn-outline(data-name='add-to-cart') Add to Cart
 
-block toast 
-  +toast('success', 'Sucessfully!')
 
 block scripts 
-  script(src="../js/pages/products.js" type="module")
+  script(src="../js/pages/detail.js" type="module")

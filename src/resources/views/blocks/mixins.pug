@@ -129,15 +129,12 @@ mixin productForm(action= '', name='', description='', category_id='', qty='', p
       button.btn.btn-primary.btn-solid.btn-md(name="", type='submit') SAVE
 
 //- Toast
-
-
 - 
   var toastStates = {
     success: 'check',
     warning: 'exclamation',
     error: 'xmark' 
   };
-
 mixin toast(type='', message='')
   .toast(class= 'toast-' + type, data-name='toast')
     .toast-icon

@@ -1723,24 +1723,29 @@ textarea.form-control:focus {
   --main-color: var(--danger-color);
 }
 
-.toast {
+#toast {
   --toast-margin: 3.2rem;
   --toast-padding: 1.8rem;
-  display: flex;
-  align-items: center;
-  gap: var(--toast-padding);
-  padding: calc(var(--toast-padding) / 1.5) var(--toast-padding);
-  width: 100%;
-  max-width: 40rem;
-  background-color: white;
   position: fixed;
   top: calc(var(--toast-margin) + var(--header-height));
   right: var(--toast-margin);
   z-index: 999;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--toast-padding);
+  padding: calc(var(--toast-padding) / 1.5) var(--toast-padding);
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 40rem;
+  background-color: white;
   border-radius: 0.4rem;
   border-left: 4px solid var(--main-color);
   box-shadow: 0 0.4rem 0.8rem 0.2rem rgba(0, 0, 0, 0.08);
   animation: slideIn 0.5s ease, fadeOut 1s ease 2s forwards;
+  transition: all 0.5s linear;
 }
 .toast-icon {
   font-size: 2.4rem;
