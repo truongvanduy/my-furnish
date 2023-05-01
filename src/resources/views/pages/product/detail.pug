@@ -13,8 +13,8 @@ block container
     .detail-img 
       img(src="/images/products/" + product.slug + ".png", alt=product.name)
     .detail-info 
-      h2.heading.heading-md.detail__name= product.name 
-      p.detail__desc= product.description
+      h2.heading.heading-md.detail__name.mb-5= product.name 
+      p.detail__desc.mb-6= product.description
       .detail-action 
         select.detail-qty.select(name="product-qty")
           option.detail-qty__option(value="1") 1

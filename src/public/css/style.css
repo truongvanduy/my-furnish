@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Poppins:wght@300;400;500;600;700&display=swap");
 /*===============================================================================================
 
 Nguồn tài nguyên tham khảo:
@@ -76,9 +76,9 @@ Nguồn tài nguyên tham khảo:
   --nav-top-height: 4rem;
   --nav-bottom-height: 7rem;
   --header-height: calc(var(--nav-bottom-height) + var(--nav-top-height));
-  --primary-font: 'Josefin Sans', sans-serif;
-  --secondary-font: 'Lato', sans-serif;
-  --poppins: 'Poppins', sans-serif;
+  --primary-font: "Josefin Sans", sans-serif;
+  --secondary-font: "Lato", sans-serif;
+  --poppins: "Poppins", sans-serif;
   --table-cell-padding: 0.8rem;
   --table-border-width: 0.1rem;
   --table-border-color: var(--border-color);
@@ -1342,7 +1342,7 @@ Nguồn tài nguyên tham khảo:
 
 .heading {
   color: var(--heading-color);
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 .heading-2xl {
   font-size: clamp(2.5rem, 4vw, 6.5rem);
@@ -1414,16 +1414,16 @@ Nguồn tài nguyên tham khảo:
 }
 
 .font-primary {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 .font-secondary {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 .font-poppins {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .font-lato {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .font-weight-regular {
@@ -1458,7 +1458,7 @@ html {
 }
 
 body {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 1.6rem;
 }
 
@@ -1515,7 +1515,7 @@ body::-webkit-scrollbar-thumb:active {
 .input {
   padding: 8px;
   padding-left: 12px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .btn {
@@ -1629,7 +1629,7 @@ body::-webkit-scrollbar-thumb:active {
   color: #333;
   font-family: var(--poppins);
 }
-.form-control[type='number'] {
+.form-control[type=number] {
   max-width: 8ch;
 }
 
@@ -1697,8 +1697,7 @@ textarea.form-control:focus {
   margin-bottom: 0;
 }
 .table thead th {
-  border-bottom: calc(2 * var(--table-border-width)) solid
-    var(--table-border-color);
+  border-bottom: calc(2 * var(--table-border-width)) solid var(--table-border-color);
 }
 .table tbody th,
 .table td {
@@ -1762,8 +1761,7 @@ textarea.form-control:focus {
   transform: translate(-100%, -50%);
   left: 0;
 }
-.product-action--horizontal,
-.product-action--rounded {
+.product-action--horizontal, .product-action--rounded {
   left: 50%;
   transform: translate(-50%, 100%);
   bottom: 0;
@@ -1794,7 +1792,7 @@ textarea.form-control:focus {
 }
 .product-action__item::before {
   position: absolute;
-  content: '';
+  content: "";
   width: 100%;
   height: 100%;
   border-radius: 100rem;
@@ -1841,9 +1839,7 @@ textarea.form-control:focus {
 .product-item:hover .product-action--rounded .product-action__item {
   transform: translateY(-170%);
 }
-.product-item:hover
-  .product-action--rounded
-  .product-action__item:nth-child(2) {
+.product-item:hover .product-action--rounded .product-action__item:nth-child(2) {
   transform: translateY(-130%);
 }
 
@@ -1889,12 +1885,7 @@ textarea.form-control:focus {
 }
 
 .banner-sale {
-  background-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0)
-    ),
-    url('../images/home/banner-sale.jpg');
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../images/home/banner-sale.jpg");
   filter: saturate(1.5);
   position: relative;
   background-repeat: no-repeat;
@@ -1912,11 +1903,7 @@ textarea.form-control:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.5) 70%,
-    rgba(0, 0, 0, 0.4) 100%
-  );
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0.4) 100%);
   overflow-x: hidden;
 }
 @media screen and (max-width: 575.98px) {
@@ -2016,7 +2003,7 @@ textarea.form-control:focus {
   align-self: flex-start;
   text-transform: uppercase;
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #336;
   font-size: clamp(1.4rem, 1.5vw + 1rem, 1.8rem);
 }
@@ -2054,13 +2041,13 @@ textarea.form-control:focus {
   font-weight: 600;
   letter-spacing: 0;
   line-height: 1.4;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   margin-bottom: 1.4em;
   margin-top: auto;
   position: relative;
 }
 .banner-side__title::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: -0.6em;
@@ -2127,7 +2114,7 @@ textarea.form-control:focus {
   position: relative;
 }
 .banner-stick__title::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -2239,7 +2226,7 @@ textarea.form-control:focus {
   position: relative;
 }
 .breadcrumb__item:not(:first-child)::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -2250,7 +2237,7 @@ textarea.form-control:focus {
   background-color: currentColor;
 }
 .breadcrumb__link {
-  font-family: 'Lato', sans-serif, sans-serif;
+  font-family: "Lato", sans-serif, sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
@@ -2325,8 +2312,7 @@ textarea.form-control:focus {
 .home-blog-item:hover {
   cursor: pointer;
 }
-.home-blog-item:hover .home-blog-item__heading,
-.home-blog-item__cta:hover {
+.home-blog-item:hover .home-blog-item__heading, .home-blog-item__cta:hover {
   color: var(--primary-color);
 }
 
@@ -2381,20 +2367,7 @@ Nguồn tài nguyên tham khảo:
 .col-0 {
   display: none;
 }
-.col-1,
-.col-2,
-.col-2-4,
-.col-3,
-.col-4,
-.col-4-8,
-.col-5,
-.col-6,
-.col-7,
-.col-8,
-.col-9,
-.col-10,
-.col-11,
-.col-12 {
+.col-1, .col-2, .col-2-4, .col-3, .col-4, .col-4-8, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
   display: block;
 }
 .col-1 {
@@ -3071,14 +3044,14 @@ main {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0 1rem;
+  gap: 0 0.4rem;
 }
 .nav-action {
   display: flex;
   align-items: center;
-  gap: 0 1.6rem;
+  gap: 0 2rem;
 }
-.nav-group {
+.nav-action-group {
   position: relative;
   cursor: pointer;
   display: flex;
@@ -3111,7 +3084,7 @@ main {
   align-items: center;
   font-size: 1.2rem;
   line-height: 1.6rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
 .nav-cart__qty.in-menu {
@@ -3123,10 +3096,10 @@ main {
   flex-wrap: nowrap;
 }
 .nav-cart__qty.in-menu::before {
-  content: '(';
+  content: "(";
 }
 .nav-cart__qty.in-menu::after {
-  content: ')';
+  content: ")";
 }
 .nav-cart__qty.has-product {
   display: flex;
@@ -3149,10 +3122,8 @@ main {
   .nav-top {
     display: none;
   }
-  .nav-contact__icon,
-  .nav-action__icon {
-    filter: invert(21%) sepia(100%) saturate(2801%) hue-rotate(259deg)
-      brightness(89%) contrast(96%);
+  .nav-contact__icon, .nav-action__icon {
+    filter: invert(21%) sepia(100%) saturate(2801%) hue-rotate(259deg) brightness(89%) contrast(96%);
   }
   .nav-contact__icon {
     width: 2rem;
@@ -3225,9 +3196,7 @@ main {
   height: var(--line-height);
   border-radius: 100rem;
   background-color: var(--heading-color);
-  transition: top var(--transition-time) linear var(--transition-time),
-    transform var(--transition-time) linear 0s,
-    opacity var(--transition-time) linear var(--transition-time);
+  transition: top var(--transition-time) linear var(--transition-time), transform var(--transition-time) linear 0s, opacity var(--transition-time) linear var(--transition-time);
 }
 .toggle-menu__line:nth-child(1) {
   transform: rotate(0);
@@ -3243,9 +3212,7 @@ main {
   top: calc(100% - var(--line-height));
 }
 .toggle-menu.opened .toggle-menu__line {
-  transition: top var(--transition-time) linear 0s,
-    transform var(--transition-time) linear var(--transition-time),
-    opacity var(--transition-time) linear 0s;
+  transition: top var(--transition-time) linear 0s, transform var(--transition-time) linear var(--transition-time), opacity var(--transition-time) linear 0s;
 }
 .toggle-menu.opened .toggle-menu__line:nth-child(1) {
   top: calc(50% - var(--line-height) / 2);
@@ -3302,8 +3269,7 @@ main {
   }
 }
 @media screen and (max-width: 991.98px) {
-  .menu,
-  .menu__nav-top {
+  .menu, .menu__nav-top {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -3375,7 +3341,7 @@ main {
   margin-top: 1.8rem;
 }
 .footer__text {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   line-height: 1.9rem;
 }
 .footer-bottom {
@@ -3432,9 +3398,7 @@ main {
   }
 }
 @media screen and (max-width: 767.98px) {
-  .footer__container,
-  .footer__menu,
-  .footer__list {
+  .footer__container, .footer__menu, .footer__list {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3639,14 +3603,12 @@ main {
   grid-template-columns: 1fr;
   grid-gap: 2rem;
 }
-.mp-action,
-.mp-row-action {
+.mp-action, .mp-row-action {
   display: flex;
   align-items: center;
   column-gap: 2rem;
 }
-.mp-action > :first-child,
-.mp-row-action > :first-child {
+.mp-action > :first-child, .mp-row-action > :first-child {
   margin-left: auto;
 }
 
@@ -3666,8 +3628,7 @@ main {
   .obs-transition {
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   }
-  .obs-transition.btn,
-  .obs-transition.product-item:not(.on-trending-item) {
+  .obs-transition.btn, .obs-transition.product-item:not(.on-trending-item) {
     transition: all 0.25s linear, opacity 0.8s ease-out, transform 0.8s ease-out;
   }
   .obs-delay-quarter {
@@ -3709,16 +3670,10 @@ main {
   .appear {
     opacity: 1;
   }
-  .appear.slide-up,
-  .appear.slide-down,
-  .appear.slide-half-up,
-  .appear.slide-half-down {
+  .appear.slide-up, .appear.slide-down, .appear.slide-half-up, .appear.slide-half-down {
     transform: translateY(0);
   }
-  .appear.slide-left,
-  .appear.slide-right,
-  .appear.slide-half-left,
-  .appear.slide-half-right {
+  .appear.slide-left, .appear.slide-right, .appear.slide-half-left, .appear.slide-half-right {
     transform: translateX(0);
   }
 }

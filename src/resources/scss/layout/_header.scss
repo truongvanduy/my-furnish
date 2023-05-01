@@ -74,16 +74,16 @@
     @include lg {
       gap: 0 2rem;
     }
-    &__group {
-      cursor: pointer;
-      @include flexCenterY();
-      gap: 0 1rem;
-    }
+  }
+  &-group {
+    cursor: pointer;
+    @include flexCenterY();
+    gap: 0 0.4rem;
   }
   &-action {
     @include flexCenterY();
-    gap: 0 1.6rem;
-    &__group {
+    gap: 0 2rem;
+    &-group {
       position: relative;
       cursor: pointer;
       @include flexCenterY();
