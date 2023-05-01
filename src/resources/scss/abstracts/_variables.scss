@@ -3,8 +3,12 @@
 :root {
   // Color
   --primary-color: #fb2e86;
-  --secondary-color: #10c160;
-  --heading-color: rgb(21, 24, 117);
+  --secondary-color: rgb(21, 24, 117);
+  --success-color: #20e392;
+  --warning-color: #ffe15d;
+  --danger-color: #e0144c;
+
+  --heading-color: var(--secondary-color);
   --text-color: #8a8fb9;
   --product-bgc: #f6f7fb;
   --border-color: #eee;

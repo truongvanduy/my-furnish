@@ -1,0 +1,74 @@
+@use '../abstracts/variables';
+
+$toastStates: (
+  'success': var(--success-color),
+  'warning': var(--warning-color),
+  'error': var(--danger-color),
+);
+
+@each $state, $color in $toastStates {
+  .toast-#{$state} {
+    --main-color: #{$color};
+  }
+}
+
+.toast {
+  --toast-margin: 3.2rem;
+  --toast-padding: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: var(--toast-padding);
+
+  // font-family: 'Poppins', sans-serif;
+
+  padding: calc(var(--toast-padding) / 1.5) var(--toast-padding);
+  width: 100%;
+  max-width: 40rem;
+  background-color: white;
+
+  position: fixed;
+  top: calc(var(--toast-margin) + var(--header-height));
+  right: var(--toast-margin);
+  z-index: 999;
+
+  border-radius: 0.4rem;
+  border-left: 4px solid var(--main-color);
+  box-shadow: 0 0.4rem 0.8rem 0.2rem rgba($color: #000000, $alpha: 0.08);
+  animation: slideIn 0.5s ease, fadeOut 1s ease 2s forwards;
+
+  &-icon {
+    font-size: 2.4rem;
+    color: var(--main-color);
+  }
+  &-body {
+    flex-grow: 1;
+  }
+  &-title {
+    color: var(--heading-color);
+
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  &-close {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(calc(100% + var(--toast-margin)));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}

@@ -128,4 +128,14 @@ mixin productForm(action= '', name='', description='', category_id='', qty='', p
         input#price.form-control(name="price", type='number', value= price required)
       button.btn.btn-primary.btn-solid.btn-md(name="", type='submit') SAVE
 
-//- User pages
+//- Toast
+
+mixin toast(type='', message='')
+  .toast(class= 'toast-' + type)
+    .toast-icon
+      i(class="fa-solid fa-circle-check")
+    .toast-body 
+      .toast-title= type
+      .toast-msg= message
+    .toast-close
+      i(class="fa-solid fa-xmark")

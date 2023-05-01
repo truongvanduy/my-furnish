@@ -66,8 +66,11 @@ Nguồn tài nguyên tham khảo:
 ======================================================================================================================*/
 :root {
   --primary-color: #fb2e86;
-  --secondary-color: #10c160;
-  --heading-color: rgb(21, 24, 117);
+  --secondary-color: rgb(21, 24, 117);
+  --success-color: #20e392;
+  --warning-color: #ffe15d;
+  --danger-color: #e0144c;
+  --heading-color: var(--secondary-color);
   --text-color: #8a8fb9;
   --product-bgc: #f6f7fb;
   --border-color: #eee;
@@ -1704,6 +1707,70 @@ textarea.form-control:focus {
   font-family: var(--poppins);
 }
 
+.toast-success {
+  --main-color: var(--success-color);
+}
+
+.toast-warning {
+  --main-color: var(--warning-color);
+}
+
+.toast-error {
+  --main-color: var(--danger-color);
+}
+
+.toast {
+  --toast-margin: 3.2rem;
+  --toast-padding: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: var(--toast-padding);
+  padding: calc(var(--toast-padding) / 1.5) var(--toast-padding);
+  width: 100%;
+  max-width: 40rem;
+  background-color: white;
+  position: fixed;
+  top: calc(var(--toast-margin) + var(--header-height));
+  right: var(--toast-margin);
+  z-index: 999;
+  border-radius: 0.4rem;
+  border-left: 4px solid var(--main-color);
+  box-shadow: 0 0.4rem 0.8rem 0.2rem rgba(0, 0, 0, 0.08);
+  animation: slideIn 0.5s ease, fadeOut 1s ease 2s forwards;
+}
+.toast-icon {
+  font-size: 2.4rem;
+  color: var(--main-color);
+}
+.toast-body {
+  flex-grow: 1;
+}
+.toast-title {
+  color: var(--heading-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.toast-close {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(calc(100% + var(--toast-margin)));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
 .product-item {
   display: flex;
   flex-direction: column;
