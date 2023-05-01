@@ -43,7 +43,7 @@ block container
             td 
               .mp-row-action
                 a.btn.btn-secondary.btn-outline.btn-sm(href= manageProductLink + '/' + product.id + '/edit' ) Edit
-                button.btn.btn-primary.btn-outline.btn-sm(data-id= product.id data-name='delete-button') Delete
+                button.btn.btn-danger.btn-solid.btn-sm(data-id= product.id data-name='delete-button') Delete
   form(data-name='delete-form' action='', method="POST")
 
 block scripts
