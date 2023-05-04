@@ -1,6 +1,6 @@
 import { $ } from '../variables/utils.js';
 
-export default function toast({
+function toast({
   title = '',
   message = '',
   type = 'success',
@@ -9,6 +9,7 @@ export default function toast({
   const wrapper = document.getElementById('toast');
   if (!wrapper) throw 'Wrapper not found';
   const delayTime = (duration / 1000).toFixed(2);
+  const fadeOutTime = 1;
 
   const toastStates = {
     success: 'check',
@@ -17,7 +18,7 @@ export default function toast({
   };
   const toast = document.createElement('div');
   toast.classList.add('toast', `toast-${type}`);
-  toast.style.animation = `animation: slideIn 0.5s ease, fadeOut 1s ease ${delayTime}s forwards;`;
+  toast.style.animation = `slideIn 0.5s ease, fadeOut ${fadeOutTime}s ease ${delayTime}s forwards`;
 
   toast.innerHTML = /* html */ `
       <div class="toast-icon">
@@ -27,21 +28,23 @@ export default function toast({
         <div class="toast-title">${title}</div>
         <div class="toast-msg">${message}</div>
       </div>
-      <div class="toast-close" data-name='close'>
+      <button type='button' class="toast-close" data-name='close'>
         <i class="fa-solid fa-xmark"></i>
-      </div>
+      </button>
     `;
 
   wrapper.appendChild(toast);
 
   const timOutId = setTimeout(() => {
     wrapper.removeChild(toast);
-  }, duration + 1000);
+  }, duration + fadeOutTime * 1000);
 
   toast.onclick = (e) => {
     if (e.target.closest('[data-name="close"]')) {
-      wrapper.removeChild(toast);
       clearTimeout(timOutId);
+      wrapper.removeChild(toast);
     }
   };
 }
+
+export default toast;

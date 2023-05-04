@@ -142,5 +142,5 @@ mixin toast(type='', message='')
     .toast-body 
       .toast-title= type
       .toast-msg= message
-    .toast-close
+    button.toast-close(type='button')
       i(class="fa-solid fa-xmark")

@@ -14,7 +14,7 @@ class ProductController {
   }
 
   // [GET] /products/:slug
-  slug(req, res, next) {
+  showDetail(req, res, next) {
     Product.findOne({
       where: {
         slug: req.params.slug,
@@ -23,6 +23,12 @@ class ProductController {
       .then((product) => {
         res.render('pages/product/detail', {
           product,
+          toast: {
+            title: 'Hello',
+            message: 'You are viewing product ' + product.name,
+            type: 'success',
+            duration: 30000,
+          },
         });
       })
       .catch(next);
@@ -145,7 +151,9 @@ class ProductController {
       .then((products) => {
         res.render('pages/product/manage', {
           products,
+          toast: req.toast || false,
         });
+        req.toast = undefined;
       })
       .catch(next);
   }
@@ -171,9 +179,12 @@ class ProductController {
     });
     Product.create({ name, description, categoryId, quantity, price, slug })
       .then(() => {
+        req.flash('success', 'New product was successfully added');
         res.redirect('../manage-products');
       })
-      .catch(next);
+      .catch((e) => {
+        throw e;
+      });
   }
 
   // [GET] /admin/manage-products/:id/edit
@@ -213,7 +224,7 @@ class ProductController {
       },
     })
       .then(() => {
-        res.redirect('back');
+        res.redirect('../manage-products');
       })
       .catch(next);
   }

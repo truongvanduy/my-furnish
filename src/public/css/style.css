@@ -1744,7 +1744,6 @@ textarea.form-control:focus {
   border-radius: 0.4rem;
   border-left: 4px solid var(--main-color);
   box-shadow: 0 0.4rem 0.8rem 0.2rem rgba(0, 0, 0, 0.08);
-  animation: slideIn 0.5s ease, fadeOut 1s ease 2s forwards;
   transition: all 0.5s linear;
 }
 .toast-icon {
@@ -1762,7 +1761,13 @@ textarea.form-control:focus {
 }
 .toast-close {
   font-size: 2rem;
+  color: inherit;
+  background-color: white;
   cursor: pointer;
+  transition: all 0.2s linear;
+}
+.toast-close:active {
+  color: #333;
 }
 
 @keyframes slideIn {

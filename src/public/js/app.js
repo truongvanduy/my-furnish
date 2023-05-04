@@ -16,6 +16,7 @@ import products from './variables/products.js';
 import addHomeAnimation from './home-animation.js';
 import renderTrendingProducts from './views/trending-products.js';
 import renderInCartProducts from './views/in-cart-products.js';
+import toast from './views/toast.js';
 
 const toggleMenuBtn = $('.js-toggle-menu');
 const menu = $('.js-menu');
@@ -189,13 +190,27 @@ const app = {
     this.renderInCartProducts();
     this.updateInvoice();
   },
+  toast,
+  getToast: function () {
+    const toastContainer = document.getElementById('toast');
+    if (
+      toastContainer &&
+      toastContainer.dataset.json &&
+      toastContainer.dataset.json !== '{}'
+    ) {
+      const message = JSON.parse(toastContainer.dataset.json);
+      const [type] = Object.keys(message);
+      toast({ title: type, message: message[type], type, duration: 3000 });
+    }
+  },
   start: function () {
-    this.loadStorageProducts();
-    this.updateInCartProducts();
+    // this.loadStorageProducts();
+    // this.updateInCartProducts();
     this.updateCartIcon();
     this.toggleHeader();
     this.handleMenu();
     this.handleEvents();
+    this.getToast();
   },
   startCart: function () {
     this.loadStorageProducts();
