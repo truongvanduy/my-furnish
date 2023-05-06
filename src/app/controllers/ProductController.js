@@ -2,6 +2,7 @@ const { default: slugify } = require('slugify');
 const Category = require('../models/Category');
 const Product = require('../models/Product');
 const { Op } = require('sequelize');
+const flash = require('express-flash');
 
 class ProductController {
   // [GET] /products
@@ -211,6 +212,7 @@ class ProductController {
       }
     )
       .then(() => {
+        req.flash('success', 'Product was modified');
         res.redirect('../manage-products');
       })
       .catch(next);

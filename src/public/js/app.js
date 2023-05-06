@@ -193,11 +193,7 @@ const app = {
   toast,
   getToast: function () {
     const toastContainer = document.getElementById('toast');
-    if (
-      toastContainer &&
-      toastContainer.dataset.json &&
-      toastContainer.dataset.json !== '{}'
-    ) {
+    if (toastContainer && toastContainer.dataset?.json !== '{}') {
       const message = JSON.parse(toastContainer.dataset.json);
       const [type] = Object.keys(message);
       toast({ title: type, message: message[type], type, duration: 3000 });
