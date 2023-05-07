@@ -1343,6 +1343,26 @@ Nguồn tài nguyên tham khảo:
   width: 90%;
 }
 
+.w-100 {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
 .heading {
   color: var(--heading-color);
   font-family: "Josefin Sans", sans-serif;
@@ -1412,8 +1432,11 @@ Nguồn tài nguyên tham khảo:
 .text-center {
   text-align: center !important;
 }
-.text-left {
+.text-left, .text-start {
   text-align: left !important;
+}
+.text-right, .text-end {
+  text-align: end;
 }
 
 .font-primary {
@@ -1563,6 +1586,11 @@ body::-webkit-scrollbar-thumb:active {
   color: white !important;
   background-color: var(--current-color);
 }
+.btn-link {
+  background-color: transparent;
+  text-decoration: underline;
+  border-radius: 0;
+}
 .btn-xl {
   height: 3em;
   padding-left: 2.5em;
@@ -1590,6 +1618,11 @@ body::-webkit-scrollbar-thumb:active {
   padding-left: 1.8rem;
   padding-right: 1.8rem;
   font-size: 1.2rem;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .select {
@@ -3598,13 +3631,20 @@ main {
   grid-template-columns: 7fr 3fr;
   grid-gap: 4rem;
 }
+.cart-list {
+  max-height: 60rem;
+  overflow-y: scroll;
+}
+.cart-list > * + * {
+  margin-top: 2rem;
+}
 .cart-item {
   display: flex;
   padding-block: 1.6rem;
   border-bottom: 2px solid #eee;
 }
 .cart-item__img {
-  width: 12rem;
+  width: 16rem;
   height: 12rem;
   border: 2px solid #eee;
   border-radius: 4px;
@@ -3615,7 +3655,7 @@ main {
   object-fit: cover;
 }
 .cart-item__info {
-  margin-left: 1.6rem;
+  margin-left: 2.4rem;
 }
 .cart-item__action {
   margin-top: 2rem;
@@ -3626,10 +3666,6 @@ main {
 }
 .cart-item__price {
   margin-left: auto;
-}
-.cart-summary {
-  border: 2px solid red;
-  min-height: 200px;
 }
 
 .not-found {

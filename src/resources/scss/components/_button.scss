@@ -44,6 +44,12 @@
     color: white !important;
     background-color: var(--current-color);
   }
+  &-link {
+    background-color: transparent;
+    // border-bottom: 0.2rem solid currentColor;
+    text-decoration: underline;
+    border-radius: 0;
+  }
   &-xl {
     @include button(3em, 2.5em);
   }
@@ -62,4 +68,9 @@
     @include button(3rem, 1.8rem);
     font-size: 1.2rem;
   }
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
 }

@@ -51,8 +51,13 @@
   &-center {
     text-align: center !important;
   }
-  &-left {
+  &-left,
+  &-start {
     text-align: left !important;
+  }
+  &-right,
+  &-end {
+    text-align: end;
   }
 }
 // Use .font-[...] to adjust font-family

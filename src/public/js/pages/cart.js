@@ -1,3 +1,3 @@
 import app from '../app.js';
 
-app.startCart();
+app.start();

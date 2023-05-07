@@ -5,6 +5,13 @@
     grid-template-columns: 7fr 3fr;
     grid-gap: 4rem;
   }
+  &-list {
+    max-height: 60rem;
+    overflow-y: scroll;
+    & > * + * {
+      margin-top: 2rem;
+    }
+  }
   &-item {
     display: flex;
 
@@ -12,7 +19,7 @@
 
     border-bottom: 2px solid #eee;
     &__img {
-      width: 12rem;
+      width: 16rem;
       height: 12rem;
       border: 2px solid #eee;
       border-radius: 4px;
@@ -24,7 +31,7 @@
     }
     &__info {
       // padding-block: 0.8rem;
-      margin-left: 1.6rem;
+      margin-left: 2.4rem;
     }
     &__action {
       margin-top: 2rem;
@@ -39,8 +46,6 @@
       margin-left: auto;
     }
   }
-  &-summary {
-    border: 2px solid red;
-    min-height: 200px;
-  }
+  // &-summary {
+  // }
 }
