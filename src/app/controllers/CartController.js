@@ -3,6 +3,24 @@ const CartDetail = require('../models/CartDetail');
 const Category = require('../models/Category');
 const Product = require('../models/Product');
 
+async function getCartProduct(cartId) {
+  try {
+    return await CartDetail.findAll({
+      where: {
+        cartId,
+      },
+      include: [
+        {
+          model: Product,
+          include: Category,
+        },
+      ],
+    });
+  } catch (e) {
+    throw e;
+  }
+}
+
 class CartController {
   // [GET] /cart
   async index(req, res, next) {
@@ -15,17 +33,8 @@ class CartController {
       });
       if (!cart) res.send('You have no item in your cart');
 
-      const items = await CartDetail.findAll({
-        where: {
-          cartId: cart.id,
-        },
-        include: [
-          {
-            model: Product,
-            include: Category,
-          },
-        ],
-      });
+      const items = await getCartProduct(cart.id);
+      console.log(items);
       if (!items) res.send('You have no item in your cart');
 
       res.render('pages/cart', {
@@ -36,7 +45,65 @@ class CartController {
     }
   }
 
-  // [POST /cart/add
+  // [PATCH] /cart/update
+  async update(req, res, next) {
+    try {
+      const detailId = req.body.detailId;
+      const quantity = Number(req.body.quantity);
+      const detail = await CartDetail.findOne({
+        where: {
+          id: detailId,
+        },
+      });
+      detail.quantity = quantity;
+      await detail.save();
+
+      const cartDetails = await getCartProduct(res.locals.cartId);
+
+      console.log(cartDetails);
+
+      res.json({
+        cartDetails,
+        toastObj: {
+          title: 'Success',
+          message: 'Your product has been updated.',
+          type: 'success',
+          duration: 3000,
+        },
+      });
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  // [DELETE] /cart/remove
+  async remove(req, res, next) {
+    try {
+      const detailId = req.body.detailId;
+      const detail = await CartDetail.findOne({
+        where: {
+          id: detailId,
+        },
+      });
+      await detail.destroy();
+
+      const cartDetails = await getCartProduct(res.locals.cartId);
+
+      res.json({
+        cartDetails,
+        toastObj: {
+          title: 'Success',
+          message: 'Your product has been removed.',
+          type: 'success',
+          duration: 3000,
+        },
+      });
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  // [POST] /cart/add
   async addToCart(req, res, next) {
     const productId = req.body.productId;
     const quantity = Number(req.body.quantity);

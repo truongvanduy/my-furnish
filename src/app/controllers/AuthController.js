@@ -44,7 +44,6 @@ class AuthController {
   signIn(req, res, next) {
     // Check if user signs in from a different page from home page
     const redirectUrl = req.query.redirect || req.session.previousUrl;
-    console.log(req.headers.referer);
     passport.authenticate('local', {
       successRedirect: redirectUrl,
       failureRedirect: '/sign-in',

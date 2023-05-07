@@ -1,3 +1,132 @@
+import { $, $$, convertFlashMessage } from '../variables/utils.js';
 import app from '../app.js';
+import toast from '../views/toast.js';
 
-app.start();
+function renderCartDetails(cartDetails) {
+  return cartDetails
+    .map(
+      (item) => /* html */ `
+            <li data-name="cart-item">
+              <div class="cart-item">
+                <div class="cart-item__img">
+                  <img src="/images/products/${item.product.slug}.png" alt="${
+        item.product.name
+      }">
+                </div>
+                <div class="cart-item__info">
+                  <h4 class="cart-item__name heading heading-xs color-heading font-poppins font-weight-normal">
+                    ${item.product.name}</h4>
+                  <p class="cart-item__desc">
+                    ${item.product.category.name}</p>
+                  <select name="product-quantity" data-item="${item.id}">
+                    ${[1, 2, 3, 4, 5].map((value) =>
+                      value === item.quantity
+                        ? `<option value="${value}" selected>${value}</option>`
+                        : `<option value="${value}">${value}</option>`
+                    )}
+                  </select>
+                  <div class="cart-item__action">
+                    <button class="cart-item__trash" data-name="remove-item" data-item="${
+                      item.id
+                    }">
+                      <i class="fa-regular fa-trash-can">
+                      </i>
+                    </button>
+                  </div>
+                </div>
+                <span class="cart-item__price heading-xs pr-3">
+                  $${item.quantity * item.product.price}</span>
+              </div>
+            </li>`
+    )
+    .join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  app.start();
+
+  const cartItemContainer = $('[data-name="cart-list"]');
+
+  const updateItem = async (detailId, quantity) => {
+    try {
+      const response = await fetch(`/cart/update?_method=PATCH`, {
+        method: 'POST',
+        body: JSON.stringify({
+          detailId,
+          quantity,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const { cartDetails, toastObj } = await response.json();
+
+      cartItemContainer.innerHTML = renderCartDetails(cartDetails);
+      toast(toastObj);
+
+      const updateBtns = $$("[name='product-quantity']");
+
+      updateBtns.forEach((btn) => {
+        btn.onchange = async () => {
+          const detailId = btn.dataset.item;
+          const quantity = btn.options[btn.selectedIndex].value;
+          await updateItem(detailId, quantity);
+        };
+      });
+    } catch (e) {
+      toast({
+        title: 'Error',
+        message: e.message,
+        type: 'error',
+      });
+    }
+  };
+  const removeItem = async (detailId) => {
+    try {
+      const response = await fetch(`/cart/remove?_method=DELETE`, {
+        method: 'POST',
+        body: JSON.stringify({
+          detailId,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const { cartDetails, toastObj } = await response.json();
+
+      cartItemContainer.innerHTML = renderCartDetails(cartDetails);
+      toast(toastObj);
+
+      const removeBtns = $$("[data-name='remove-item']");
+
+      removeBtns.forEach((btn) => {
+        btn.onclick = async () => {
+          await removeItem(btn.dataset.item);
+        };
+      });
+    } catch (e) {
+      throw e;
+    }
+  };
+
+  const removeBtns = $$("[data-name='remove-item']");
+  const updateBtns = $$("[name='product-quantity']");
+
+  // Update product quantity
+  updateBtns.forEach((btn) => {
+    btn.onchange = async () => {
+      const detailId = btn.dataset.item;
+      const quantity = btn.options[btn.selectedIndex].value;
+      await updateItem(detailId, quantity);
+    };
+  });
+
+  // Remove a product
+  removeBtns.forEach((btn) => {
+    btn.onclick = async () => {
+      await removeItem(btn.dataset.item);
+    };
+  });
+});

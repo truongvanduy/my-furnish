@@ -17,6 +17,7 @@ const db = require('./app/models/index');
 const User = require('./app/models/User');
 const initializePassport = require('./config/passport.config');
 const addUserInfoToLocals = require('./utils/middleware/addUserInfoToLocals');
+const addCartInfoToLocals = require('./utils/middleware/addCartInfoToLocals');
 
 // Initialize passport
 initializePassport(
@@ -65,6 +66,7 @@ app.use(methodOverride('_method'));
 
 // Routing
 app.use(addUserInfoToLocals);
+app.use(addCartInfoToLocals);
 route(app);
 
 app.listen(port, () => {

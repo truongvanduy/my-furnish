@@ -1,4 +1,4 @@
-import { $, $$ } from '../variables/utils.js';
+import { $, $$, convertFlashMessage } from '../variables/utils.js';
 import app from '../app.js';
 
 app.start();
@@ -24,12 +24,7 @@ addToCartBtn.onclick = async () => {
     throw new Error(error.message);
   }
 
-  const toastObj = await respone.json();
-  const type = Object.keys(toastObj)[0];
-
-  app.toast({
-    title: type,
-    message: toastObj[type],
-    type,
-  });
+  const obj = await respone.json();
+  const toastObj = convertFlashMessage(obj);
+  app.toast(toastObj);
 };

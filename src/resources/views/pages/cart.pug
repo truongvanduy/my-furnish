@@ -10,16 +10,16 @@ block container
       .flex.space-between.align-center 
         h2.heading.cart-heading.heading-md.mb-4 Please review your cart
         button.btn.btn-danger.btn-link.btn-sm.font-lato Remove all
-      ul.cart-list
+      ul.cart-list(data-name='cart-list')
         each item in items 
-          li
+          li(data-name='cart-item')
             .cart-item
               .cart-item__img 
                 img(src="/images/products/" + item.product.slug + '.png', alt="")
               .cart-item__info 
                 h4.cart-item__name.heading.heading-xs.color-heading.font-poppins.font-weight-normal= item.product.name
                 p.cart-item__desc= item.product.category.name
-                select(name="product-quantity") 
+                select(name="product-quantity" data-item= item.id) 
                   option(value="1" selected= (item.quantity == 1)) 1
                   option(value="2" selected= (item.quantity == 2)) 2
                   option(value="3" selected= (item.quantity == 3)) 3
@@ -28,9 +28,9 @@ block container
                 .cart-item__action
                   //- .cart-item__favorite.color-primary 
                     i(class="fa-regular fa-heart")
-                  button.cart-item__trash
+                  button.cart-item__trash(data-name='remove-item' data-item= item.id)
                     i(class="fa-regular fa-trash-can")
-              span.cart-item__price.heading-xs= '$' + item.quantity * item.product.price
+              span.cart-item__price.heading-xs.pr-3= '$' + item.quantity * item.product.price
     section.cart-summary
       h2.heading.heading-md.text-center.mb-6 Summary 
       table.table.font-primary
