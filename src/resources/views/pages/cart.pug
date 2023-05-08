@@ -9,7 +9,7 @@ block container
     section.cart-products
       .flex.space-between.align-center 
         h2.heading.cart-heading.heading-md.mb-4 Please review your cart
-        button.btn.btn-danger.btn-link.btn-sm.font-lato Remove all
+        button.btn.btn-danger.btn-link.btn-sm.font-lato(data-name='remove-all') Remove all
       ul.cart-list(data-name='cart-list')
         each item in items 
           li(data-name='cart-item')
@@ -37,14 +37,14 @@ block container
         tbody
           tr 
             td Subtotal 
-            td.text-end $9999
+            td.text-end(data-name='subtotal')= '$' + subtotal
           tr 
             td Delivery & Handling 
-            td.text-end $10
+            td.text-end(data-name='shipping-cost') $10
           tr
             td
               b Total 
-            td.text-end $10009
+            td.text-end(data-name='total')= '$' + (subtotal + 10)
       button.btn.btn-primary.btn-solid.btn-md.mt-5.w-100.ml-auto Checkout
       button.btn.btn-primary.btn-outline.btn-md.mt-5.w-100.ml-auto Continue shopping
 

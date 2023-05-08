@@ -21,6 +21,14 @@ async function getCartProduct(cartId) {
   }
 }
 
+function getSubtotal(cartDetails) {
+  return cartDetails.reduce(
+    (subtotal, currentDetail) =>
+      subtotal + currentDetail.quantity * currentDetail.product.price,
+    0
+  );
+}
+
 class CartController {
   // [GET] /cart
   async index(req, res, next) {
@@ -35,10 +43,12 @@ class CartController {
 
       const items = await getCartProduct(cart.id);
       console.log(items);
+      const subtotal = getSubtotal(items);
       if (!items) res.send('You have no item in your cart');
 
       res.render('pages/cart', {
         items,
+        subtotal,
       });
     } catch (e) {
       throw e;
@@ -59,11 +69,11 @@ class CartController {
       await detail.save();
 
       const cartDetails = await getCartProduct(res.locals.cartId);
-
-      console.log(cartDetails);
+      const subtotal = getSubtotal(cartDetails);
 
       res.json({
         cartDetails,
+        subtotal,
         toastObj: {
           title: 'Success',
           message: 'Your product has been updated.',
@@ -77,7 +87,7 @@ class CartController {
   }
 
   // [DELETE] /cart/remove
-  async remove(req, res, next) {
+  async removeOne(req, res, next) {
     try {
       const detailId = req.body.detailId;
       const detail = await CartDetail.findOne({
@@ -88,9 +98,11 @@ class CartController {
       await detail.destroy();
 
       const cartDetails = await getCartProduct(res.locals.cartId);
+      const subtotal = getSubtotal(cartDetails);
 
       res.json({
         cartDetails,
+        subtotal,
         toastObj: {
           title: 'Success',
           message: 'Your product has been removed.',
@@ -100,6 +112,36 @@ class CartController {
       });
     } catch (e) {
       throw e;
+    }
+  }
+
+  async removeAll(req, res, next) {
+    try {
+      await CartDetail.destroy({
+        where: {
+          cartId: res.locals.cartId,
+        },
+      });
+
+      res.json({
+        cartDetails: [],
+        subtotal: 0,
+        toastObj: {
+          title: 'Success',
+          message: 'All product have been removed.',
+          type: 'success',
+          duration: 3000,
+        },
+      });
+    } catch (e) {
+      res.json({
+        toastObj: {
+          title: 'Error',
+          message: e.message,
+          type: 'error',
+          duration: 3000,
+        },
+      });
     }
   }
 

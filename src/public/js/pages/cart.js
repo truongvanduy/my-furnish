@@ -41,11 +41,18 @@ function renderCartDetails(cartDetails) {
     )
     .join('');
 }
+function updateSummary(subtotalValue) {
+  const subtotal = $('[data-name="subtotal"]');
+  const total = $('[data-name="total"]');
+  subtotal.textContent = `$${subtotalValue}`;
+  total.textContent = `$${subtotalValue + 10}`;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   app.start();
 
   const cartItemContainer = $('[data-name="cart-list"]');
+  const removeAllBtn = $('[data-name="remove-all"]');
 
   const updateItem = async (detailId, quantity) => {
     try {
@@ -60,9 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
         },
       });
 
-      const { cartDetails, toastObj } = await response.json();
+      const { cartDetails, subtotal, toastObj } = await response.json();
 
       cartItemContainer.innerHTML = renderCartDetails(cartDetails);
+      updateSummary(subtotal);
       toast(toastObj);
 
       const updateBtns = $$("[name='product-quantity']");
@@ -84,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   const removeItem = async (detailId) => {
     try {
-      const response = await fetch(`/cart/remove?_method=DELETE`, {
+      const response = await fetch(`/cart/remove-one?_method=DELETE`, {
         method: 'POST',
         body: JSON.stringify({
           detailId,
@@ -94,9 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
         },
       });
 
-      const { cartDetails, toastObj } = await response.json();
+      const { cartDetails, subtotal, toastObj } = await response.json();
 
       cartItemContainer.innerHTML = renderCartDetails(cartDetails);
+      updateSummary(subtotal);
       toast(toastObj);
 
       const removeBtns = $$("[data-name='remove-item']");
@@ -129,4 +138,24 @@ document.addEventListener('DOMContentLoaded', () => {
       await removeItem(btn.dataset.item);
     };
   });
+
+  // Remove all product
+  removeAllBtn.onclick = async () => {
+    try {
+      const response = await fetch(`/cart/remove-all?_method=DELETE`, {
+        method: 'POST',
+        // body: JSON.stringify({}),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const { cartDetails, subtotal, toastObj } = await response.json();
+
+      toast(toastObj);
+      cartItemContainer.innerHTML = renderCartDetails(cartDetails);
+      updateSummary(subtotal);
+    } catch (e) {
+      throw e;
+    }
+  };
 });

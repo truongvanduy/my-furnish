@@ -6,7 +6,8 @@ const checkAuthenticated = require('../utils/middleware/checkAuthenticated');
 
 router.post('/add', cartController.addToCart);
 router.patch('/update', cartController.update);
-router.delete('/remove', cartController.remove);
+router.delete('/remove-one', cartController.removeOne);
+router.delete('/remove-all', cartController.removeAll);
 router.get('/', checkAuthenticated, cartController.index);
 router.get('/:slug', cartController.notFound);
 
