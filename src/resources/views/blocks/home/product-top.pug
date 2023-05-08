@@ -3,5 +3,5 @@ section.product-top
   .grid.wide 
     .row 
       each chair in chairs
-        +topProductItem(chair.name, "$" + chair.price, "/images/products/" + chair.slug + ".png 2x")
+        +topProductItem(chair.name, "$" + chair.price, chair.slug)
 

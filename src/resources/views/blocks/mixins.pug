@@ -12,12 +12,12 @@ mixin productActionItem(itemClass="", iconClass="")
   button.product-action__item(class= itemClass)
     i(class= iconClass)
 
-mixin accessoriesItem(heading, newPrice, imgSrc)
+mixin accessoriesItem(heading, newPrice, slug)
   .col.col-4.xl-4.lg-6.md-6.sm-12 
     figure.accessories-item.product-item.action-horizontal  
       .accessories-item__top.product-item__top 
-        .accessories-item__img.product-item__img 
-          img(srcSet= imgSrc , loading="lazy", alt= heading)
+        a.accessories-item__img.product-item__img(href= '/products/' + slug)
+          img(srcSet= '/images/products/' + slug + '.png' , loading="lazy", alt= heading)
         +productActionSet("product-action--horizontal")
           +productActionItem("","fa-solid fa-cart-plus")
           +productActionItem("","fa-regular fa-heart")
@@ -41,12 +41,12 @@ mixin productItem(product_name, slug, price)
       .accessories-item-price.text.text-sm.text-center.color-heading 
         span.accessories-item-price__new= price
 
-mixin topProductItem(heading, price, imgSrc)
+mixin topProductItem(heading, price, slug)
   .col.col-3.xl-6.lg-6.md-6.sm-12 
     figure.product-top-item.product-item.action-rounded.obs-transition.fade.side-half-up 
       .product-top-item__top.product-item__top 
-        .product-top-item__img.product-item__img 
-          img(srcSet= imgSrc , alt= heading)
+        a.product-top-item__img.product-item__img(href= '/products/' + slug)
+          img(srcSet= '/images/products/' + slug + '.png' , alt= heading)
         +productActionSet("product-action--rounded")
           +productActionItem("","fa-solid fa-cart-plus")
           +productActionItem("","fa-regular fa-heart")
@@ -82,11 +82,11 @@ mixin mainHeader(title)
           li.breadcrumb__item.breadcrumb__item--active
             a(href="#").breadcrumb__link= title
 
-mixin onTrendingItem(type, name, price, imgSrc, dataIndex)
+mixin onTrendingItem(type, name, price, slug, dataIndex)
   figure(class="product-item on-trending-item on-trending-item--" + type, data-index= dataIndex)
       figcaption.on-trending-item__name.font-secondary= name
-      .on-trending-item__img.product-item__img 
-        img(src= imgSrc, alt="a chair")
+      a.on-trending-item__img.product-item__img(href='/products/' + slug)
+        img(src='/images/products/' + slug + '.png', alt="a chair")
       span.on-trending-item__price= price
       +productActionSet("product-action--bottom-left")
           +productActionItem("","fa-solid fa-cart-plus")

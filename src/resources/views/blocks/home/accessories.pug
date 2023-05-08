@@ -5,6 +5,4 @@ section.accessories
   .grid.wide.accessories__list 
     .row 
       each item in accessories
-        -productSlug = item.slug
-        -productImgLink = '/images/products/' + productSlug + '.png'
-        +accessoriesItem(item.name, item.price, productImgLink)
+        +accessoriesItem(item.name, item.price, item.slug)
