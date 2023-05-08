@@ -13,10 +13,18 @@ class UserController {
 
   // [GET] /user/profile
   showProfile(req, res, next) {
-    res.render('pages/user/profile');
+    User.findOne({
+      where: {
+        id: req.user.id,
+      },
+    }).then((user) => {
+      res.render('pages/user/profile', {
+        user,
+      });
+    });
   }
 
-  // [POST] /user/profile
+  // [PUT] /user/profile
   updateProfile(req, res, next) {
     User.findOne({
       where: {
@@ -31,11 +39,9 @@ class UserController {
         });
         return user.save();
       })
-      .then((user) => {
-        console.log(user);
-        res.render('pages/user/profile', {
-          user,
-        });
+      .then(() => {
+        req.flash('success', 'Your info has been updated');
+        res.redirect('back');
       })
       .catch((err) => {
         throw err;

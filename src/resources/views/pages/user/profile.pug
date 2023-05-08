@@ -6,7 +6,7 @@ block vars
   -selection = heading.toLowerCase();
 
 block userMain 
-  form.form.user-profile-form(action="" method='POST')
+  form.form.user-profile-form(action="/user/profile?_method=PUT" method='POST')
     .form-group 
       label.form-label(for="full-name") Full name
       input#full-name.form-control(type="text", name="full-name" value= user.fullName)
