@@ -45,8 +45,8 @@ block container
             td
               b Total 
             td.text-end(data-name='total')= '$' + (subtotal + 10)
-      button.btn.btn-primary.btn-solid.btn-md.mt-5.w-100.ml-auto Checkout
-      button.btn.btn-primary.btn-outline.btn-md.mt-5.w-100.ml-auto Continue shopping
+      a.btn.btn-primary.btn-solid.btn-md.mt-5.w-100.ml-auto(href= checkoutLink) Checkout
+      a.btn.btn-primary.btn-outline.btn-md.mt-5.w-100.ml-auto(href= POPLink) Continue shopping
 
 block scripts 
   script(src="../js/pages/cart.js" type='module')
