@@ -3631,6 +3631,11 @@ main {
   grid-template-columns: 7fr 3fr;
   grid-gap: 4rem;
 }
+@media screen and (max-width: 767.98px) {
+  .cart-container {
+    grid-template-columns: 1fr;
+  }
+}
 .cart-list {
   max-height: 60rem;
   overflow-y: scroll;
@@ -3666,6 +3671,12 @@ main {
 }
 .cart-item__price {
   margin-left: auto;
+}
+.cart-summary {
+  width: 100%;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .not-found {

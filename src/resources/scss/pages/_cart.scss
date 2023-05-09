@@ -1,9 +1,13 @@
+@use '../abstracts/breakpoints' as *;
 .cart {
   &-container {
     margin-top: 5.2rem;
     display: grid;
     grid-template-columns: 7fr 3fr;
     grid-gap: 4rem;
+    @include md {
+      grid-template-columns: 1fr;
+    }
   }
   &-list {
     max-height: 60rem;
@@ -46,6 +50,10 @@
       margin-left: auto;
     }
   }
-  // &-summary {
-  // }
+  &-summary {
+    width: 100%;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

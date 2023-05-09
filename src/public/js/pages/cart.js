@@ -3,6 +3,8 @@ import app from '../app.js';
 import toast from '../views/toast.js';
 
 function renderCartDetails(cartDetails) {
+  if (cartDetails.length === 0)
+    return /* html */ `<p class='text-center text-xl'>You have no item in your cart</p>`;
   return cartDetails
     .map(
       (item) => /* html */ `
