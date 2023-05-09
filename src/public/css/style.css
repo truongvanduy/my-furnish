@@ -70,7 +70,7 @@ Nguồn tài nguyên tham khảo:
   --success-color: #20e392;
   --warning-color: #ffc12d;
   --danger-color: #e0144c;
-  --light-color: #f6f5ff;
+  --light-color: #fffaff;
   --heading-color: var(--secondary-color);
   --text-color: #8a8fb9;
   --product-bgc: #f6f7fb;
@@ -1302,9 +1302,9 @@ Nguồn tài nguyên tham khảo:
   margin-block: auto;
 }
 
-/*=========
-*  width
-==========*/
+/*===============
+*  width & height
+================*/
 .w-0 {
   width: 0%;
 }
@@ -1349,15 +1349,22 @@ Nguồn tài nguyên tham khảo:
   width: 100%;
 }
 
+.h-100 {
+  height: 100%;
+}
+
+/*===============
+*  flex
+================*/
 .flex {
   display: flex;
 }
 
-.flex-column {
+.flex-col {
   flex-direction: column;
 }
 
-.space-between {
+.justify-between {
   justify-content: space-between;
 }
 
@@ -1492,6 +1499,9 @@ ol {
 
 .color-primary {
   color: var(--primary-color);
+}
+.color-secondary {
+  color: var(--secondary-color);
 }
 .color-heading {
   color: var(--heading-color);
@@ -1697,6 +1707,10 @@ textarea.form-control {
 }
 textarea.form-control:focus {
   outline: 2px solid var(--current-color);
+}
+
+form {
+  --current-color: var(--primary-color);
 }
 
 .search {
@@ -3689,11 +3703,48 @@ main {
   margin-right: auto;
 }
 
+.checkout .row {
+  --gutter: 2rem;
+}
 .checkout-wrapper {
   background-color: var(--light-color);
 }
+.checkout-section, .checkout-container {
+  height: calc(100% - var(--gutter));
+}
 .checkout-container {
   background-color: white;
+  box-shadow: 0 4px 16px 0px rgba(0, 0, 0, 0.08);
+}
+.checkout-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem 0;
+  max-height: 40rem;
+  overflow-y: auto;
+}
+.checkout-item {
+  display: flex;
+  padding-bottom: 1.6rem;
+  border-bottom: 2px solid #eee;
+}
+.checkout-item__img {
+  width: 9rem;
+  height: 6rem;
+  padding: 0.4rem;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+.checkout-item__img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.checkout-item__info {
+  margin-left: 1.6rem;
+}
+.checkout-item__price {
+  margin-left: auto;
 }
 
 .not-found {

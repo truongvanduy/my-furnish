@@ -176,11 +176,6 @@ class CartController {
     }
   }
 
-  // [GET] /checkout
-  checkout(req, res, next) {
-    res.render('pages/checkout');
-  }
-
   notFound(req, res, next) {
     res.render('pages/404-not-found');
   }

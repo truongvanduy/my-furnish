@@ -147,8 +147,8 @@ mixin toast(type='', message='')
 
 // Checkout
 
-mixin checkoutSection(title)
-  section.checkout-section 
-  h4.heading.heading-sm.checkout-heading.mb-3= title 
-  .checkout-container.p-4 
-    block
+mixin checkoutSection(title, className='')
+  section.checkout-section(class= className)
+    h4.heading.heading-sm.checkout-heading.mb-3= title 
+    .checkout-container.p-4.flex.flex-col
+      block

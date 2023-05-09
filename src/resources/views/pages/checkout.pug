@@ -2,15 +2,73 @@ extends ../layout/layout
 
 block vars 
   -title = 'MyFurnish | Cart'
-  -wrapperClass = 'checkout-wrapper'
+  //- -wrapperClass = 'checkout-wrapper'
+  -mainClass = 'checkout'
 
 block container 
   +mainHeader("Checkout")
-  .container
-    .row 
-      .col.col-7
-        +checkoutSection('Delivery Information')
-      .col.col-5
-        +checkoutSection('Order Summary')
+  .container.mt-20
+    form(action="", method='POST') 
+      .row 
+        .col.col-7
+          .row 
+            .col.col-12
+              +checkoutSection('Delivery Information')
+                .row 
+                  .col.col-7
+                    .form-group
+                      label.form-label(for="name") Full name: 
+                      input#name.form-control(type="text" name='full-name', value= user.fullName)
+                  .col.col-6
+                    .form-group
+                      label.form-label(for="tel") Phone number: 
+                      input#tel.form-control(type="tel" name='tel', value= user.tel)
+                  .col.col-12
+                    .form-group
+                      label.form-label(for="email") Email: 
+                      input#email.form-control(type="email" name='email', value= user.email)
+                  .col.col-12
+                    .form-group
+                      label.form-label(for="address") Address: 
+                      input#address.form-control(type="text" name='address', value= user.address)
+            .col.col-12
+              +checkoutSection('Payment method')
+                .flex.align-center.justify-between.heading
+                  .form-group.inline
+                    input#vnpay(type="radio", name="payment-method" required)
+                    label.form-label.text-xl(for="vnpay") VN Pay
+                  .form-group.inline
+                    input#cod(type="radio", name="payment-method" value='cod' required)
+                    label.form-label.text-xl(for="cod") Cash on Delivery (COD)
+                  .form-group.inline
+                    input#shopeepay(type="radio", name="payment-method" required)
+                    label.form-label.text-xl(for="shopeepay") ShopeePay
+                button.btn.btn-primary.btn-solid.btn-lg.mt-5 ORDER NOW
+        .col.col-5
+          +checkoutSection('Order Summary', 'checkout-summary')
+            ul.checkout-list 
+              each item in cartDetails 
+                li(data-name='checkout-item')
+                  .checkout-item
+                    .checkout-item__img 
+                      img(src="/images/products/" + item.product.slug + '.png', alt="")
+                    .checkout-item__info 
+                      h4.checkout-item__name.heading.text-lg.color-heading.font-weight-normal= item.product.name
+                      p.checkout-item__desc.text-md= item.product.category.name
+                    .flex.flex-col.justify-between.ml-auto.pr-3
+                      span.checkout-item__quantity.text-end= 'x' + item.quantity
+                      span.checkout-item__price.text-lg.font-josefin.text-end= '$' + item.quantity * item.product.price
+            table.font-primary.w-100.color-secondary.mt-auto
+              tbody
+                tr 
+                  td Subtotal 
+                  td.text-end(data-name='subtotal')= '$' + subtotal
+                tr 
+                  td Delivery & Handling 
+                  td.text-end(data-name='shipping-cost') $10
+                tr
+                  td
+                    b Total 
+                  td.text-end(data-name='total')= '$' + (subtotal + 10)
 block scripts 
   script(src="../js/pages/cart.js" type='module')

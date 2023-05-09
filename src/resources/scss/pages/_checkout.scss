@@ -1,9 +1,51 @@
 .checkout {
+  & .row {
+    --gutter: 2rem;
+  }
   &-wrapper {
     background-color: var(--light-color);
   }
+  &-section,
+  &-container {
+    height: calc(100% - var(--gutter));
+  }
   &-container {
     background-color: white;
-    // box-shadow: 0 4px 16px 2px rgba($color: #000000, $alpha: 0.05);
+    box-shadow: 0 4px 16px 0px rgba($color: #000000, $alpha: 0.08);
+  }
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem 0;
+
+    max-height: 40rem;
+    overflow-y: auto;
+  }
+  &-item {
+    display: flex;
+
+    padding-bottom: 1.6rem;
+
+    border-bottom: 2px solid #eee;
+
+    &__img {
+      width: 9rem;
+      height: 6rem;
+      padding: 0.4rem;
+
+      border: 1px solid #eee;
+      border-radius: 4px;
+      & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &__info {
+      margin-left: 1.6rem;
+    }
+    &__price {
+      margin-left: auto;
+    }
   }
 }

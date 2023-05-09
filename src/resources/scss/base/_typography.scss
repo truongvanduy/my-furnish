@@ -97,6 +97,9 @@
   &-primary {
     color: $primary-color;
   }
+  &-secondary {
+    color: var(--secondary-color);
+  }
   &-heading {
     color: $heading-color;
   }

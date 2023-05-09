@@ -7,6 +7,7 @@ const checkAuthenticated = require('../utils/middleware/checkAuthenticated');
 const addCartInfoToLocals = require('../utils/middleware/addCartInfoToLocals');
 const CartController = require('../app/controllers/CartController');
 const checkNotEmptyCart = require('../utils/middleware/checkNotEmptyCart');
+const SiteController = require('../app/controllers/SiteController');
 
 router.get('/sign-in', authController.showSignIn);
 router.post('/sign-in', authController.signIn, addCartInfoToLocals);
@@ -16,7 +17,13 @@ router.get(
   '/checkout',
   checkAuthenticated,
   checkNotEmptyCart,
-  CartController.checkout
+  SiteController.showCheckout
+);
+router.post(
+  '/checkout',
+  checkAuthenticated,
+  checkNotEmptyCart,
+  SiteController.checkout
 );
 router.get('/', siteController.index);
 router.get('/:slug', siteController.notFound);
