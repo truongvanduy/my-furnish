@@ -80,12 +80,19 @@ document.addEventListener('DOMContentLoaded', () => {
       toast(toastObj);
 
       const updateBtns = $$("[name='product-quantity']");
+      const removeBtns = $$("[data-name='remove-item']");
 
       updateBtns.forEach((btn) => {
         btn.onchange = async () => {
           const detailId = btn.dataset.item;
           const quantity = btn.options[btn.selectedIndex].value;
           await updateItem(detailId, quantity);
+        };
+      });
+
+      removeBtns.forEach((btn) => {
+        btn.onclick = async () => {
+          await removeItem(btn.dataset.item);
         };
       });
     } catch (e) {
