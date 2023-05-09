@@ -16,7 +16,7 @@ function renderCartDetails(cartDetails) {
       }">
                 </div>
                 <div class="cart-item__info">
-                  <h4 class="cart-item__name heading heading-xs color-heading font-poppins font-weight-normal">
+                  <h4 class="cart-item__name heading heading-xs color-heading font-weight-normal">
                     ${item.product.name}</h4>
                   <p class="cart-item__desc">
                     ${item.product.category.name}</p>
@@ -36,7 +36,7 @@ function renderCartDetails(cartDetails) {
                     </button>
                   </div>
                 </div>
-                <span class="cart-item__price heading-xs pr-3">
+                <span class="cart-item__price heading-xs pr-3 font-josefin">
                   $${item.quantity * item.product.price}</span>
               </div>
             </li>`

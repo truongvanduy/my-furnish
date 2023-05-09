@@ -1,0 +1,9 @@
+.checkout {
+  &-wrapper {
+    background-color: var(--light-color);
+  }
+  &-container {
+    background-color: white;
+    // box-shadow: 0 4px 16px 2px rgba($color: #000000, $alpha: 0.05);
+  }
+}

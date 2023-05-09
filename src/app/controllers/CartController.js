@@ -178,7 +178,7 @@ class CartController {
 
   // [GET] /checkout
   checkout(req, res, next) {
-    res.send('checkout');
+    res.render('pages/checkout');
   }
 
   notFound(req, res, next) {

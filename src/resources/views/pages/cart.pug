@@ -18,7 +18,7 @@ block container
               .cart-item__img 
                 img(src="/images/products/" + item.product.slug + '.png', alt="")
               .cart-item__info 
-                h4.cart-item__name.heading.heading-xs.color-heading.font-poppins.font-weight-normal= item.product.name
+                h4.cart-item__name.heading.heading-xs.color-heading.font-weight-normal= item.product.name
                 p.cart-item__desc= item.product.category.name
                 select(name="product-quantity" data-item= item.id) 
                   option(value="1" selected= (item.quantity == 1)) 1
@@ -31,7 +31,7 @@ block container
                     i(class="fa-regular fa-heart")
                   button.cart-item__trash(data-name='remove-item' data-item= item.id)
                     i(class="fa-regular fa-trash-can")
-              span.cart-item__price.heading-xs.pr-3= '$' + item.quantity * item.product.price
+              span.cart-item__price.heading-xs.pr-3.font-josefin= '$' + item.quantity * item.product.price
         else 
           p.text-center.text-xl You have no item in your cart
     section.cart-summary

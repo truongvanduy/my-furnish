@@ -144,3 +144,11 @@ mixin toast(type='', message='')
       .toast-msg= message
     button.toast-close(type='button')
       i(class="fa-solid fa-xmark")
+
+// Checkout
+
+mixin checkoutSection(title)
+  section.checkout-section 
+  h4.heading.heading-sm.checkout-heading.mb-3= title 
+  .checkout-container.p-4 
+    block

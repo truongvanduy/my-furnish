@@ -10,11 +10,11 @@ block container
     form#add-product.form.form-center(action='', method='POST')
       h2.heading.heading-xl.color-accent.text-center Sign in
       .form-group
-        label.form-label(for='product-name') Email
-        input#product-name.form-control(name="email", type='email', required)
+        label.form-label(for='email') Email
+        input#email.form-control(name="email", type='email', required autocomplete='username')
       .form-group
-        label.form-label(for='product-name') Password
-        input#product-name.form-control(name="password", type='password', required)
+        label.form-label(for='password') Password
+        input#password.form-control(name="password", type='password', required autocomplete='current-password')
       button.btn.btn-primary.btn-solid.btn-md.mt-4(name="", type='submit') CONTINUE
       p.text-center
         | Don't have an account? 
