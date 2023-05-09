@@ -1,3 +1,4 @@
+const MAX_QUANTITY = require('../../config/constants');
 const Cart = require('../models/Cart');
 const CartDetail = require('../models/CartDetail');
 const Category = require('../models/Category');
@@ -149,6 +150,7 @@ class CartController {
   async addToCart(req, res, next) {
     const productId = req.body.productId;
     const quantity = Number(req.body.quantity);
+    let maxQuantityReached = false;
 
     try {
       let cart = await Cart.findOne({
@@ -173,6 +175,10 @@ class CartController {
       });
       if (cartDetail) {
         cartDetail.quantity += quantity;
+        if (cartDetail.quantity > MAX_QUANTITY) {
+          cartDetail.quantity = MAX_QUANTITY;
+          maxQuantityReached = true;
+        }
         await cartDetail.save();
       } else {
         await CartDetail.create({
@@ -181,10 +187,15 @@ class CartController {
           quantity: quantity,
         });
       }
-
-      res.json({
-        success: ['Your product has been added to cart.'],
-      });
+      if (maxQuantityReached) {
+        res.json({
+          error: ['You can only buy at most 5 product'],
+        });
+      } else {
+        res.json({
+          success: ['Your product has been added to cart.'],
+        });
+      }
     } catch (e) {
       throw e;
     }
