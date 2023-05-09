@@ -1558,6 +1558,11 @@ body::-webkit-scrollbar-thumb:active {
 .btn:focus {
   outline: 2px solid var(--current-color);
 }
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
 .btn.inline {
   display: inline-flex;
 }

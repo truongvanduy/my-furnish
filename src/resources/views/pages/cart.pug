@@ -48,7 +48,11 @@ block container
             td
               b Total 
             td.text-end(data-name='total')= '$' + (subtotal + 10)
-      a.btn.btn-primary.btn-solid.btn-md.mt-5.w-100.ml-auto(href= checkoutLink) Checkout
+      if (items.length)
+        form(action="/checkout" method='GET') 
+          button.btn.btn-primary.btn-solid.btn-md.mt-5.w-100.ml-auto(type="submit" data-name="checkout") Checkout
+      else 
+        button.btn.btn-primary.btn-solid.btn-md.mt-5.w-100.ml-auto(data-name="checkout" disabled) Checkout
       a.btn.btn-primary.btn-outline.btn-md.mt-5.w-100.ml-auto(href= POPLink) Continue shopping
 
 block scripts 

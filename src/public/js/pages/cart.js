@@ -49,6 +49,10 @@ function updateSummary(subtotalValue) {
   subtotal.textContent = `$${subtotalValue}`;
   total.textContent = `$${subtotalValue + 10}`;
 }
+function disableCheckoutButton() {
+  const checkoutButton = $('[data-name="checkout"]');
+  checkoutButton.disabled = true;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   app.start();
@@ -106,9 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const { cartDetails, subtotal, toastObj } = await response.json();
 
+      toast(toastObj);
       cartItemContainer.innerHTML = renderCartDetails(cartDetails);
       updateSummary(subtotal);
-      toast(toastObj);
+      if (cartDetails.length === 0) disableCheckoutButton();
 
       const removeBtns = $$("[data-name='remove-item']");
 
@@ -156,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
       toast(toastObj);
       cartItemContainer.innerHTML = renderCartDetails(cartDetails);
       updateSummary(subtotal);
+      disableCheckoutButton();
     } catch (e) {
       throw e;
     }

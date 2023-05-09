@@ -87,7 +87,7 @@ class CartController {
     }
   }
 
-  // [DELETE] /cart/remove
+  // [DELETE] /cart/remove-one
   async removeOne(req, res, next) {
     try {
       const detailId = req.body.detailId;
@@ -116,6 +116,7 @@ class CartController {
     }
   }
 
+  // [DELETE] /cart/remove-all
   async removeAll(req, res, next) {
     try {
       await CartDetail.destroy({
@@ -201,12 +202,13 @@ class CartController {
     }
   }
 
-  notFound(req, res, next) {
-    res.render('pages/404-not-found');
+  // [GET] /checkout
+  checkout(req, res, next) {
+    res.send('checkout');
   }
 
-  cart(req, res, next) {
-    res.render('pages/cart');
+  notFound(req, res, next) {
+    res.render('pages/404-not-found');
   }
 }
 

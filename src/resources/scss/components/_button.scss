@@ -16,6 +16,11 @@
   &:focus {
     outline: 2px solid var(--current-color);
   }
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
+  }
   &.inline {
     display: inline-flex;
   }
