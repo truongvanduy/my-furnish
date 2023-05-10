@@ -72,6 +72,15 @@ class AuthController {
     }
   }
 
+  signOut(req, res, next) {
+    req.logout(function (err) {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/');
+    });
+  }
+
   notFound(req, res, next) {
     res.render('pages/404-not-found');
   }

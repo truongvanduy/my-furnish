@@ -79,6 +79,9 @@
     cursor: pointer;
     @include flexCenterY();
     gap: 0 0.4rem;
+    &.in-menu > img {
+      display: none;
+    }
   }
   &-action {
     @include flexCenterY();
@@ -94,6 +97,13 @@
       width: 2rem;
       height: 2rem;
     }
+    &__text {
+      font-size: 1.4rem;
+      margin-bottom: 2px;
+      @include lg {
+        font-size: 1.6rem;
+      }
+    }
   }
   &-cart {
     padding-left: 1rem;
@@ -107,10 +117,10 @@
       height: 1.5em;
       border-radius: 100rem;
       background-color: white;
-      top: -0.4rem;
-      right: -0.6rem;
+      top: -0rem;
+      right: -0rem;
       color: $violet-color;
-      display: none;
+      text-align: center;
       justify-content: center;
       align-items: center;
       font-size: 1.2rem;

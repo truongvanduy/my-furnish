@@ -13,22 +13,6 @@ const CartDetail = sequelize.define(
       primaryKey: true,
       allowNull: false,
     },
-    // cartId: {
-    //   type: DataTypes.UUID,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'cart',
-    //     key: 'id',
-    //   },
-    // },
-    // productId: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'product',
-    //     key: 'id',
-    //   },
-    // },
     quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,

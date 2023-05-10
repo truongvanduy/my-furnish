@@ -9,11 +9,8 @@ ul.menu.js-menu
   li.menu__item 
     a.menu__link.text-lg.color-heading(href= POPLink) Products
   li.menu__item 
-    a.menu__link.text-lg.color-heading(href= cartBetaLink) Cart (beta)
-  li.menu__item 
     a.menu__link.text-lg.color-heading(href= manageProductLink) Manage
   li.menu__item.mobile.menu__nav-top 
-    +navGroup("Wishlist", "heart.svg", "","menu__nav-top-item in-menu")
     +navGroup("Cart", "cart.svg", cartPageLink,"menu__nav-top-item in-menu")
       span.nav-cart__qty.in-menu
     if (!user)

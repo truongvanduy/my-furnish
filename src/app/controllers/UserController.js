@@ -7,6 +7,8 @@ const Order = require('../models/Order');
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 const OrderDetail = require('../models/OrderDetail');
+const { sequelize } = require('../models');
+const moment = require('moment');
 
 class UserController {
   // [GET] /user
@@ -82,14 +84,17 @@ class UserController {
               },
             ],
           });
+          const date = moment(order.createdAt).format(
+            'MMMM Do YYYY, h:mm:ss a'
+          );
           return {
-            ...order,
+            ...order.dataValues,
             orderDetail: orderDetails[0],
             length: orderDetails.length,
+            date,
           };
         })
       );
-      console.log(orderInfos[0].dataValues.totalPrice);
       res.render('pages/user/order', {
         orderInfos,
       });

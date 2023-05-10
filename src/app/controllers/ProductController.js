@@ -147,7 +147,7 @@ class ProductController {
     //   });
     Product.findAll({
       include: Category,
-      order: [['id', 'DESC']],
+      order: [['id', 'ASC']],
     })
       .then((products) => {
         res.render('pages/product/manage', {

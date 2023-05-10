@@ -9,16 +9,8 @@ block css
 
 block container 
   +mainHeader("Products")
-  .page_sort_by.container
-    h3 Ecommerce Acceories & Fashion item 
-    .page_sort_bottom
-      label(for='perpage') Per Page:
-      input#perpage(type='number' name='Per Page' value="1")
-      label(for='sort') Sort By:
-      select#sort(size='1')
-        option Best Match
-        option Top Sale
-        option Popular
+  .container
+    h2.heading.heading-lg.my-8 Our Products
   .grid-container__product.container.grid
     each product in products
       -productSlug = product.slug

@@ -16,9 +16,8 @@ header.header
             +navGroup("Login", "user.svg", "/sign-in")
           else
             +navGroup(user.fullName, "user.svg", "/user/profile")
-          +navGroup("Wishlist", "heart.svg")
-          +navGroup("", "cart.svg", cartPageLink,"nav-cart__img")
-            span.nav-cart__qty
+          +navGroup("(" + (cartQty ? cartQty : '') + ")", "cart.svg", cartPageLink,"nav-cart__img")
+            //- span.nav-cart__qty #{cartQty }
     .nav-bottom
       .container.nav__container
         include ../blocks/menu

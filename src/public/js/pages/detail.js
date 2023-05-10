@@ -25,6 +25,9 @@ addToCartBtn.onclick = async () => {
   }
 
   const obj = await respone.json();
-  const toastObj = convertFlashMessage(obj);
-  app.toast(toastObj);
+  if (obj?.error === 'not-authenticated') window.location.href = '/sign-in';
+  else {
+    const toastObj = convertFlashMessage(obj);
+    app.toast(toastObj);
+  }
 };

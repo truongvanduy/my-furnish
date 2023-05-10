@@ -31,5 +31,9 @@
     &__price {
       margin-left: auto;
     }
+    &__status {
+      text-transform: capitalize;
+      font-style: italic;
+    }
   }
 }

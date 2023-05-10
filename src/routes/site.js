@@ -26,6 +26,7 @@ router.post(
   checkNotEmptyCart,
   CheckoutController.checkout
 );
+router.post('/sign-out', authController.signOut);
 router.get('/', siteController.index);
 router.get('/:slug', siteController.notFound);
 

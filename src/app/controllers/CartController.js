@@ -128,6 +128,10 @@ class CartController {
     let maxQuantityReached = false;
 
     try {
+      if (!req.user)
+        return res.json({
+          error: 'not-authenticated',
+        });
       let cart = await Cart.findOne({
         where: {
           userId: req.user.id,

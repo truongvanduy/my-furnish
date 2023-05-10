@@ -33,7 +33,6 @@ module.exports = async function addCartInfoToLocals(req, res, next) {
 
     res.locals.cartId = cart.id;
     res.locals.cartQty = quantity;
-
     next();
   } catch (e) {
     throw e;
