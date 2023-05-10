@@ -33,25 +33,6 @@ class SiteController {
       .catch(next);
   }
 
-  // [GET] /checkout
-  async showCheckout(req, res, next) {
-    try {
-      const cartDetails = await getProductsInCart(res.locals.cartId);
-
-      res.render('pages/checkout', {
-        cartDetails,
-      });
-    } catch (e) {
-      throw e;
-    }
-  }
-
-  // [POST] /checkout
-  async checkout(req, res, next) {
-    try {
-    } catch (e) {}
-  }
-
   notFound(req, res, next) {
     res.render('pages/404-not-found');
   }

@@ -1,4 +1,4 @@
-const MAX_QUANTITY = require('../../config/constants');
+const { MAX_QUANTITY } = require('../../config/constants');
 const getProductsInCart = require('../../utils/getProductsInCart');
 const getSubtotal = require('../../utils/getSubtotal');
 const Cart = require('../models/Cart');

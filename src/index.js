@@ -10,6 +10,7 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
+const moment = require('moment');
 
 const port = 3000;
 const route = require('./routes');
@@ -60,6 +61,14 @@ app.use(morgan('dev'));
 // Template engine PUG
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'resources', 'views'));
+
+// Enable the format filter
+app.locals.basedir = '.';
+app.locals.filters = {
+  format: function (date, format) {
+    return moment(date).format(format);
+  },
+};
 
 // Override method
 app.use(methodOverride('_method'));

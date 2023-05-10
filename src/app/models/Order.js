@@ -11,14 +11,6 @@ const Order = sequelize.define(
       primaryKey: true,
       allowNull: false,
     },
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'users',
-        key: 'id',
-      },
-    },
     status: {
       type: DataTypes.ENUM('delivered', 'pending', 'cancelled'),
       allowNull: false,
@@ -40,13 +32,18 @@ const Order = sequelize.define(
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    createdAt: {
+      type: Sequelize.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+    },
   },
   {
-    timestamps: true,
+    underscored: true,
   }
 );
 
 User.hasMany(Order, { foreignKey: 'userId' });
 Order.belongsTo(User, { foreignKey: 'userId' });
 
-module.exports = Cart;
+module.exports = Order;

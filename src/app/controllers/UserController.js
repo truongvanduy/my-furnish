@@ -1,9 +1,12 @@
 const express = require('express');
-const app = express();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const passport = require('passport');
 const addUserInfoToLocals = require('../../utils/middleware/addUserInfoToLocals');
+const Order = require('../models/Order');
+const Product = require('../models/Product');
+const Category = require('../models/Category');
+const OrderDetail = require('../models/OrderDetail');
 
 class UserController {
   // [GET] /user
@@ -58,8 +61,42 @@ class UserController {
   }
 
   // [GET] /sign-up
-  showOrder(req, res, next) {
-    res.render('pages/user/order');
+  async showOrder(req, res, next) {
+    try {
+      const orders = await Order.findAll({
+        where: {
+          userId: req.user.id,
+        },
+      });
+      // For each order, get the 1st product detail and number of products
+      const orderInfos = await Promise.all(
+        orders.map(async (order) => {
+          const orderDetails = await OrderDetail.findAll({
+            where: {
+              orderId: order.id,
+            },
+            include: [
+              {
+                model: Product,
+                include: Category,
+              },
+            ],
+          });
+          return {
+            ...order,
+            orderDetail: orderDetails[0],
+            length: orderDetails.length,
+          };
+        })
+      );
+      console.log(orderInfos[0].dataValues.totalPrice);
+      res.render('pages/user/order', {
+        orderInfos,
+      });
+    } catch (e) {
+      req.flash('error', e.message);
+      res.redirect('back');
+    }
   }
 
   // [POST] /sign-up

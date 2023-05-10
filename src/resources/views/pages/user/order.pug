@@ -4,3 +4,20 @@ block vars
   -title = 'MyFurnish | Profile'
   -heading = 'Order'
   -selection = heading.toLowerCase();
+
+block userMain
+  ul.order-list 
+    each item, index in orderInfos
+      li(data-name='order-item')
+      .order-item
+        header.order-item__header.flex.justify-between.px-3
+          .order-item__order= '#' + (index + 1)
+          .order-item__date= (item.dataValues.createdAt)
+        .order-item__main
+          .order-item__img 
+            img(src="/images/products/" + item.orderDetail.product.slug + '.png', alt="")
+          .order-item__info 
+            h4.order-item__name.heading.text-lg.color-heading.font-weight-normal= item.orderDetail.product.name
+            p.order-item__desc.text-md= 'and ' + (item.length - 1) + ' more...'
+          .flex.flex-col.justify-between.ml-auto.mt-auto.pr-3
+            span.order-item__price.text-lg.font-josefin.text-end= '$' + item.dataValues.totalPrice

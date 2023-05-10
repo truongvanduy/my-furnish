@@ -41,9 +41,9 @@ block container
                     input#cod(type="radio", name="payment-method" value='cod' required)
                     label.form-label.text-xl(for="cod") Cash on Delivery (COD)
                   .form-group.inline
-                    input#shopeepay(type="radio", name="payment-method" required)
+                    input#shopeepay(type="radio", name="payment-method" value='shopeepay' required)
                     label.form-label.text-xl(for="shopeepay") ShopeePay
-                button.btn.btn-primary.btn-solid.btn-lg.mt-5 ORDER NOW
+                button.btn.btn-primary.btn-solid.btn-lg.mt-5(type='submit') ORDER NOW
         .col.col-5
           +checkoutSection('Order Summary', 'checkout-summary')
             ul.checkout-list 

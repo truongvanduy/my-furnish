@@ -1,0 +1,35 @@
+.order {
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem 0;
+  }
+  &-item {
+    border-radius: 8px;
+    border: 2px solid var(--secondary-color);
+    &__header {
+      color: white;
+      background-color: var(--secondary-color);
+    }
+    &__main {
+      display: flex;
+      padding-block: 1.6rem;
+    }
+    &__img {
+      width: 9rem;
+      height: 6rem;
+      padding: 0.4rem;
+      & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &__info {
+      margin-left: 1.6rem;
+    }
+    &__price {
+      margin-left: auto;
+    }
+  }
+}
