@@ -9,10 +9,13 @@ ul.menu.js-menu
   li.menu__item 
     a.menu__link.text-lg.color-heading(href= POPLink) Products
   li.menu__item 
-    a.menu__link.text-lg.color-heading(href= manageProductLink) Manage
+    a.menu__link.text-lg.color-heading(href= cartPageLink) Cart
+  li.menu__item 
+    a.menu__link.text-lg.color-heading(href= userOrderLink) Order
+  if (user && user.role === 'admin')
+    li.menu__item 
+      a.menu__link.text-lg.color-heading(href= manageProductLink) Manage
   li.menu__item.mobile.menu__nav-top 
-    //- +navGroup("Cart", "cart.svg", cartPageLink,"menu__nav-top-item in-menu")
-    //-   span.nav-cart__qty.in-menu
     if (user)
       +navGroup("", "cart.svg", cartPageLink,"nav-cart in-menu")
         span.nav-cart-qty(data-name='nav-cart-qty')= "Cart (" + (cartQty ? cartQty : '') + ")"

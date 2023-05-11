@@ -4,15 +4,15 @@ const router = express.Router();
 const siteController = require('../app/controllers/SiteController');
 const authController = require('../app/controllers/AuthController');
 const checkAuthenticated = require('../utils/middleware/checkAuthenticated');
+const checkNotAuthenticated = require('../utils/middleware/checkNotAuthenticated');
 const addCartInfoToLocals = require('../utils/middleware/addCartInfoToLocals');
-const CartController = require('../app/controllers/CartController');
 const checkNotEmptyCart = require('../utils/middleware/checkNotEmptyCart');
 const SiteController = require('../app/controllers/SiteController');
 const CheckoutController = require('../app/controllers/CheckoutController');
 
-router.get('/sign-in', authController.showSignIn);
+router.get('/sign-in', checkNotAuthenticated, authController.showSignIn);
 router.post('/sign-in', authController.signIn, addCartInfoToLocals);
-router.get('/sign-up', authController.showSignUp);
+router.get('/sign-up', checkNotAuthenticated, authController.showSignUp);
 router.post('/sign-up', authController.signUp);
 router.get(
   '/checkout',
