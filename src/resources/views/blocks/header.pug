@@ -17,7 +17,7 @@ header.header
           else
             +navGroup(user.fullName, "user.svg", "/user/profile")
           +navGroup("", "cart.svg", cartPageLink,"nav-cart")
-            span.nav-cart-qty(data-name='nav-cart-qty')= "(" + (cartQty ? cartQty : '') + ")"
+            span.nav-cart-qty(data-name='nav-cart-qty')= cartQty && cartQty > 0 ? ("(" + cartQty + ")") : ''
     .nav-bottom
       .container.nav__container
         include ../blocks/menu
