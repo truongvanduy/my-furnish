@@ -19,6 +19,7 @@ ul.menu.js-menu
       +navGroup(user.fullName, "user.svg", loginLink,"menu__nav-top-item in-menu")
       +navGroup('Profile', "", userProfileLink,"menu__nav-top-item in-menu")
       +navGroup('Order', "", userOrderLink,"menu__nav-top-item in-menu")
-      +navGroup('Sign out', "", userSignOutLink,"menu__nav-top-item in-menu")
+      form.nav-group.menu__nav-top-item.in-menu(action='/sign-out', method='POST')
+        button(type='submit').nav-action__text.color-danger Sign out
     +navGroup("duyb2005667@student.ctu.vn", "mail.svg", "mailto: duyb2005667@student.ctu.vn", "menu__nav-top-item mt-auto")
     +navGroup("(12345)67890", "phone.svg", "tel: (12345)67890", "menu__nav-top-item")
