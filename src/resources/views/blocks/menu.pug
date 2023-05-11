@@ -11,13 +11,16 @@ ul.menu.js-menu
   li.menu__item 
     a.menu__link.text-lg.color-heading(href= manageProductLink) Manage
   li.menu__item.mobile.menu__nav-top 
-    +navGroup("Cart", "cart.svg", cartPageLink,"menu__nav-top-item in-menu")
-      span.nav-cart__qty.in-menu
+    //- +navGroup("Cart", "cart.svg", cartPageLink,"menu__nav-top-item in-menu")
+    //-   span.nav-cart__qty.in-menu
+    if (user)
+      +navGroup("", "cart.svg", cartPageLink,"nav-cart in-menu")
+        span.nav-cart-qty(data-name='nav-cart-qty')= "Cart (" + (cartQty ? cartQty : '') + ")"
     if (!user)
       +navGroup("Login", "user.svg", loginLink,"menu__nav-top-item in-menu")
     else
       +navGroup(user.fullName, "user.svg", loginLink,"menu__nav-top-item in-menu")
-      +navGroup('Profile', "", userProfileLink,"menu__nav-top-item in-menu")
+      +navGroup('Profile', "user.svg", userProfileLink,"menu__nav-top-item in-menu")
       +navGroup('Order', "", userOrderLink,"menu__nav-top-item in-menu")
       form.nav-group.menu__nav-top-item.in-menu(action='/sign-out', method='POST')
         button(type='submit').nav-action__text.color-danger Sign out

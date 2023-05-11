@@ -1,4 +1,9 @@
-import { $, $$, convertFlashMessage } from '../variables/utils.js';
+import {
+  $,
+  $$,
+  convertFlashMessage,
+  setCartIconQty,
+} from '../variables/utils.js';
 import app from '../app.js';
 import toast from '../views/toast.js';
 
@@ -76,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const { cartDetails, subtotal, toastObj } = await response.json();
 
       cartItemContainer.innerHTML = renderCartDetails(cartDetails);
+      setCartIconQty(cartDetails);
       updateSummary(subtotal);
       toast(toastObj);
 
@@ -119,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       toast(toastObj);
       cartItemContainer.innerHTML = renderCartDetails(cartDetails);
+      setCartIconQty(cartDetails);
       updateSummary(subtotal);
       if (cartDetails.length === 0) disableCheckoutButton();
 
@@ -167,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       toast(toastObj);
       cartItemContainer.innerHTML = renderCartDetails(cartDetails);
+      setCartIconQty(cartDetails);
       updateSummary(subtotal);
       disableCheckoutButton();
     } catch (e) {

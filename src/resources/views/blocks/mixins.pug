@@ -1,6 +1,7 @@
 mixin navGroup(text, src, href="", className='', imgClassName="")
   a(href= href class= className).nav-group
-    img.nav-action__icon(src= '/images/base/' + src, alt= text, class= imgClassName)
+    if (src !== '')
+      img.nav-action__icon(src= '/images/base/' + src, alt= text, class= imgClassName)
     span.nav-action__text= text
     block 
 

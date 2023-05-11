@@ -1,4 +1,9 @@
-import { $, $$, convertFlashMessage } from '../variables/utils.js';
+import {
+  $,
+  $$,
+  convertFlashMessage,
+  setCartIconQty,
+} from '../variables/utils.js';
 import app from '../app.js';
 
 app.start();
@@ -25,8 +30,10 @@ addToCartBtn.onclick = async () => {
   }
 
   const obj = await respone.json();
+
   if (obj?.error === 'not-authenticated') window.location.href = '/sign-in';
   else {
+    setCartIconQty(obj.totalQty);
     const toastObj = convertFlashMessage(obj);
     app.toast(toastObj);
   }

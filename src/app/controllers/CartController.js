@@ -1,6 +1,8 @@
 const { MAX_QUANTITY } = require('../../config/constants');
+const getCartQty = require('../../utils/getCartQty');
 const getProductsInCart = require('../../utils/getProductsInCart');
 const getSubtotal = require('../../utils/getSubtotal');
+const { sequelize } = require('../models');
 const Cart = require('../models/Cart');
 const CartDetail = require('../models/CartDetail');
 
@@ -132,6 +134,7 @@ class CartController {
         return res.json({
           error: 'not-authenticated',
         });
+
       let cart = await Cart.findOne({
         where: {
           userId: req.user.id,
@@ -166,13 +169,23 @@ class CartController {
           quantity: quantity,
         });
       }
+
+      // Count for cart quantity
+      const cartDetails = await CartDetail.findAll({
+        where: {
+          cartId: res.locals.cartId,
+        },
+      });
+      const totalQty = getCartQty(cartDetails);
       if (maxQuantityReached) {
         res.json({
           error: ['You can only buy at most 5 product'],
+          totalQty,
         });
       } else {
         res.json({
           success: ['Your product has been added to cart.'],
+          totalQty,
         });
       }
     } catch (e) {

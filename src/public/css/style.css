@@ -3221,44 +3221,19 @@ main {
 }
 .nav-cart {
   padding-left: 1rem;
+  gap: 0rem;
 }
-.nav-cart__img {
-  width: 2.6rem;
-  height: 2.6rem;
+.nav-cart img {
+  width: 2rem;
 }
-.nav-cart__qty {
-  position: absolute;
-  width: 1.5em;
-  height: 1.5em;
-  border-radius: 100rem;
-  background-color: white;
-  top: 0rem;
-  right: 0rem;
-  color: #7e33e0;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  line-height: 1.6rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
+.nav-cart-qty {
+  font-size: 1.3rem;
 }
-.nav-cart__qty.in-menu {
-  width: unset;
-  position: unset;
-  color: var(--text-color);
-  font-size: 0.8em;
-  font-weight: normal;
-  flex-wrap: nowrap;
+.nav-cart.in-menu {
+  padding-left: 0;
 }
-.nav-cart__qty.in-menu::before {
-  content: "(";
-}
-.nav-cart__qty.in-menu::after {
-  content: ")";
-}
-.nav-cart__qty.has-product {
-  display: flex;
+.nav-cart.in-menu .nav-cart-qty {
+  font-size: 1.6rem;
 }
 .nav-bottom {
   height: var(--nav-bottom-height);

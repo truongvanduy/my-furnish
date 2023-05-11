@@ -9,4 +9,24 @@ const convertFlashMessage = (obj) => {
   return { title, message, type, duration };
 };
 
-export { $, $$, convertFlashMessage };
+const setCartIconQty = (value) => {
+  const navCartQty = $('[data-name="nav-cart-qty"]');
+  let qty = null;
+  console.log(value);
+
+  switch (typeof value) {
+    case 'number':
+      qty = value;
+      break;
+    default:
+      qty = value.reduce(
+        (totalQty, currentDetail) => totalQty + currentDetail.quantity,
+        0
+      );
+      break;
+  }
+
+  navCartQty.textContent = `(${qty})`;
+};
+
+export { $, $$, convertFlashMessage, setCartIconQty };
