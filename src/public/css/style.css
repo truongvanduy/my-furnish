@@ -3753,9 +3753,19 @@ main {
   color: white;
   background-color: var(--secondary-color);
 }
+.order-item-container {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.2s ease;
+}
+.order-item-container > ul {
+  overflow: hidden;
+}
+.order-item-container[data-open=true] {
+  grid-template-rows: 1fr;
+}
 .order-item__main {
   display: flex;
-  padding-block: 1.6rem;
 }
 .order-item__img {
   width: 9rem;
@@ -3776,6 +3786,9 @@ main {
 .order-item__status {
   text-transform: capitalize;
   font-style: italic;
+}
+.order-item__footer {
+  border-top: 2px solid #eee;
 }
 
 .not-found {

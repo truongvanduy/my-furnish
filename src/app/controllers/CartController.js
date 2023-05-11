@@ -5,6 +5,7 @@ const getSubtotal = require('../../utils/getSubtotal');
 const { sequelize } = require('../models');
 const Cart = require('../models/Cart');
 const CartDetail = require('../models/CartDetail');
+const Product = require('../models/Product');
 
 class CartController {
   // [GET] /cart
@@ -128,6 +129,7 @@ class CartController {
     const productId = req.body.productId;
     const quantity = Number(req.body.quantity);
     let maxQuantityReached = false;
+    let storedQuantityReached = false;
 
     try {
       if (!req.user)
@@ -154,21 +156,35 @@ class CartController {
           cartId: cart.id,
           productId: productId,
         },
+        include: [{ model: Product }],
       });
-      if (cartDetail) {
-        cartDetail.quantity += quantity;
-        if (cartDetail.quantity > MAX_QUANTITY) {
-          cartDetail.quantity = MAX_QUANTITY;
-          maxQuantityReached = true;
-        }
-        await cartDetail.save();
-      } else {
+      if (!cartDetail) {
         await CartDetail.create({
           cartId: cart.id,
           productId: productId,
-          quantity: quantity,
+          quantity: 0,
+        });
+        cartDetail = await CartDetail.findOne({
+          where: {
+            cartId: cart.id,
+            productId: productId,
+          },
+          include: [{ model: Product }],
         });
       }
+      cartDetail.quantity += quantity;
+      // check if added quantity > allowed quantity
+      if (cartDetail.quantity > MAX_QUANTITY) {
+        cartDetail.quantity = MAX_QUANTITY;
+        maxQuantityReached = true;
+      }
+      // check if added quantity > stored quantity
+      if (cartDetail.quantity > cartDetail.product.quantity) {
+        cartDetail.quantity = cartDetail.product.quantity;
+        storedQuantityReached = true;
+      }
+
+      await cartDetail.save();
 
       // Count for cart quantity
       const cartDetails = await CartDetail.findAll({
@@ -177,9 +193,14 @@ class CartController {
         },
       });
       const totalQty = getCartQty(cartDetails);
-      if (maxQuantityReached) {
+      if (storedQuantityReached) {
         res.json({
-          error: ['You can only buy at most 5 product'],
+          warning: [`We only have ${cartDetail.quantity} products available`],
+          totalQty,
+        });
+      } else if (maxQuantityReached) {
+        res.json({
+          warning: ['You can only buy at most 5 products'],
           totalQty,
         });
       } else {

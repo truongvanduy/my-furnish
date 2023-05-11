@@ -27,7 +27,7 @@ class CheckoutController {
       const fullName = req.body['full-name'];
       const paymentMethod = req.body['payment-method'];
       console.log(paymentMethod);
-      const { tel, email, address } = req.body;
+      const { tel, address } = req.body;
 
       // Update user profile
       const user = await User.findOne({
@@ -38,7 +38,6 @@ class CheckoutController {
       user.set({
         fullName,
         tel,
-        email,
         address,
       });
       await user.save();

@@ -7,13 +7,24 @@
   &-item {
     border-radius: 8px;
     border: 2px solid var(--secondary-color);
+
     &__header {
       color: white;
       background-color: var(--secondary-color);
     }
+    &-container {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.2s ease;
+      & > ul {
+        overflow: hidden;
+      }
+      &[data-open='true'] {
+        grid-template-rows: 1fr;
+      }
+    }
     &__main {
       display: flex;
-      padding-block: 1.6rem;
     }
     &__img {
       width: 9rem;
@@ -34,6 +45,9 @@
     &__status {
       text-transform: capitalize;
       font-style: italic;
+    }
+    &__footer {
+      border-top: 2px solid #eee;
     }
   }
 }

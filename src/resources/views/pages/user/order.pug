@@ -5,23 +5,38 @@ block vars
   -heading = 'Order'
   -selection = heading.toLowerCase();
 
+mixin orderItem(orderDetail, item)
+      .order-item__img 
+        img(src="/images/products/" + orderDetail.product.slug + '.png', alt="")
+      .order-item__info
+        h4.order-item__name.heading.text-lg.color-heading.font-weight-normal= orderDetail.product.name
+        if (item.length > 1)
+          p.order-item__desc.text-md.text-start(data-name='order-desc')= 'and ' + (item.length - 1) + ' more...'
+      .flex.flex-col.justify-between.ml-auto 
+        span.text-end= 'x' + orderDetail.quantity 
+        span.text-end= '$' + (orderDetail.quantity * orderDetail.product.price)
+
 block userMain
   ul.order-list 
     each item, index in orderInfos
       li(data-name='order-item')
-      .order-item
-        header.order-item__header.flex.justify-between.px-3
-          .order-item__order= '#' + (index + 1)
-          //- .order-item__date= (item.dataValues.createdAt)
-          .order-item__date= item.date
+        button.order-item.w-100(data-name='order-btn')
+          header.order-item__header.flex.justify-between.px-3
+            .order-item__order
+            .order-item__date= item.date
+          ul.px-3
+            li.order-item__main.pt-3.pb-2
+              +orderItem(item.orderDetails[0], item)
+          .order-item-container.px-3(data-open='false')
+            ul
+              each orderDetail, index in item.orderDetails
+                if (index !== 0)
+                  li.order-item__main.pt-3.pb-2
+                    +orderItem(orderDetail, item)
+          .order-item__footer.mx-3.py-1
+            .flex.justify-between
+              span.order-item__status= item.status
+              span.order-item__price.text-lg.font-josefin.text-end= 'Total: $' + item.totalPrice
 
-        .order-item__main
-          .order-item__img 
-            img(src="/images/products/" + item.orderDetail.product.slug + '.png', alt="")
-          .order-item__info 
-            h4.order-item__name.heading.text-lg.color-heading.font-weight-normal= item.orderDetail.product.name
-            if (item.length > 1)
-              p.order-item__desc.text-md= 'and ' + (item.length - 1) + ' more...'
-          .flex.flex-col.justify-between.ml-auto.pr-3
-            span.order-item__price.text-lg.font-josefin.text-end= '$' + item.totalPrice
-            span.order-item__status= item.status
+block scripts 
+  script(src="../js/pages/order.js" type='module')

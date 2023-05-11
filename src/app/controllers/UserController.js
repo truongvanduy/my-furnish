@@ -69,6 +69,7 @@ class UserController {
         where: {
           userId: req.user.id,
         },
+        order: [['createdAt', 'DESC']],
       });
       // For each order, get the 1st product detail and number of products
       const orderInfos = await Promise.all(
@@ -89,7 +90,7 @@ class UserController {
           );
           return {
             ...order.dataValues,
-            orderDetail: orderDetails[0],
+            orderDetails,
             length: orderDetails.length,
             date,
           };
