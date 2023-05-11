@@ -3864,7 +3864,7 @@ main {
   margin-left: auto;
 }
 
-.user-sidebar__item > a {
+.user-sidebar__item > a, .user-sidebar__item button {
   --gutter: 2rem;
   --current-color: var(--heading-color);
   border-radius: 0.8rem;

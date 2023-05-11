@@ -1,6 +1,7 @@
 .user {
   &-sidebar {
-    &__item > a {
+    &__item > a,
+    &__item button {
       --gutter: 2rem;
       --current-color: var(--heading-color);
 

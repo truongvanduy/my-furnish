@@ -18,7 +18,7 @@ block container
               a(href="/user/order" class= (selection === 'order' ? 'btn-solid' : 'btn-outline')).btn.btn-lg.btn-primary.text-xl.text-left Order
             li.user-sidebar__item.my-4
               form(action="/sign-out", method='POST') 
-                button(type='submit' class= (selection === 'sign-out' ? 'btn-solid' : 'btn-outline')).btn.btn-lg.btn-primary.text-xl.text-left Sign out
+                button(type='submit' class= (selection === 'sign-out' ? 'btn-solid' : 'btn-outline')).btn.btn-lg.btn-primary.w-100.text-xl.text-left Sign out
       .col.col-8.md-12.sm-12
         .user-main.px-4
           h2.heading.heading-md.mb-8= heading
