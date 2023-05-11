@@ -18,10 +18,10 @@ mixin accessoriesItem(heading, newPrice, slug)
       .accessories-item__top.product-item__top 
         a.accessories-item__img.product-item__img(href= '/products/' + slug)
           img(srcSet= '/images/products/' + slug + '.png' , loading="lazy", alt= heading)
-        +productActionSet("product-action--horizontal")
-          +productActionItem("","fa-solid fa-cart-plus")
-          +productActionItem("","fa-regular fa-heart")
-          +productActionItem("","fa-solid fa-magnifying-glass")
+        //- +productActionSet("product-action--horizontal")
+        //-   +productActionItem("","fa-solid fa-cart-plus")
+        //-   +productActionItem("","fa-regular fa-heart")
+        //-   +productActionItem("","fa-solid fa-magnifying-glass")
       .accessories-item__bottom.product-item__bottom 
         figcaption.accessories-item__heading.text.text-lg.text-center.color-heading.font-secondary= heading
         .accessories-item-price.text.text-sm.text-center.color-heading 
@@ -32,10 +32,10 @@ mixin productItem(product_name, slug, price)
     .accessories-item__top.product-item__top
       a.accessories-item__img.product-item__img(href="/products/" + slug)
         img(srcSet="/images/products/" + slug + '.png' , loading="lazy", alt= product_name)
-      +productActionSet("product-action--horizontal")
-        +productActionItem("","fa-solid fa-cart-plus")
-        +productActionItem("","fa-regular fa-heart")
-        +productActionItem("","fa-solid fa-magnifying-glass")
+      //- +productActionSet("product-action--horizontal")
+      //-   +productActionItem("","fa-solid fa-cart-plus")
+      //-   +productActionItem("","fa-regular fa-heart")
+      //-   +productActionItem("","fa-solid fa-magnifying-glass")
     .accessories-item__bottom.product-item__bottom 
       figcaption.accessories-item__heading.text.text-lg.text-center.color-heading.font-secondary= product_name
       .accessories-item-price.text.text-sm.text-center.color-heading 
@@ -47,10 +47,10 @@ mixin topProductItem(heading, price, slug)
       .product-top-item__top.product-item__top 
         a.product-top-item__img.product-item__img(href= '/products/' + slug)
           img(srcSet= '/images/products/' + slug + '.png' , alt= heading)
-        +productActionSet("product-action--rounded")
-          +productActionItem("","fa-solid fa-cart-plus")
-          +productActionItem("","fa-regular fa-heart")
-          +productActionItem("","fa-solid fa-magnifying-glass")
+        //- +productActionSet("product-action--rounded")
+        //-   +productActionItem("","fa-solid fa-cart-plus")
+        //-   +productActionItem("","fa-regular fa-heart")
+        //-   +productActionItem("","fa-solid fa-magnifying-glass")
       .product-top-item__bottom.product-item__bottom 
         figcaption.product-top-item__heading.heading.heading-xs.heading-center.font-primary= heading
         span.product-top-item__price.text.text-md.text-center.color-heading= price
@@ -88,10 +88,10 @@ mixin onTrendingItem(type, name, price, slug, dataIndex)
       a.on-trending-item__img.product-item__img(href='/products/' + slug)
         img(src='/images/products/' + slug + '.png', alt="a chair")
       span.on-trending-item__price= price
-      +productActionSet("product-action--bottom-left")
-          +productActionItem("","fa-solid fa-cart-plus")
-          +productActionItem("","fa-regular fa-heart")
-          +productActionItem("","fa-solid fa-magnifying-glass")
+      //- +productActionSet("product-action--bottom-left")
+      //-     +productActionItem("","fa-solid fa-cart-plus")
+      //-     +productActionItem("","fa-regular fa-heart")
+      //-     +productActionItem("","fa-solid fa-magnifying-glass")
 
 mixin bannerStick(title, caption, desc, imgSrc, btnText= "view all products", alt= "Furniture")
   section.banner-stick.container
