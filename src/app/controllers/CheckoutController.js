@@ -13,8 +13,11 @@ class CheckoutController {
     try {
       const cartDetails = await getProductsInCart(res.locals.cartId);
 
+      const subtotal = getSubtotal(cartDetails);
+
       res.render('pages/checkout', {
         cartDetails,
+        subtotal,
       });
     } catch (e) {
       throw e;

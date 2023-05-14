@@ -40,7 +40,7 @@ mixin productItem(product_name, slug, price)
     .accessories-item__bottom.product-item__bottom 
       figcaption.accessories-item__heading.text.text-lg.text-center.color-heading.font-secondary= product_name
       .accessories-item-price.text.text-sm.text-center.color-heading 
-        span.accessories-item-price__new= price
+        span.accessories-item-price__new= '$' +price
 
 mixin topProductItem(heading, price, slug)
   .col.col-3.xl-6.lg-6.md-6.sm-12 

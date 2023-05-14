@@ -18,11 +18,11 @@ block container
                   .col.col-7
                     .form-group
                       label.form-label(for="name") Full name: 
-                      input#name.form-control(type="text" name='full-name', value= user.fullName)
+                      input#name.form-control(type="text" name='full-name', value= user.fullName required)
                   .col.col-6
                     .form-group
                       label.form-label(for="tel") Phone number: 
-                      input#tel.form-control(type="tel" name='tel', value= user.tel)
+                      input#tel.form-control(type="tel" name='tel', value= user.tel required)
                   .col.col-12
                     .form-group
                       label.form-label(for="email") Email: 
@@ -30,12 +30,12 @@ block container
                   .col.col-12
                     .form-group
                       label.form-label(for="address") Address: 
-                      input#address.form-control(type="text" name='address', value= user.address)
+                      input#address.form-control(type="text" name='address', value= user.address required)
             .col.col-12
               +checkoutSection('Payment method')
                 .flex.align-center.justify-between.heading
                   .form-group.inline
-                    input#vnpay(type="radio", name="payment-method" required)
+                    input#vnpay(type="radio", name="payment-method" value='vnpay' required)
                     label.form-label.text-xl(for="vnpay") VN Pay
                   .form-group.inline
                     input#cod(type="radio", name="payment-method" value='cod' required)

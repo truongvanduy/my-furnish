@@ -6,7 +6,7 @@ block vars
 block container
   section.container
     form#add-product.form.form-center(action='/sign-up', method='POST')
-      h1.heading.heading-2xl.color-accent.text-center Sign up
+      h1.heading.heading-xl.color-accent.text-center Sign up
       .form-group
         label.form-label(for='full-name') Full name
         input#full-name.form-control(name="full-name", type='text', required)
@@ -19,7 +19,7 @@ block container
       button.btn.btn-primary.btn-solid.btn-md.mt-4(name="", type='submit') Create my account
       p.text-center
         | Already have an account? 
-        a.color-primary(href='/login') Sign in
+        a.color-primary(href= loginLink) Sign in
 
 block scripts 
   script(src="../js/pages/others.js" type="module")
