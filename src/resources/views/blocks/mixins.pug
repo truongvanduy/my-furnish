@@ -28,17 +28,17 @@ mixin accessoriesItem(heading, newPrice, slug)
         .accessories-item-price.text.text-sm.text-center.color-heading 
           span.accessories-item-price__new= '$' + newPrice
 
-mixin productItem(product_name, slug, price)
+mixin productItem(productName, slug, price)
   figure.accessories-item.product-item.action-horizontal  
     .accessories-item__top.product-item__top
       a.accessories-item__img.product-item__img(href="/products/" + slug)
-        img(srcSet="/images/products/" + slug + '.png' , loading="lazy", alt= product_name)
+        img(srcSet="/images/products/" + slug + '.png' , loading="lazy", alt= productName)
       //- +productActionSet("product-action--horizontal")
       //-   +productActionItem("","fa-solid fa-cart-plus")
       //-   +productActionItem("","fa-regular fa-heart")
       //-   +productActionItem("","fa-solid fa-magnifying-glass")
     .accessories-item__bottom.product-item__bottom 
-      figcaption.accessories-item__heading.text.text-lg.text-center.color-heading.font-secondary= product_name
+      figcaption.accessories-item__heading.text.text-lg.text-center.color-heading= productName
       .accessories-item-price.text.text-sm.text-center.color-heading 
         span.accessories-item-price__new= '$' +price
 
