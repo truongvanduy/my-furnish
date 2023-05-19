@@ -16,23 +16,6 @@ block container
       -productSlug = product.slug
       -productImgLink = '/images/products/' + productSlug + '.png'
       +productItem(product.name, product.slug, product.price)
-      
-  .page_change.container
-    form(action='#')
-      button.bton
-        i.fa-solid.fa-angles-left
-      button.bton
-        i.fa-solid.fa-angle-left
-      button.bton
-        i.fa-regular.fa-1
-      button.bton
-        i.fa-regular.fa-2
-      button.bton
-        i.fa-regular.fa-3
-      button.bton
-        i.fa-solid.fa-angle-right
-      button.bton
-        i.fa-solid.fa-angles-right
 
 block scripts 
   script(src="../js/pages/products.js" type="module")
