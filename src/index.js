@@ -47,7 +47,7 @@ db.sequelize.sync();
 // Config static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Apply middleware to req.body
+// Body parser
 app.use(
   express.urlencoded({
     extended: true,
@@ -61,14 +61,6 @@ app.use(morgan('dev'));
 // Template engine PUG
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'resources', 'views'));
-
-// Enable the format filter
-app.locals.basedir = '.';
-app.locals.filters = {
-  format: function (date, format) {
-    return moment(date).format(format);
-  },
-};
 
 // Override method
 app.use(methodOverride('_method'));

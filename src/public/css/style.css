@@ -1484,16 +1484,16 @@ ol {
   font-family: var(--josenfin-sans);
 }
 
-.font-weight-regular {
+.fw-regular {
   font-weight: 400;
 }
-.font-weight-normal {
+.fw-normal {
   font-weight: 500;
 }
-.font-weight-sbold {
+.fw-sbold {
   font-weight: 600;
 }
-.font-weight-bold {
+.fw-bold {
   font-weight: 700;
 }
 

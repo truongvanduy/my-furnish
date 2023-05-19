@@ -11,14 +11,6 @@ const Cart = sequelize.define(
       primaryKey: true,
       allowNull: false,
     },
-    // userId: {
-    //   type: DataTypes.UUID,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'user',
-    //     key: 'id',
-    //   },
-    // },
     status: {
       type: DataTypes.ENUM(['active', 'archieved', 'expired']),
       defaultValue: 'active',

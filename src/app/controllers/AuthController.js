@@ -1,5 +1,3 @@
-const express = require('express');
-const app = express();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const passport = require('passport');
@@ -59,11 +57,23 @@ class AuthController {
   // [POST] /sign-up
   async signUp(req, res, next) {
     try {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      // Check for existing user
+      const { email, password } = req.body;
+      const existingUser = await User.findOne({
+        where: {
+          email,
+        },
+      });
+      if (existingUser) {
+        req.flash('error', 'This email has been used.');
+        return res.redirect('/sign-up');
+      }
+
+      // Create a new user
       await User.create({
         fullName: req.body['full-name'],
-        email: req.body.email,
-        password: req.body.password,
+        email,
+        password,
       });
       res.redirect('/sign-in');
     } catch (err) {

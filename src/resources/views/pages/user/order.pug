@@ -5,12 +5,12 @@ block vars
   -heading = 'Order'
   -selection = heading.toLowerCase();
 
-mixin orderItem(orderDetail, item)
+mixin orderItem(orderDetail, item, presented= false)
       .order-item__img 
         img(src="/images/products/" + orderDetail.product.slug + '.png', alt="")
       .order-item__info
         h4.order-item__name.heading.text-lg.color-heading.font-weight-normal= orderDetail.product.name
-        if (item.length > 1)
+        if (item.length > 1 && presented)
           p.order-item__desc.text-md.text-start(data-name='order-desc')= 'and ' + (item.length - 1) + ' more...'
       .flex.flex-col.justify-between.ml-auto 
         span.text-end= 'x' + orderDetail.quantity 
@@ -26,17 +26,20 @@ block userMain
             .order-item__date= item.date
           ul.px-3
             li.order-item__main.pt-3.pb-2
-              +orderItem(item.orderDetails[0], item)
+              +orderItem(item.orderDetails[0], item, true)
           .order-item-container.px-3(data-open='false')
             ul
               each orderDetail, index in item.orderDetails
                 if (index !== 0)
                   li.order-item__main.pt-3.pb-2
                     +orderItem(orderDetail, item)
+              li.flex.justify-between 
+                p Delivery & handle
+                p.text-end= '$' + item.shippingCost
           .order-item__footer.mx-3.py-1
             .flex.justify-between
               span.order-item__status= item.status
-              span.order-item__price.text-lg.font-josefin.text-end= 'Total: $' + item.totalPrice
+              b.order-item__price.text-lg.text-end.fw-bold= 'Total: $' + item.totalPrice
 
 block scripts 
   script(src="../js/pages/order.js" type='module')
