@@ -3442,6 +3442,8 @@ main {
 }
 .footer__logo {
   margin-bottom: 3rem;
+  width: 100%;
+  max-width: 32rem;
 }
 .footer-form__group {
   display: flex;
