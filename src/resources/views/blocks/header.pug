@@ -29,7 +29,7 @@ header.header
             .toggle-menu__line
             .toggle-menu__line
             .toggle-menu__line
-        .search.above-tablet 
-          input(type="text").search__input
-          button.btn.btn-primary.btn-solid.btn-sm.search__btn
+        form(action="/products/search").search.above-tablet 
+          input(type="text" name="keyword").search__input
+          button(type="submit").btn.btn-primary.btn-solid.btn-sm.search__btn
             img(src="/images/base/search.svg", alt="search")

@@ -3,6 +3,7 @@ const Category = require('../models/Category');
 const Product = require('../models/Product');
 const { Op } = require('sequelize');
 const flash = require('express-flash');
+const { sequelize } = require('../models');
 
 class ProductController {
   // [GET] /products
@@ -12,6 +13,22 @@ class ProductController {
         products,
       });
     });
+  }
+
+  // [GET] /products/search
+  async search(req, res, next) {
+    try {
+      const [products, metadata] = await sequelize.query(
+        `SELECT * FROM my_furnish.product where name like '%${req.query.keyword}%'`
+      );
+      // console.log(products);
+      // res.json(products);
+      res.render('pages/product/show', {
+        products,
+      });
+    } catch (e) {
+      throw e;
+    }
   }
 
   // [GET] /products/:slug
