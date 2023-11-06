@@ -21,8 +21,6 @@ class ProductController {
       const [products, metadata] = await sequelize.query(
         `SELECT * FROM my_furnish.product where name like '%${req.query.keyword}%'`
       );
-      // console.log(products);
-      // res.json(products);
       res.render('pages/product/show', {
         products,
       });
