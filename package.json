@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/truongvanduy/my-furnish#readme",
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "bcrypt": "^5.1.1",
     "connect-flash": "^0.1.1",
     "dotenv": "^16.0.3",
     "epxress": "^0.0.1-security",
