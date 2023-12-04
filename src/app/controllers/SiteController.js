@@ -23,13 +23,21 @@ class SiteController {
       }),
     ])
       .then(([trendings, chairs, accessories]) => {
-        res.render('index', {
+        res.json({
           trendings,
           chairs,
           accessories,
           fullName: req?.user?.fullName,
         });
       })
+      // .then(([trendings, chairs, accessories]) => {
+      //   res.render('index', {
+      //     trendings,
+      //     chairs,
+      //     accessories,
+      //     fullName: req?.user?.fullName,
+      //   });
+      // })
       .catch(next);
   }
 

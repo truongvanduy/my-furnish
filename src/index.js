@@ -11,6 +11,7 @@ const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
 const moment = require('moment');
+const cors = require('cors');
 
 const port = 3000;
 const route = require('./routes');
@@ -30,6 +31,7 @@ initializePassport(
   () => {}
 );
 
+app.use(cors());
 app.use(flash());
 app.use(
   session({
